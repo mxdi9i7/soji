@@ -1,0 +1,5 @@
+/* Add here all your css styles (customizations) */
+#body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
