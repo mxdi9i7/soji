@@ -4,11 +4,24 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
+
+// Map global promise - get rid of warning
+mongoose.Promise = global.Promise;
+
+// mlab connect
+mongoose.connect('mongodb://cheng:123456@ds163656.mlab.com:63656/cheng', {useMongoClient: true}, function(err){
+    if(err) {
+        console.log('Some problem with the connection ' + err);
+    } else {
+        console.log('The Mongoose connection is ready');
+    }
+})
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
