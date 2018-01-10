@@ -12,4 +12,4 @@ const StaffSchema = new Schema
     photo: String
 });
 
-const Staffs = module.exports = mongoose.model('Staffs', StaffSchema);
+const Staff = module.exports = mongoose.model('Staff', StaffSchema);

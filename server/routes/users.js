@@ -7,15 +7,15 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/login', function(req, res, next){
-  user.clientLogin(req, res, next);
+  user.handleClientLogin(req, res, next);
 });
 
 router.post('/staffLogin', function(req, res, next){
-  user.staffLogin(req, res, next);
+  user.handleStaffLogin(req, res, next);
 });
 
 router.post('/register', function(req, res, next){
-  user.register(req, res, next);
+  user.handleClientRegister(req, res, next);
 });
 
 module.exports = router;

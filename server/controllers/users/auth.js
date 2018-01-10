@@ -1,8 +1,8 @@
 const Clients = require('../../model/Clients')
-const Staffs = require('../../model/Staffs')
+const Staff = require('../../model/Staff')
 
 
-clientLogin = (req, res, next) => {
+handleClientLogin = (req, res, next) => {
     const username = req.body.username;
     const password = req.body.password;
     let query = {username: username}
@@ -36,11 +36,44 @@ clientLogin = (req, res, next) => {
     });
 }
 
-register = (req, res, next) => {
+handleStaffLogin = (req, res, next) => {
+    const username = req.body.username;
+    const password = req.body.password;
+    let query = {username: username}
+    Staff.findOne(query, (err, user) => {
+        if (err) {
+            res.json({
+                success: false,
+                data: err
+            })
+        }
+        if (user) {
+            if(password == user.password){
+                res.json({
+                    success: true,
+                    data: "logged in"
+                })
+            }
+            else {
+                res.json({
+                    success: false,
+                    data: "incorrect password"
+                })
+            }
+        }
+        else {
+            res.json({
+                success: false,
+                data: "no user found"
+            })
+        }
+    });
+}
+
+handleClientRegister = (req, res, next) => {
     let clientArray;
     let clientID;
     let newUser;
-    let flag = false;
 
     let query = {username: req.body.username }
     Clients.findOne(query, (err, user) => {
@@ -49,30 +82,17 @@ register = (req, res, next) => {
             Clients.find( { clientID:{$regex:'/*'} }, { clientID: 1, _id:0 }, (err, callback) =>
             {
                 clientArray = callback;
+            }).then(function(){
                 do{
-                    clientID = String(parseInt(Math.random()*1000000));
-                    while(clientID.length < 6)
+                    clientID = String(parseInt(Math.random()*10000000));
+                    while(clientID.length < 7)
                     {
                         clientID = '0' + clientID;
                     }
-                    for(let i = 0; i < clientArray.length; i++)
-                    {
-                        if(clientID == clientArray[i])
-                        {
-                            break;
-                        }
-                        else
-                        {
-                            if(i == clientArray -1)
-                            {
-                                flag = true;
-                                break;
-                            }
-                        }
-                    }
                 }
-                while(flag);
-                newUser = new Clients ({
+                while(JSON.stringify(clientArray).indexOf(clientID) != -1);
+
+                newUser = new Clients({
                     clientID: clientID,
                     username: req.body.username,
                     password: req.body.password,
@@ -80,22 +100,22 @@ register = (req, res, next) => {
                     name: req.body.name,
                     photo: req.body.photo
                 });
+
                 newUser.save((err, callback) => {
                     if(err) {
                         res.json({
                             success: false,
                             message: err
-                        })
+                        });
                     } 
                     else {
                         res.json({
                             success: true,
                             message: "User created"
                         });
-                   } 
+                    } 
                 });
             });
-        
         }
         else {
             res.json({
@@ -108,7 +128,6 @@ register = (req, res, next) => {
 
 
 
-
-
-module.exports.clientLogin = clientLogin;
-module.exports.register = register;
+module.exports.handleClientLogin = handleClientLogin;
+module.exports.handleStaffLogin = handleStaffLogin;
+module.exports.handleClientRegister = handleClientRegister;
