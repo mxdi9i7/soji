@@ -7,7 +7,12 @@ var bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 var index = require('./routes/index');
-var users = require('./routes/users');
+
+// user route
+var auth = require('./routes/users/auth');
+
+// job route
+var create = require('./routes/jobs/create');
 
 var app = express();
 
@@ -36,7 +41,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
+
+//user path
+app.use('/users/auth', auth);
+
+// job path
+app.use('/jobs/create', create);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -79,7 +79,7 @@ handleClientRegister = (req, res, next) => {
     Clients.findOne(query, (err, user) => {
         if(err) return err;
         if(user == null) {
-            Clients.find( { clientID:{$regex:'/*'} }, { clientID: 1, _id:0 }, (err, callback) =>
+            Clients.find({ clientID:{$regex:'/*'} }, { clientID: 1, _id:0 }, (err, callback) =>
             {
                 clientArray = callback;
             }).then(function(){

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const ClientSchema = new Schema
+const ClientsSchema = new Schema
 ({
     clientID: String,
     username: String,
@@ -12,4 +12,4 @@ const ClientSchema = new Schema
     photo: String
 });
 
-const Clients = module.exports = mongoose.model('Clients', ClientSchema);
+const Clients = module.exports = mongoose.model('Clients', ClientsSchema);
