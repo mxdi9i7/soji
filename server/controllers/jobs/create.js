@@ -4,6 +4,7 @@ createJob = (req, res, next) => {
     let jobsID;
     let jobsArray;
 
+    // bug:如果重复的不间断发送请求，jobsArray会显示undefined
     Jobs.find( { jobID:{$regex:'/*'} }, { jobID: 1, _id:0 }, (err, callback) =>
     {
         jobsArray = callback;
@@ -17,7 +18,7 @@ createJob = (req, res, next) => {
         }
         while(JSON.stringify(jobsArray).indexOf(jobsID) != -1);
 
-        let job = new Jobs
+        let newJob = new Jobs
         ({
             jobID: jobsID,
             jobTitle: req.body.jobTitle,
@@ -26,7 +27,7 @@ createJob = (req, res, next) => {
             approved: false,
             createdAt: new Date()
         });
-        job.save((err, callback) => {
+        newJob.save((err, callback) => {
             if(err) {
                 res.json({
                     success: false,

@@ -1,0 +1,116 @@
+
+<template id="jobTemplate">
+        <li jobID="{{jobID}}" class="show">
+            <p>
+                <strong>job title:</strong>
+                <span class="show jobTitle">{{jobTitle}}</span>
+                <input type="text" class="noshow jobTitle"/>
+            </p>
+            <p>
+                <strong>job description:</strong>
+                <span class="show jobDescription">{{jobDescription}}</span>
+                <input type="text" class="noshow jobDescription"/>
+            </p>
+            <p>
+                <strong>quote:</strong>
+                <span class="show quote">{{quote}}</span>
+                <input type="text" class="noshow quote"/>
+            </p>
+            <p>
+                <strong>approval status:</strong>
+                <span class="show approved">{{approved}}</span><br>
+                <span class="noshow">
+                    <input type="radio" name="approved" value="true">true<br>
+                    <input type="radio" name="approved" value="false" >false<br>
+                </span>
+            </p>
+            <p>
+                <strong>creation time:</strong>
+                <span class="show createdAt">{{createdAt}}</span>
+            </p>
+            <!-- <p>
+                <strong>images:</strong>
+                <button class="AddImage noshow">Add Image</button><br>
+                <div class="imageArea">
+                {{#images}}
+                <div class="singleImage">
+                    <img class="images" src="http://res.cloudinary.com/cc2018/image/upload/v1514911056/{{.}}.png" id="{{.}}"></img>
+                    <button class="removeImage noshow">Remove Image</button>
+                    <button class="replaceImage noshow">Replace Image</button><br>
+                </div>
+                {{/images}}
+                </div>
+            </p> -->
+            <button class='removeArticle show'>Delete</button>
+            <button class="saveEdit noshow" type="submit">Save</button>
+            <button class="cancelEdit noshow">Cancel</button>
+            <button class="editArticle show">Edit</button>
+        </li>
+    </template>
+
+
+<h3>搜索</h3>
+search: <input type="text" id="searchJob">
+<input type="submit" id="submitSearch">
+<ul id="jobs">
+
+</ul>
+
+<script src="./mustache.js-master/mustache.js-master/mustache.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script>
+    let $jobs = $('#jobs');
+    let jobTemplate = $('#jobTemplate').html();
+
+    function addJobs(job)
+    {
+        $jobs.append(Mustache.render(jobTemplate, job))
+    }
+
+    $('#submitSearch').click(() => {
+        console.log('123')
+        $jobs.empty();
+        let data = {};
+        data.jobTitle = $('#searchJob').val();
+        $.ajax({
+            type: 'POST',
+            url: 'http://localhost:3000/jobs/search',
+            data: JSON.stringify(data),
+            contentType: "application/json",
+            dataType: "json",
+            success: function(jobs) { 
+                console.log(jobs);
+                $.each(jobs, function(i, job) {     // foreach
+                    addJobs(job);                    // add a <li> for every item 
+                });
+            },
+            error: function()
+            {
+                console.log('error');
+            }
+        });
+
+    });
+</script>
+
+
+
+<style>
+    ul li .noshow{
+        display: none;
+    }
+    
+    ul li.noshow .noshow{
+        display: initial
+    }
+    
+    ul li.noshow .show{
+        display: none;
+    }
+
+    .toBeDeleted{
+        display: none;
+    }
+
+</style>

@@ -84,7 +84,7 @@ handleClientRegister = (req, res, next) => {
                 clientArray = callback;
             }).then(function(){
                 do{
-                    clientID = String(parseInt(Math.random()*10000000));
+                    clientID = String(parseInt(Math.random()*100000));
                     while(clientID.length < 7)
                     {
                         clientID = '0' + clientID;

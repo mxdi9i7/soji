@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 var index = require('./routes/index');
 
@@ -13,6 +14,10 @@ var auth = require('./routes/users/auth');
 
 // job route
 var create = require('./routes/jobs/create');
+var search = require('./routes/jobs/search');
+
+// task route
+var createTask = require('./routes/tasks/create');
 
 var app = express();
 
@@ -27,6 +32,9 @@ mongoose.connect('mongodb://cheng:123456@ds163656.mlab.com:63656/cheng', {useMon
         console.log('The Mongoose connection is ready');
     }
 })
+
+// CORS Middleware
+app.use(cors());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -47,6 +55,10 @@ app.use('/users/auth', auth);
 
 // job path
 app.use('/jobs/create', create);
+app.use('/jobs/search', search);
+
+// job path
+app.use('/tasks/create', createTask);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
