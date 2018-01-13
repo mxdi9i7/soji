@@ -18,6 +18,7 @@ var search = require('./routes/jobs/search');
 
 // task route
 var createTask = require('./routes/tasks/create');
+var searchTask = require('./routes/tasks/search');
 
 var app = express();
 
@@ -57,8 +58,9 @@ app.use('/users/auth', auth);
 app.use('/jobs/create', create);
 app.use('/jobs/search', search);
 
-// job path
+// task path
 app.use('/tasks/create', createTask);
+app.use('/tasks/search', searchTask);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

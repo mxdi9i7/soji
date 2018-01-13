@@ -1,60 +1,101 @@
 
 <template id="jobTemplate">
-        <li jobID="{{jobID}}" class="show">
-            <p>
-                <strong>job title:</strong>
-                <span class="show jobTitle">{{jobTitle}}</span>
-                <input type="text" class="noshow jobTitle"/>
-            </p>
-            <p>
-                <strong>job description:</strong>
-                <span class="show jobDescription">{{jobDescription}}</span>
-                <input type="text" class="noshow jobDescription"/>
-            </p>
-            <p>
-                <strong>quote:</strong>
-                <span class="show quote">{{quote}}</span>
-                <input type="text" class="noshow quote"/>
-            </p>
-            <p>
-                <strong>approval status:</strong>
-                <span class="show approved">{{approved}}</span><br>
-                <span class="noshow">
-                    <input type="radio" name="approved" value="true">true<br>
-                    <input type="radio" name="approved" value="false" >false<br>
-                </span>
-            </p>
-            <p>
-                <strong>creation time:</strong>
-                <span class="show createdAt">{{createdAt}}</span>
-            </p>
-            <!-- <p>
-                <strong>images:</strong>
-                <button class="AddImage noshow">Add Image</button><br>
-                <div class="imageArea">
-                {{#images}}
-                <div class="singleImage">
-                    <img class="images" src="http://res.cloudinary.com/cc2018/image/upload/v1514911056/{{.}}.png" id="{{.}}"></img>
-                    <button class="removeImage noshow">Remove Image</button>
-                    <button class="replaceImage noshow">Replace Image</button><br>
-                </div>
-                {{/images}}
-                </div>
-            </p> -->
-            <button class='removeArticle show'>Delete</button>
-            <button class="saveEdit noshow" type="submit">Save</button>
-            <button class="cancelEdit noshow">Cancel</button>
-            <button class="editArticle show">Edit</button>
-        </li>
-    </template>
+    <li jobID="{{jobID}}" class="show">
+        <p>
+            <strong>job title:</strong>
+            <span class="show jobTitle">{{jobTitle}}</span>
+            <input type="text" class="noshow jobTitle"/>
+        </p>
+        <p>
+            <strong>job description:</strong>
+            <span class="show jobDescription">{{jobDescription}}</span>
+            <input type="text" class="noshow jobDescription"/>
+        </p>
+        <p>
+            <strong>quote:</strong>
+            <span class="show quote">{{quote}}</span>
+            <input type="text" class="noshow quote"/>
+        </p>
+        <p>
+            <strong>approval status:</strong>
+            <span class="show approved">{{approved}}</span><br>
+            <span class="noshow">
+                <input type="radio" name="approved" value="true">true<br>
+                <input type="radio" name="approved" value="false" >false<br>
+            </span>
+        </p>
+        <p>
+            <strong>creation time:</strong>
+            <span class="show createdAt">{{createdAt}}</span>
+        </p>
+        <ul class="taskZone">
+
+        </ul>
+        <button class="showTask show">show task</button>
+        <button class="hideTask show">hide task</button>
+        <button class='removeJob show'>Delete</button>
+        <button class="editJob show">Edit</button>
+        <button class="saveEdit noshow" type="submit">Save</button>
+        <button class="cancelEdit noshow">Cancel</button>
+    </li>
+</template>
+
+<template id="taskTemplate">
+    <li taskID="{{taskID}}" class="show">
+        <p>
+            <strong>task title:</strong>
+            <span class="show taskTitle">{{taskTitle}}</span>
+            <input type="text" class="noshow taskTitle"/>
+        </p>
+        <p>
+            <strong>task description:</strong>
+            <span class="show taskDescription">{{taskDescription}}</span>
+            <input type="text" class="noshow taskDescription"/>
+        </p>
+        <p>
+            <strong>video:</strong>
+            <video width="320" height="240" controls>
+                <source src="http://res.cloudinary.com/cc2018/video/upload/v1515857359/{{video}}.mp4" type="video/mp4">
+                <source src="http://res.cloudinary.com/cc2018/video/upload/v1515857359/{{video}}.ogg" type="video/ogg">
+              Your browser does not support the video tag.
+            </video>
+        </p>
+        <p>
+            <strong>minute:</strong>
+            <span class="show minute">{{minute}}</span><br>
+            <input type="text" class="noshow minute"/>
+        </p>
+        <p>
+            <strong>creation time:</strong>
+            <span class="show createdAt">{{createdAt}}</span>
+        </p>
+        <button class='removeArticle show'>Delete</button>
+        <button class="saveEdit noshow" type="submit">Save</button>
+        <button class="cancelEdit noshow">Cancel</button>
+        <button class="editArticle show">Edit</button>
+    </li>
+</template>
+
 
 
 <h3>搜索</h3>
+<br>
 search: <input type="text" id="searchJob">
 <input type="submit" id="submitSearch">
 <ul id="jobs">
 
 </ul>
+
+
+<br>
+<h3>上传</h3>
+<br>
+jobID: <input type="text" id="jobID"><br>
+taskTitle: <input type="text" id="taskTitle"><br>
+taskDescription: <input type="text" id="taskDesc"><br>
+video: <input type="file" id="videoLink"><br>
+minute: <input type="text" id="minute"><br>
+<button type="submit" id="addTask">提交</button>
 
 <script src="./mustache.js-master/mustache.js-master/mustache.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -62,14 +103,15 @@ search: <input type="text" id="searchJob">
 <script>
     let $jobs = $('#jobs');
     let jobTemplate = $('#jobTemplate').html();
+    let taskTemplate = $('#taskTemplate').html();
 
     function addJobs(job)
     {
         $jobs.append(Mustache.render(jobTemplate, job))
     }
 
+
     $('#submitSearch').click(() => {
-        console.log('123')
         $jobs.empty();
         let data = {};
         data.jobTitle = $('#searchJob').val();
@@ -80,7 +122,6 @@ search: <input type="text" id="searchJob">
             contentType: "application/json",
             dataType: "json",
             success: function(jobs) { 
-                console.log(jobs);
                 $.each(jobs, function(i, job) {     // foreach
                     addJobs(job);                    // add a <li> for every item 
                 });
@@ -92,6 +133,89 @@ search: <input type="text" id="searchJob">
         });
 
     });
+
+    $('#addTask').click(() => {
+
+        let file = document.getElementById('videoLink').files[0];
+
+        let formData = new FormData();
+        formData.append('file', file);
+        formData.append('timestamp', Date.now() / 1000 | 0);
+        formData.append('api_key', 629372726454153);
+        formData.append('upload_preset', 'cc2018api');
+
+        $.ajax({
+            type: 'POST',
+            url: 'https://api.cloudinary.com/v1_1/cc2018/video/upload',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(response) 
+            {   
+                let data = {
+                    jobID: $('#jobID').val(),
+                    taskTitle: $('#taskTitle').val(),
+                    taskDescription: $('#taskDesc').val(),
+                    video: response.public_id,
+                    minute: $('#minute').val()
+                }
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'http://localhost:3000/tasks/create',
+                    data: JSON.stringify(data),
+                    contentType: "application/json",
+                    dataType: "json",
+                    success: function(data) 
+                    { 
+                        console.log('article updated');
+                    },
+                    error: function()
+                    {
+                        console.log('error updating article');
+                    }
+                });
+
+            },
+            error: function()
+            {
+                console.log('error updating uploading images');
+            }
+        });
+
+    });
+
+    $jobs.delegate('.showTask', 'click', function()
+    {
+        let data = {};
+        let $task = $(this).prev();
+        $task.empty();
+        data.jobID = $(this).closest('li').attr('jobID');
+        $.ajax({
+            type: 'POST',
+            url: 'http://localhost:3000/tasks/search',
+            data: JSON.stringify(data),
+            contentType: "application/json",
+            dataType: "json",
+            success: function(tasks) { 
+                console.log(tasks);
+                $.each(tasks, function(i, task) {     // foreach
+                    $task.append(Mustache.render(taskTemplate, task))
+                });
+            },
+            error: function()
+            {
+                console.log('error');
+            }
+        });
+    });
+
+    $jobs.delegate('.hideTask', 'click', function()
+    {
+        let $task = $(this).prev().prev();
+        $task.empty();
+    })
+
 </script>
 
 

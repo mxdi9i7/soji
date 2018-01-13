@@ -7,7 +7,7 @@ searchJob = (req, res, next) => {
     titleArray.forEach(title => {
         search += title + '\.*';
     });
-    Jobs.find( { jobTitle:{$regex:search} }, (err, callback) =>
+    Jobs.find({jobTitle:{$regex:search}}, (err, callback) =>
     {
         res.json(callback);
     });

@@ -23,7 +23,7 @@ createJob = (req, res, next) => {
             jobID: jobsID,
             jobTitle: req.body.jobTitle,
             jobDesciption: req.body.jobDesciption,
-            quote: req.body.quote,
+            quote: 0,
             approved: false,
             createdAt: new Date()
         });

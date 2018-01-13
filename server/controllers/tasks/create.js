@@ -12,7 +12,7 @@ createTask = (req, res, next) => {
             tasksID = String(parseInt(Math.random()*10000000));
             while(tasksID.length < 7)
             {
-                tasksID = '0' + jobsID;
+                tasksID = '0' + tasksID;
             }
         }
         while(JSON.stringify(tasksArray).indexOf(tasksID) != -1);
