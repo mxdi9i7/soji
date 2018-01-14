@@ -10,15 +10,18 @@ const cors = require('cors');
 var index = require('./routes/index');
 
 // user route
-var auth = require('./routes/users/auth');
+const auth = require('./routes/users/auth');
 
 // job route
-var create = require('./routes/jobs/create');
-var search = require('./routes/jobs/search');
+const create = require('./routes/jobs/create');
+const search = require('./routes/jobs/search');
+const deletes = require('./routes/jobs/delete');
+// delete 会报错
 
 // task route
-var createTask = require('./routes/tasks/create');
-var searchTask = require('./routes/tasks/search');
+const createTask = require('./routes/tasks/create');
+const searchTask = require('./routes/tasks/search');
+const deleteTask = require('./routes/tasks/delete');
 
 var app = express();
 
@@ -57,10 +60,12 @@ app.use('/users/auth', auth);
 // job path
 app.use('/jobs/create', create);
 app.use('/jobs/search', search);
+app.use('/jobs/delete', deletes);
 
 // task path
 app.use('/tasks/create', createTask);
 app.use('/tasks/search', searchTask);
+app.use('/tasks/delete', deleteTask);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

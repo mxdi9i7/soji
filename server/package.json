@@ -15,6 +15,7 @@
     "nodemon": "^1.12.1",
     "serve-favicon": "~2.4.2",
     "mongoose":"latest",
-    "cors":"latest"
+    "cors":"latest",
+    "cloudinary": "latest"
   }
 }

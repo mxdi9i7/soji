@@ -69,10 +69,10 @@
             <strong>creation time:</strong>
             <span class="show createdAt">{{createdAt}}</span>
         </p>
-        <button class='removeArticle show'>Delete</button>
+        <button class='removeTask show'>Delete</button>
         <button class="saveEdit noshow" type="submit">Save</button>
         <button class="cancelEdit noshow">Cancel</button>
-        <button class="editArticle show">Edit</button>
+        <button class="editTask show">Edit</button>
     </li>
 </template>
 
@@ -168,18 +168,18 @@ minute: <input type="text" id="minute"><br>
                     dataType: "json",
                     success: function(data) 
                     { 
-                        console.log('article updated');
+                        console.log('task updated');
                     },
                     error: function()
                     {
-                        console.log('error updating article');
+                        console.log('error uploading task');
                     }
                 });
 
             },
             error: function()
             {
-                console.log('error updating uploading images');
+                console.log('error uploading video');
             }
         });
 
@@ -210,11 +210,52 @@ minute: <input type="text" id="minute"><br>
         });
     });
 
-    $jobs.delegate('.hideTask', 'click', function()
+    $jobs.delegate('.removeTask', 'click', function()
     {
-        let $task = $(this).prev().prev();
-        $task.empty();
-    })
+        let $taskZone = $(this).closest('.taskZone');
+        $taskZone.empty();
+        let $li = $(this).closest('li');
+        let taskID = $li.attr('taskID');
+        let data = {taskID:taskID}
+        $.ajax({
+            type: 'POST',
+            url: 'http://localhost:3000/tasks/delete',
+            data: JSON.stringify(data),
+            contentType: "application/json",
+            dataType: "json",
+            success: function(callback) { 
+                console.log(callback);
+            },
+            error: function()
+            {
+                console.log('error');
+            }
+        });
+        
+    });
+
+    $jobs.delegate('.removeJob', 'click', function()
+    {
+        let $li = $(this).closest('li');
+        let jobID = $li.attr('jobID');
+        $li.empty();
+        let data = {jobID:jobID}
+        $.ajax({
+            type: 'POST',
+            url: 'http://localhost:3000/jobs/delete',
+            data: JSON.stringify(data),
+            contentType: "application/json",
+            dataType: "json",
+            success: function(callback) { 
+                console.log(callback);
+            },
+            error: function()
+            {
+                console.log('error');
+            }
+        });
+        
+    });
 
 </script>
 

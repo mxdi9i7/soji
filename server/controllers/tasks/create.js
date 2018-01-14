@@ -1,10 +1,11 @@
-const Tasks = require('../../model/Tasks')
+const Tasks = require('../../model/Tasks');
+
 
 createTask = (req, res, next) => {
     let tasksID;
     let tasksArray;
 
-    Tasks.find( { taskID:{$regex:'/*'} }, { taskID: 1, _id:0 }, (err, callback) =>
+    Tasks.find({taskID:{$regex:'/*'} }, {taskID: 1, _id:0 }, (err, callback) =>
     {
         tasksArray = callback;
     }).then(function(){
