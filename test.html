@@ -59,6 +59,7 @@
                 <source src="http://res.cloudinary.com/cc2018/video/upload/v1515857359/{{video}}.ogg" type="video/ogg">
               Your browser does not support the video tag.
             </video>
+            <input type="file" class="noshow video"/>
         </p>
         <p>
             <strong>minute:</strong>
@@ -70,8 +71,8 @@
             <span class="show createdAt">{{createdAt}}</span>
         </p>
         <button class='removeTask show'>Delete</button>
-        <button class="saveEdit noshow" type="submit">Save</button>
-        <button class="cancelEdit noshow">Cancel</button>
+        <button class="saveTaskEdit noshow" type="submit">Save</button>
+        <button class="cancelTaskEdit noshow">Cancel</button>
         <button class="editTask show">Edit</button>
     </li>
 </template>
@@ -234,6 +235,83 @@ minute: <input type="text" id="minute"><br>
         
     });
 
+    $jobs.delegate('.editTask', 'click', function()
+    {
+        let $li = $(this).closest('li');
+        $li.find('input.taskTitle').val( $li.find('span.taskTitle').html() );
+        $li.find('input.taskDescription').val( $li.find('span.taskDescription').html() );
+        $li.find('input.minute').val( $li.find('span.minute').html() );
+        $li.addClass('noshow');
+    });
+
+    $jobs.delegate('.saveTaskEdit', 'click', function()
+    {
+        let $li = $(this).closest('li');
+        let video = $li.find('input.video')[0].files[0];
+        let task = {
+            taskID: $li.attr('taskID'),
+            taskTitle:  $li.find('input.taskTitle').val(),
+            taskDescription: $li.find('input.taskDescription').val(),
+            minute: $li.find('input.minute').val(),
+        }
+
+        if(video != undefined) {
+            let formData = new FormData();
+            formData.append('file', video);
+            formData.append('timestamp', Date.now() / 1000 | 0);
+            formData.append('api_key', 629372726454153);
+            formData.append('upload_preset', 'cc2018api');
+            $.ajax({
+                type: 'POST',
+                url: 'https://api.cloudinary.com/v1_1/cc2018/video/upload',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response) 
+                { 
+                    task.video = response.public_id;
+
+                    $.ajax({
+                        type: 'POST',
+                        url: 'http://localhost:3000/tasks/update',
+                        data: JSON.stringify(task),
+                        contentType: "application/json",
+                        dataType: "json",
+                        success: function(task) 
+                        { 
+                            console.log('task updated');
+                        },
+                        error: function()
+                        {
+                            console.log('error updating task');
+                        }
+                    });
+                },
+                error: function()
+                {
+                    console.log('error updating uploading images');
+                }
+            });
+        }else{
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:3000/tasks/update',
+                data: JSON.stringify(task),
+                contentType: "application/json",
+                dataType: "json",
+                success: function(task) 
+                { 
+                    console.log('task updated');
+                },
+                error: function()
+                {
+                    console.log('error updating task');
+                }
+            });
+        }
+
+    });
+
     $jobs.delegate('.removeJob', 'click', function()
     {
         let $li = $(this).closest('li');
@@ -262,7 +340,7 @@ minute: <input type="text" id="minute"><br>
 
 
 <style>
-    ul li .noshow{
+    /* ul li .noshow{
         display: none;
     }
     
@@ -271,6 +349,18 @@ minute: <input type="text" id="minute"><br>
     }
     
     ul li.noshow .show{
+        display: none;
+    } */
+
+    ul li ul li .noshow{
+        display: none;
+    }
+    
+    ul li ul li.noshow .noshow{
+        display: initial
+    }
+
+    ul li ul li.noshow .show{
         display: none;
     }
 

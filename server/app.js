@@ -22,6 +22,7 @@ const deletes = require('./routes/jobs/delete');
 const createTask = require('./routes/tasks/create');
 const searchTask = require('./routes/tasks/search');
 const deleteTask = require('./routes/tasks/delete');
+const updateTask = require('./routes/tasks/update');
 
 var app = express();
 
@@ -66,6 +67,7 @@ app.use('/jobs/delete', deletes);
 app.use('/tasks/create', createTask);
 app.use('/tasks/search', searchTask);
 app.use('/tasks/delete', deleteTask);
+app.use('/tasks/update', updateTask);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
