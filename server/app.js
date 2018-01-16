@@ -16,6 +16,7 @@ const auth = require('./routes/users/auth');
 const create = require('./routes/jobs/create');
 const search = require('./routes/jobs/search');
 const deletes = require('./routes/jobs/delete');
+const update = require('./routes/jobs/update');
 // delete 会报错
 
 // task route
@@ -62,6 +63,7 @@ app.use('/users/auth', auth);
 app.use('/jobs/create', create);
 app.use('/jobs/search', search);
 app.use('/jobs/delete', deletes);
+app.use('/jobs/update', update);
 
 // task path
 app.use('/tasks/create', createTask);
