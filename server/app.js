@@ -11,6 +11,7 @@ var index = require('./routes/index');
 
 // user route
 const auth = require('./routes/users/auth');
+const createStaff = require('./routes/users/create');
 
 // job route
 const create = require('./routes/jobs/create');
@@ -58,6 +59,7 @@ app.use('/', index);
 
 //user path
 app.use('/users/auth', auth);
+app.use('/users/create', createStaff);
 
 // job path
 app.use('/jobs/create', create);
