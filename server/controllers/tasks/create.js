@@ -45,4 +45,4 @@ createTask = (req, res, next) => {
     });
 }
 
-module.exports.createTask = createTask;
+module.exports = { createTask }

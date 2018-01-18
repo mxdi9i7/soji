@@ -29,4 +29,4 @@ updateTask = (req, res, next) => {
     });
 }
 
-module.exports.updateTask = updateTask;
+module.exports = { updateTask }

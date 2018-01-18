@@ -85,7 +85,7 @@ handleClientRegister = (req, res, next) => {
             }).then(function(){
                 do{
                     clientID = String(parseInt(Math.random()*100000));
-                    while(clientID.length < 7)
+                    while(clientID.length < 5)
                     {
                         clientID = '0' + clientID;
                     }
@@ -128,6 +128,4 @@ handleClientRegister = (req, res, next) => {
 
 
 
-module.exports.handleClientLogin = handleClientLogin;
-module.exports.handleStaffLogin = handleStaffLogin;
-module.exports.handleClientRegister = handleClientRegister;
+module.exports = { handleClientLogin, handleStaffLogin, handleClientRegister }

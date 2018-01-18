@@ -44,4 +44,4 @@ createStaff = (req, res, next) => {
     
 }
 
-module.exports.createStaff = createStaff;
+module.exports = { createStaff }

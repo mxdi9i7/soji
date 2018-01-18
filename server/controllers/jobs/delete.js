@@ -10,4 +10,4 @@ deleteJob = (req, res, next) => {
     });
 }
 
-module.exports.deleteJob = deleteJob;
+module.exports = { deleteJob }

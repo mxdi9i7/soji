@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const SubmissionsSchema = new Schema
 ({
     taskID: String,
-    submissionID: String,
+    staffID: String,
     file: String,
     rating: Number,
     createAt: Date

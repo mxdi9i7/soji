@@ -24,4 +24,4 @@ updateJob = (req, res, next) => {
 
 }
 
-module.exports.updateJob = updateJob;
+module.exports = { updateJob }

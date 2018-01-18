@@ -51,5 +51,4 @@ deleteTaskByJob = (req, res, next) => {
 
 }
 
-module.exports.deleteTask = deleteTask;
-module.exports.deleteTaskByJob = deleteTaskByJob;
+module.exports = { deleteTask, deleteTaskByJob}

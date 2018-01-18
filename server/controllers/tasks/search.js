@@ -8,4 +8,4 @@ searchTask = (req, res, next) => {
     });
 }
 
-module.exports.searchTask = searchTask;
+module.exports = { searchTask }

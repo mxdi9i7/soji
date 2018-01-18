@@ -118,7 +118,7 @@ minute: <input type="text" id="minute"><br>
         data.jobTitle = $('#searchJob').val();
         $.ajax({
             type: 'POST',
-            url: 'http://localhost:3000/jobs/search',
+            url: 'http://localhost:3000/api/v1/jobs/search',
             data: JSON.stringify(data),
             contentType: "application/json",
             dataType: "json",
@@ -163,7 +163,7 @@ minute: <input type="text" id="minute"><br>
 
                 $.ajax({
                     type: 'POST',
-                    url: 'http://localhost:3000/tasks/create',
+                    url: 'http://localhost:3000/api/v1/tasks/create',
                     data: JSON.stringify(data),
                     contentType: "application/json",
                     dataType: "json",
@@ -194,7 +194,7 @@ minute: <input type="text" id="minute"><br>
         data.jobID = $(this).closest('li').attr('jobID');
         $.ajax({
             type: 'POST',
-            url: 'http://localhost:3000/tasks/search',
+            url: 'http://localhost:3000/api/v1/tasks/search',
             data: JSON.stringify(data),
             contentType: "application/json",
             dataType: "json",
@@ -220,7 +220,7 @@ minute: <input type="text" id="minute"><br>
         let data = {taskID:taskID}
         $.ajax({
             type: 'POST',
-            url: 'http://localhost:3000/tasks/delete',
+            url: 'http://localhost:3000/api/v1/tasks/delete',
             data: JSON.stringify(data),
             contentType: "application/json",
             dataType: "json",
@@ -273,7 +273,7 @@ minute: <input type="text" id="minute"><br>
 
                     $.ajax({
                         type: 'POST',
-                        url: 'http://localhost:3000/tasks/update',
+                        url: 'http://localhost:3000/api/v1/tasks/update',
                         data: JSON.stringify(task),
                         contentType: "application/json",
                         dataType: "json",
@@ -295,7 +295,7 @@ minute: <input type="text" id="minute"><br>
         }else{
             $.ajax({
                 type: 'POST',
-                url: 'http://localhost:3000/tasks/update',
+                url: 'http://localhost:3000/api/v1/tasks/update',
                 data: JSON.stringify(task),
                 contentType: "application/json",
                 dataType: "json",
@@ -320,7 +320,7 @@ minute: <input type="text" id="minute"><br>
         let data = {jobID:jobID}
         $.ajax({
             type: 'POST',
-            url: 'http://localhost:3000/jobs/delete',
+            url: 'http://localhost:3000/api/v1/jobs/delete',
             data: JSON.stringify(data),
             contentType: "application/json",
             dataType: "json",

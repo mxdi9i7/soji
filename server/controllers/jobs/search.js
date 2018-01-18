@@ -13,4 +13,4 @@ searchJob = (req, res, next) => {
     });
 }
 
-module.exports.searchJob = searchJob;
+module.exports = { searchJob }

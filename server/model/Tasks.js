@@ -10,7 +10,8 @@ const tasksSchema = new Schema
     taskDescription: String,
     video: String,
     minute: Number,
-    createdAt: Date
+    createdAt: Date,
+    updatedAt: Date
 });
 
 const Tasks = module.exports = mongoose.model('Tasks', tasksSchema);

@@ -7,8 +7,6 @@ var bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
-var index = require('./routes/index');
-
 // user route
 const auth = require('./routes/users/auth');
 const createStaff = require('./routes/users/create');
@@ -55,23 +53,21 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
-
 //user path
-app.use('/users/auth', auth);
-app.use('/users/create', createStaff);
+app.use('/api/v1/users/auth', auth);
+app.use('/api/v1/users/create', createStaff);
 
 // job path
-app.use('/jobs/create', create);
-app.use('/jobs/search', search);
-app.use('/jobs/delete', deletes);
-app.use('/jobs/update', update);
+app.use('/api/v1/jobs/create', create);
+app.use('/api/v1/jobs/search', search);
+app.use('/api/v1/jobs/delete', deletes);
+app.use('/api/v1/jobs/update', update);
 
 // task path
-app.use('/tasks/create', createTask);
-app.use('/tasks/search', searchTask);
-app.use('/tasks/delete', deleteTask);
-app.use('/tasks/update', updateTask);
+app.use('/api/v1/tasks/create', createTask);
+app.use('/api/v1/tasks/search', searchTask);
+app.use('/api/v1/tasks/delete', deleteTask);
+app.use('/api/v1/tasks/update', updateTask);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,7 +1,7 @@
 const Jobs = require('../../model/Jobs')
 
 createJob = (req, res, next) => {
-    let jobsID;
+    let jobID;
     let jobsArray;
 
     // bug:如果重复的不间断发送请求，jobsArray会显示undefined
@@ -10,17 +10,17 @@ createJob = (req, res, next) => {
         jobsArray = callback;
     }).then(function(){
         do{
-            jobsID = String(parseInt(Math.random()*10000000));
-            while(jobsID.length < 7)
+            jobID = String(parseInt(Math.random()*10000000));
+            while(jobID.length < 7)
             {
-                jobsID = '0' + jobsID;
+                jobID = '0' + jobID;
             }
         }
-        while(JSON.stringify(jobsArray).indexOf(jobsID) != -1);
+        while(JSON.stringify(jobsArray).indexOf(jobID) != -1);
 
         let newJob = new Jobs
         ({
-            jobID: jobsID,
+            jobID: jobID,
             jobTitle: req.body.jobTitle,
             jobDesciption: req.body.jobDesciption,
             quote: 0,
@@ -44,4 +44,4 @@ createJob = (req, res, next) => {
     });
 }
 
-module.exports.createJob = createJob;
+module.exports = { createJob }
