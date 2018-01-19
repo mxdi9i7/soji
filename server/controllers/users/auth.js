@@ -74,8 +74,8 @@ handleClientRegister = (req, res, next) => {
     let clientArray;
     let clientID;
     let newUser;
-
     let query = {username: req.body.username }
+
     Clients.findOne(query, (err, user) => {
         if(err) return err;
         if(user == null) {

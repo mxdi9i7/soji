@@ -2,28 +2,25 @@ const Staff = require('../../model/Staff');
 
 handleStaffCreate = (req, res, next) => {
 
-    const idCount = Staff.find({taskID:{$regex:'/*'} }, {staffID: 1, _id:0 }, (err, callback) =>
-    {
-        console.log(callback);
-    }).sort({staffID: 1}).then(function(){
-        
-        console.log(idCount);
-        // do{
-        //     tasksID = String(parseInt(Math.random()*10000000));
-        //     while(tasksID.length < 7)
-        //     {
-        //         tasksID = '0' + tasksID;
-        //     }
-        // }
-        // while(JSON.stringify(tasksArray).indexOf(tasksID) != -1);
-    
+    Staff.find().sort({staffID: -1}).limit(1).exec((err, callback)=>{
+        console.log(callback[0].staffID);
+        let staffID = callback[0].staffID;
+
+        staffID = (parseInt(staffID) + 1).toString();
+        while(staffID.length < 6)
+        {
+            staffID = '0' + staffID;
+        }
+
         let staff = new Staff({
-            staffID: req.body.staffID,
+            staffID: staffID,
+            teamID: '',
             username: req.body.username,
             password: req.body.password,
             email: req.body.email,
             name: req.body.name,
-            photo: req.body.photo
+            photo: req.body.photo,
+            rating: 0
         });
         staff.save((err, callback) => {
             if(err) {
@@ -40,6 +37,12 @@ handleStaffCreate = (req, res, next) => {
             } 
         });
     });
+    // .then(function(){
+        
+
+    
+
+    // });
 
     
 }
