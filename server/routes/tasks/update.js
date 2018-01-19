@@ -4,7 +4,7 @@ var update = require('../../controllers/tasks/update')
 
 
 router.post('/', function(req, res, next){
-    update.updateTask(req, res, next);
+    update.handleTaskUpdate(req, res, next);
 });
 
 module.exports = router;

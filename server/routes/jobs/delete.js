@@ -5,8 +5,8 @@ var deletes = require('../../controllers/jobs/delete');
 var deleteTask = require('../../controllers/tasks/delete');
 
 router.post('/', function(req, res, next){
-    deletes.deleteJob(req, res, next);
-    deleteTask.deleteTaskByJob(req, res, next);
+    deletes.handleJobDelete(req, res, next);
+    deleteTask.handleTaskDeleteByJob(req, res, next);
 });
 
 module.exports = router;

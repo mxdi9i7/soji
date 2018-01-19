@@ -1,6 +1,6 @@
 const Jobs = require('../../model/Jobs')
 
-deleteJob = (req, res, next) => {
+handleJobDelete = (req, res, next) => {
     let jobID = req.body.jobID;
     let query = {jobID:jobID}
     Jobs.deleteMany(query, (err, callback) =>
@@ -10,4 +10,4 @@ deleteJob = (req, res, next) => {
     });
 }
 
-module.exports = { deleteJob }
+module.exports = { handleJobDelete }

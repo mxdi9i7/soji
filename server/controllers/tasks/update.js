@@ -7,14 +7,16 @@ cloudinary.config({
     api_secret: '94kiVzYXxasFHWYdTajKcvW8imY' 
 });
 
-updateTask = (req, res, next) => {
+handleTaskUpdate = (req, res, next) => {
     let taskID = req.body.taskID;
     let task = {
         taskTitle: req.body.taskTitle,
         taskDescription: req.body.taskDescription,
         video: req.body.video,
         minute: req.body.minute,
+        updatedAt: new Date()
     };
+    
     Tasks.findOneAndUpdate({taskID:taskID}, task, (err, callback) =>
     {
         if(task.video != undefined)
@@ -29,4 +31,4 @@ updateTask = (req, res, next) => {
     });
 }
 
-module.exports = { updateTask }
+module.exports = { handleTaskUpdate }

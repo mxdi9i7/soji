@@ -1,11 +1,11 @@
 const Tasks = require('../../model/Tasks');
 
 
-createTask = (req, res, next) => {
+handleTaskCreate = (req, res, next) => {
     let tasksID;
     let tasksArray;
 
-    Tasks.find({taskID:{$regex:'/*'} }, {taskID: 1, _id:0 }, (err, callback) =>
+    Tasks.distinct("taskID", (err, callback) =>
     {
         tasksArray = callback;
     }).then(function(){
@@ -26,7 +26,8 @@ createTask = (req, res, next) => {
             taskDescription: req.body.taskDescription,
             video: req.body.video,
             minute: req.body.minute,
-            createdAt: new Date()
+            createdAt: new Date(),
+            updatedAt: new Date()
         });
         newTask.save((err, callback) => {
             if(err) {
@@ -45,4 +46,4 @@ createTask = (req, res, next) => {
     });
 }
 
-module.exports = { createTask }
+module.exports = { handleTaskCreate }

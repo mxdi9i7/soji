@@ -1,6 +1,6 @@
 const Jobs = require('../../model/Jobs')
 
-searchJob = (req, res, next) => {
+handleJobSearch= (req, res, next) => {
     let jobTitle = req.body.jobTitle;
     let titleArray = jobTitle.split(' ');
     let search = '\.*';
@@ -13,4 +13,4 @@ searchJob = (req, res, next) => {
     });
 }
 
-module.exports = { searchJob }
+module.exports = { handleJobSearch }

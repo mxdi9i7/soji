@@ -7,7 +7,7 @@ cloudinary.config({
     api_secret: '94kiVzYXxasFHWYdTajKcvW8imY' 
 });
 
-deleteTask = (req, res, next) => {
+handleTaskDelete = (req, res, next) => {
     let taskID = req.body.taskID;
     let query = {taskID: taskID}
 
@@ -28,7 +28,7 @@ deleteTask = (req, res, next) => {
 
 }
 
-deleteTaskByJob = (req, res, next) => {
+handleTaskDeleteByJob = (req, res, next) => {
     let jobID = req.body.jobID;
     let query = {jobID: jobID}
 
@@ -51,4 +51,4 @@ deleteTaskByJob = (req, res, next) => {
 
 }
 
-module.exports = { deleteTask, deleteTaskByJob}
+module.exports = { handleTaskDelete, handleTaskDeleteByJob}

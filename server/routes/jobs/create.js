@@ -4,7 +4,7 @@ var create = require('../../controllers/jobs/create')
 
 
 router.post('/', function(req, res, next){
-    create.createJob(req, res, next);
+    create.handleJobCreate(req, res, next);
 });
 
 module.exports = router;

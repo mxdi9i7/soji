@@ -7,7 +7,7 @@ const JobsSchema = new Schema
     jobID: String,
     teamID: String,
     jobTitle: String,
-    jobDesciption: String,
+    jobDescription: String,
     quote: Number,
     approved: Boolean,
     // change approved to status?

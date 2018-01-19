@@ -1,31 +1,34 @@
 const Jobs = require('../../model/Jobs')
 
-createJob = (req, res, next) => {
+handleJobCreate = (req, res, next) => {
     let jobID;
     let jobsArray;
 
     // bug:如果重复的不间断发送请求，jobsArray会显示undefined
-    Jobs.find( { jobID:{$regex:'/*'} }, { jobID: 1, _id:0 }, (err, callback) =>
+    Jobs.distinct('jobID', (err, callback) =>
     {
         jobsArray = callback;
     }).then(function(){
-        do{
+        do {
             jobID = String(parseInt(Math.random()*10000000));
-            while(jobID.length < 7)
+            while (jobID.length < 7)
             {
                 jobID = '0' + jobID;
             }
         }
-        while(JSON.stringify(jobsArray).indexOf(jobID) != -1);
+        while (JSON.stringify(jobsArray).indexOf(jobID) != -1);
 
         let newJob = new Jobs
         ({
             jobID: jobID,
+            teamID: '',
             jobTitle: req.body.jobTitle,
-            jobDesciption: req.body.jobDesciption,
+            jobDescription: req.body.jobDescription,
             quote: 0,
             approved: false,
-            createdAt: new Date()
+            approvedBy: '',
+            createdAt: new Date(),
+            updatedAt: new Date()
         });
         newJob.save((err, callback) => {
             if(err) {
@@ -44,4 +47,4 @@ createJob = (req, res, next) => {
     });
 }
 
-module.exports = { createJob }
+module.exports = { handleJobCreate }

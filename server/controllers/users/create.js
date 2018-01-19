@@ -1,6 +1,6 @@
 const Staff = require('../../model/Staff');
 
-createStaff = (req, res, next) => {
+handleStaffCreate = (req, res, next) => {
 
     const idCount = Staff.find({taskID:{$regex:'/*'} }, {staffID: 1, _id:0 }, (err, callback) =>
     {
@@ -44,4 +44,4 @@ createStaff = (req, res, next) => {
     
 }
 
-module.exports = { createStaff }
+module.exports = { handleStaffCreate }

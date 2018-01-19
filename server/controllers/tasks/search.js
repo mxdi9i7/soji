@@ -1,6 +1,6 @@
 const Tasks = require('../../model/Tasks')
 
-searchTask = (req, res, next) => {
+handleTaskSearch= (req, res, next) => {
     let jobID = req.body.jobID;
     Tasks.find({jobID:jobID}, (err, callback) =>
     {
@@ -8,4 +8,4 @@ searchTask = (req, res, next) => {
     });
 }
 
-module.exports = { searchTask }
+module.exports = { handleTaskSearch }
