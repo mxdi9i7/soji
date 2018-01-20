@@ -1,8 +1,9 @@
-const Tasks = require('../../model/Tasks')
+const Staff = require('../../model/Staff');
 
-handleTaskSearch= (req, res, next) => {
-    let query = {jobID: req.body.jobID}
-    Tasks.find(query, (err, callback) =>
+handleStaffSearch= (req, res, next) => {
+    let query = {staffID: req.body.staffID}
+
+    Staff.find(query, (err, callback) =>
     {
         if (err) {
             res.json({
@@ -14,8 +15,8 @@ handleTaskSearch= (req, res, next) => {
                 success: true,
                 data: callback
             });
-        } 
+        }
     });
 }
 
-module.exports = { handleTaskSearch }
+module.exports = { handleStaffSearch }

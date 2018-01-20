@@ -11,18 +11,27 @@ handleTaskDelete = (req, res, next) => {
     let taskID = req.body.taskID;
     let query = {taskID: taskID}
 
-    Tasks.findOne(query, {video: 1, _id:0 }, (err, callback) =>
+    Tasks.findOne(query, {video: 1, _id:0}, (err, callback) =>
     {
-        cloudinary.v2.uploader.destroy(callback[0].video, { resource_type: "video" }, function(error, result)
+        cloudinary.v2.uploader.destroy(callback[0].video, {resource_type: "video"}, function(error, result)
         {
-            if(error) throw error;
+            if (error) throw error;
             console.log(result);
         });
     }).then(function(){
         Tasks.deleteOne(query, (err, callback) =>
         {
-            if(err) throw err;
-            console.log('task deleted');
+            if (err) {
+                res.json({
+                    success: false,
+                    data: err
+                });
+            } else {
+                res.json({
+                    success: true,
+                    data: "Task deleted"
+                });
+            } 
         });
     });
 
@@ -35,17 +44,26 @@ handleTaskDeleteByJob = (req, res, next) => {
     Tasks.find(query, {video: 1, _id:0 }, (err, callback) =>
     {
         callback.forEach(video => {
-            cloudinary.v2.uploader.destroy(video.video, { resource_type: "video" }, function(error, result)
+            cloudinary.v2.uploader.destroy(video.video, {resource_type: "video"}, function(error, result)
             {
-                if(error) throw error;
+                if (error) throw error;
                 console.log(result);
             });
         });
     }).then(function(){
         Tasks.deleteMany(query, (err, callback) =>
         {
-            if(err) throw err;
-            console.log('task deleted');
+            if (err) {
+                res.json({
+                    success: false,
+                    data: err
+                });
+            } else {
+                res.json({
+                    success: true,
+                    data: "Task deleted"
+                });
+            } 
         });
     });
 

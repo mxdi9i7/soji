@@ -19,15 +19,19 @@ handleTaskUpdate = (req, res, next) => {
     
     Tasks.findOneAndUpdate({taskID:taskID}, task, (err, callback) =>
     {
-        if(task.video != undefined)
+        if (task.video != undefined)
         {
             cloudinary.v2.uploader.destroy(callback.video, { resource_type: "video" }, function(error, result)
             {
-                if(error) throw error;
+                if (error) throw error;
                 console.log(result);
             });
-        }
-        res.json(callback);
+        } else {
+            res.json({
+                success: true,
+                data: "Task updated"
+            });
+        } 
     });
 }
 

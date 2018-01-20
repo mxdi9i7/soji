@@ -5,8 +5,17 @@ handleJobDelete = (req, res, next) => {
     let query = {jobID:jobID}
     Jobs.deleteMany(query, (err, callback) =>
     {
-        if(err) throw err;
-        res.json(callback);
+        if (err) {
+            res.json({
+                success: false,
+                data: err
+            });
+        } else {
+            res.json({
+                success: true,
+                data: "Job deleted"
+            });
+        } 
     });
 }
 

@@ -9,14 +9,14 @@ handleTaskCreate = (req, res, next) => {
     {
         tasksArray = callback;
     }).then(function(){
-        do{
+        do {
             tasksID = String(parseInt(Math.random()*10000000));
-            while(tasksID.length < 7)
+            while (tasksID.length < 7)
             {
                 tasksID = '0' + tasksID;
             }
         }
-        while(JSON.stringify(tasksArray).indexOf(tasksID) != -1);
+        while (JSON.stringify(tasksArray).indexOf(tasksID) != -1);
 
         let newTask = new Tasks
         ({

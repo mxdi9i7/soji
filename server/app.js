@@ -10,6 +10,9 @@ const cors = require('cors');
 // user route
 const auth = require('./routes/users/auth');
 const createStaff = require('./routes/users/create');
+const searchStaff = require('./routes/users/search');
+const deleteStaff = require('./routes/users/delete');
+const updateStaff = require('./routes/users/update');
 
 // job route
 const create = require('./routes/jobs/create');
@@ -56,6 +59,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 //user path
 app.use('/api/v1/users/auth', auth);
 app.use('/api/v1/users/create', createStaff);
+app.use('/api/v1/users/search', searchStaff);
+app.use('/api/v1/users/delete', deleteStaff);
+app.use('/api/v1/users/update', updateStaff);
 
 // job path
 app.use('/api/v1/jobs/create', create);

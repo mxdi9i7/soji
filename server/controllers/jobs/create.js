@@ -31,13 +31,12 @@ handleJobCreate = (req, res, next) => {
             updatedAt: new Date()
         });
         newJob.save((err, callback) => {
-            if(err) {
+            if (err) {
                 res.json({
                     success: false,
                     message: err
                 });
-            } 
-            else {
+            } else {
                 res.json({
                     success: true,
                     message: "Job created"

@@ -1,13 +1,10 @@
 const Staff = require('../../model/Staff');
 
 handleStaffCreate = (req, res, next) => {
-
     Staff.find().sort({staffID: -1}).limit(1).exec((err, callback)=>{
-        console.log(callback[0].staffID);
         let staffID = callback[0].staffID;
-
         staffID = (parseInt(staffID) + 1).toString();
-        while(staffID.length < 6)
+        while (staffID.length < 6)
         {
             staffID = '0' + staffID;
         }
@@ -23,27 +20,19 @@ handleStaffCreate = (req, res, next) => {
             rating: 0
         });
         staff.save((err, callback) => {
-            if(err) {
+            if (err) {
                 res.json({
                     success: false,
-                    message: err
+                    data: err
                 });
-            } 
-            else {
+            } else {
                 res.json({
                     success: true,
-                    message: "Task created"
+                    data: "Staff created"
                 });
             } 
         });
     });
-    // .then(function(){
-        
-
-    
-
-    // });
-
     
 }
 

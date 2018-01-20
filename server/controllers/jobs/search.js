@@ -9,7 +9,17 @@ handleJobSearch= (req, res, next) => {
     });
     Jobs.find({jobTitle:{$regex:search}}, (err, callback) =>
     {
-        res.json(callback);
+        if (err) {
+            res.json({
+                success: false,
+                data: err
+            });
+        } else {
+            res.json({
+                success: true,
+                data: callback
+            });
+        } 
     });
 }
 

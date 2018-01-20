@@ -48,13 +48,12 @@ handleStaffLogin = (req, res, next) => {
             })
         }
         if (user) {
-            if(password == user.password){
+            if (password == user.password){
                 res.json({
                     success: true,
                     data: "logged in"
                 })
-            }
-            else {
+            } else {
                 res.json({
                     success: false,
                     data: "incorrect password"
@@ -77,20 +76,25 @@ handleClientRegister = (req, res, next) => {
     let query = {username: req.body.username }
 
     Clients.findOne(query, (err, user) => {
-        if(err) return err;
-        if(user == null) {
+        if (err) {
+            res.json({
+                success: false,
+                data: err
+            });
+        }
+        if (user == null) {
             Clients.find({ clientID:{$regex:'/*'} }, { clientID: 1, _id:0 }, (err, callback) =>
             {
                 clientArray = callback;
             }).then(function(){
-                do{
+                do {
                     clientID = String(parseInt(Math.random()*100000));
-                    while(clientID.length < 5)
+                    while (clientID.length < 5)
                     {
                         clientID = '0' + clientID;
                     }
                 }
-                while(JSON.stringify(clientArray).indexOf(clientID) != -1);
+                while (JSON.stringify(clientArray).indexOf(clientID) != -1);
 
                 newUser = new Clients({
                     clientID: clientID,
@@ -102,25 +106,23 @@ handleClientRegister = (req, res, next) => {
                 });
 
                 newUser.save((err, callback) => {
-                    if(err) {
+                    if (err) {
                         res.json({
                             success: false,
-                            message: err
+                            data: err
                         });
-                    } 
-                    else {
+                    } else {
                         res.json({
                             success: true,
-                            message: "User created"
+                            data: "User created"
                         });
                     } 
                 });
             });
-        }
-        else {
+        } else {
             res.json({
                 success: false,
-                message: "User exist"
+                data: "User exist"
             });
         }
     });

@@ -1,7 +1,6 @@
 const Jobs = require('../../model/Jobs')
 
 handleJobUpdate = (req, res, next) => {
-
     let query = {jobID: req.body.jobID}
     let job = {
         teamID: req.body.teamID,
@@ -14,8 +13,17 @@ handleJobUpdate = (req, res, next) => {
     };
 
     Jobs.findOneAndUpdate(query, job, (err, callback) => {
-        if(err) throw err;
-        res.json(callback);
+        if (err) {
+            res.json({
+                success: false,
+                data: err
+            });
+        } else {
+            res.json({
+                success: true,
+                data: "job updated"
+            });
+        } 
     });
 
 }
