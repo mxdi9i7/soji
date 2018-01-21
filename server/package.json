@@ -16,6 +16,7 @@
     "serve-favicon": "~2.4.2",
     "mongoose": "latest",
     "cors": "latest",
-    "cloudinary": "latest"
+    "cloudinary": "latest",
+    "jsonwebtoken": "latest"
   }
 }

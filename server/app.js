@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
+
 // user route
 const auth = require('./routes/users/auth');
 const createStaff = require('./routes/users/create');
@@ -28,6 +29,12 @@ const deleteTask = require('./routes/tasks/delete');
 const updateTask = require('./routes/tasks/update');
 
 var app = express();
+
+
+// login test
+app.use('/', express.static(__dirname)); // ← adjust
+app.listen(3001, function() { console.log('listening'); });
+
 
 // Map global promise - get rid of warning
 mongoose.Promise = global.Promise;

@@ -1,0 +1,33 @@
+Login<br>
+username: <input type="text" id="username"><br>
+password: <input type="password" id="password"><br>
+<input type="submit" id="submit" value="submit">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $("#submit").click(() => {
+        let data = {
+            username: $("#username").val(),
+            password: $("#password").val()
+        }
+        console.log(document.cookie.match(new RegExp('SOJI_TOKEN=([^;]+)')));
+        if(document.cookie.match(new RegExp('SOJI_TOKEN=([^;]+)')) != null)
+        {
+            data.soji_token = document.cookie.match(new RegExp('SOJI_TOKEN=([^;]+)'))[1]
+        }
+        $.ajax({
+            type: "POST",
+            url: 'http://localhost:3000/api/v1/users/auth/login',
+            data: JSON.stringify(data),
+            contentType: "application/json",
+            dataType: "json",
+            success: function(callback) { 
+                console.log(document.cookie);
+            },
+            error: function()
+            {
+                console.log('error');
+            }
+        });
+    });
+</script>

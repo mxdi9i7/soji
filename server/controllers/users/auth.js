@@ -1,6 +1,24 @@
-const Clients = require('../../model/Clients')
-const Staff = require('../../model/Staff')
+const Clients = require('../../model/Clients');
+const Staff = require('../../model/Staff');
+const jwt = require('jsonwebtoken');
+const secret = require('./secret');
 
+token_status = (req, res, next) => {
+    if (req.body.soji_token) {
+        jwt.verify(req.body.soji_token, secret.secret, (err, decoded) => {
+            if (decoded) {
+                res.json({
+                    success: true,
+                    data: "Logged in with jwt"
+                })
+            } else {
+                next();
+            }
+        })
+    } else {
+        next();
+    }
+}
 
 handleClientLogin = (req, res, next) => {
     const username = req.body.username;
@@ -15,19 +33,25 @@ handleClientLogin = (req, res, next) => {
         }
         if (user) {
             if(password == user.password){
-                res.json({
+                const token = jwt.sign({
+                    _id: user._id,
+                    username: user.username,
+                    email: user.email
+                }, secret.secret, {
+                    expiresIn: 20
+                });
+    
+                res.cookie('SOJI_TOKEN', token, {secure:false, httpOnly: false}).json({
                     success: true,
-                    data: "logged in"
-                })
-            }
-            else {
+                    data: token
+                });
+            } else {
                 res.json({
                     success: false,
                     data: "incorrect password"
                 })
             }
-        }
-        else {
+        } else {
             res.json({
                 success: false,
                 data: "no user found"
@@ -49,18 +73,21 @@ handleStaffLogin = (req, res, next) => {
         }
         if (user) {
             if (password == user.password){
+                const token = jwt.sign({ data: user }, secret.secret, {
+                    expiresIn: 604800
+                });
+    
                 res.json({
                     success: true,
-                    data: "logged in"
-                })
+                    data: token
+                });
             } else {
                 res.json({
                     success: false,
                     data: "incorrect password"
                 })
             }
-        }
-        else {
+        } else {
             res.json({
                 success: false,
                 data: "no user found"
@@ -130,4 +157,4 @@ handleClientRegister = (req, res, next) => {
 
 
 
-module.exports = { handleClientLogin, handleStaffLogin, handleClientRegister }
+module.exports = { token_status, handleClientLogin, handleStaffLogin, handleClientRegister }
