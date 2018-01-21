@@ -9,6 +9,7 @@ handleJobUpdate = (req, res, next) => {
         quote: req.body.quote,
         approved: req.body.approved,
         approvedBy: req.body.approvedBy,
+        assignedTo: req.body.assignedTo,
         updatedAt: new Date()
     };
 

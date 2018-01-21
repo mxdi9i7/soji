@@ -199,7 +199,6 @@ minute: <input type="text" id="minute"><br>
             contentType: "application/json",
             dataType: "json",
             success: function(tasks) { 
-                console.log(tasks);
                 $.each(tasks, function(i, task) {     // foreach
                     $task.append(Mustache.render(taskTemplate, task))
                 });

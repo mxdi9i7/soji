@@ -11,7 +11,8 @@ const StaffSchema = new Schema
     email: String,
     name: String,
     photo: String,
-    rating: Number
+    totalRating: Number,
+    ratingCount: Number
 });
 
 const Staff = module.exports = mongoose.model('Staff', StaffSchema);

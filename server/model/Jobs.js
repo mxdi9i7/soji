@@ -10,8 +10,8 @@ const JobsSchema = new Schema
     jobDescription: String,
     quote: Number,
     approved: Boolean,
-    // change approved to status?
     approvedBy: String,
+    assignedTo: String,
     createdAt: Date,
     updatedAt: Date
 });

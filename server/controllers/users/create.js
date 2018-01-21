@@ -17,7 +17,8 @@ handleStaffCreate = (req, res, next) => {
             email: req.body.email,
             name: req.body.name,
             photo: req.body.photo,
-            rating: 0
+            totalRating: 0,
+            ratingCount: 0
         });
         staff.save((err, callback) => {
             if (err) {

@@ -6,8 +6,7 @@ handleStaffUpdate = (req, res, next) => {
         password: req.body.teamID,
         email: req.body.email,
         name: req.body.name,
-        photo: req.body.photo,
-        rating: req.body.rating
+        photo: req.body.photo
     }
 
     if (photo != undefined) {
@@ -49,9 +48,26 @@ handleStaffUpdate = (req, res, next) => {
                 });
             }
         });
-    }
-
-    
+    }    
 }
 
-module.exports = { handleStaffUpdate }
+handleStaffRatingUpdate = (req, res, next) => {
+    let query = {staffID: req.body.staffID}
+    let rating = {$inc: {totalRating: req.body.totalRating, ratingCount: 1}}
+    
+    Staff.findOneAndUpdate(query, rating, (err, callback) => {
+        if (err) {
+            res.json({
+                success: false,
+                data: err
+            });
+        } else {
+            res.json({
+                success: true,
+                data: "Staff rating updated"
+            });
+        }
+    });
+}
+
+module.exports = { handleStaffUpdate, handleStaffRatingUpdate }

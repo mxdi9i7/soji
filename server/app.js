@@ -33,7 +33,7 @@ var app = express();
 mongoose.Promise = global.Promise;
 
 // mlab connect
-mongoose.connect('mongodb://cheng:123456@ds163656.mlab.com:63656/cheng', {useMongoClient: true}, function(err){
+mongoose.connect('mongodb://cheng:123456@ds163656.mlab.com:63656/cheng', function(err){
     if(err) {
         console.log('Some problem with the connection ' + err);
     } else {

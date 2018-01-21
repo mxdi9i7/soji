@@ -27,6 +27,7 @@ handleJobCreate = (req, res, next) => {
             quote: 0,
             approved: false,
             approvedBy: '',
+            assignedTo: '',
             createdAt: new Date(),
             updatedAt: new Date()
         });
