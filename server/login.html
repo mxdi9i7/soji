@@ -22,6 +22,7 @@ password: <input type="password" id="password"><br>
             contentType: "application/json",
             dataType: "json",
             success: function(callback) { 
+                console.log(callback);
                 console.log(document.cookie);
             },
             error: function()

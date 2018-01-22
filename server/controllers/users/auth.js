@@ -32,16 +32,16 @@ handleClientLogin = (req, res, next) => {
             })
         }
         if (user) {
-            if(password == user.password){
+            if (password == user.password){
                 const token = jwt.sign({
                     _id: user._id,
                     username: user.username,
                     email: user.email
                 }, secret.secret, {
-                    expiresIn: 20
+                    expiresIn: 200
                 });
-    
-                res.cookie('SOJI_TOKEN', token, {secure:false, httpOnly: false}).json({
+
+                res.cookie('SOJI_TOKEN', token, {expire : new Date() + 9999, secure:false, httpOnly: false}).json({
                     success: true,
                     data: token
                 });

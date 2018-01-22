@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const secret = require('./controllers/users/secret');
 
 
 // user route
@@ -60,7 +61,7 @@ app.set('view engine', 'hjs');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(cookieParser(secret.secret));
 app.use(express.static(path.join(__dirname, 'public')));
 
 //user path
