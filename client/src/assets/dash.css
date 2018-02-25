@@ -1,0 +1,27 @@
+.dashContent {
+    margin-left: 95px;
+    padding: 15px
+}
+.dashContent .dashHeader {
+    display: flex;
+    justify-content: space-between;
+}
+.dashContent .dashHeader h1 {
+    margin: 0 0 0 15px;
+    font-weight: 400;
+    font-size: 28px;
+}
+.dashContent .dashHeader button {
+    background-color: purple;
+    color: #fff;
+    padding: 5px 3px;
+    border-radius: 25px;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+}
+.dashHeader svg {
+    padding: 5px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+}

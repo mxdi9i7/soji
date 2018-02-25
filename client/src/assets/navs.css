@@ -75,6 +75,7 @@
 }
 .sidenavContainer .navButton.active {
     border-right: 3px solid purple;
+    background-color: #eee;
 }
 .sidenavContainer .navButton:hover {
     background-color: #eee;
