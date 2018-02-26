@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
 import Dashnav from '../partials/Dashnav';
 import SideNav from '../partials/SideNav';
+import CreateJobContainer from '../createJob/CreateJobContainer';
+
 import '../../assets/dash.css'
 export default class DashboardPage extends Component {
-
+    constructor(props) {
+        super(props)
+        this.state = {
+            
+        }
+    }
+    
     render() {
         return(
             <div>
@@ -16,11 +24,14 @@ export default class DashboardPage extends Component {
                         </div>
                         <div className="dashActions">
                             <button>
-                                <i className="fa fa-plus"></i>Create a New Job
+                                <i className="fa fa-plus"></i>
+                                <span>Create a New Job</span>
                             </button>
-                            <i className="fa fa-search"></i><input type="text" placeholder="Search"/>
+                            <i className="fa fa-search "></i>
+                            <input type="text" placeholder="Search"/>
                         </div>
                     </div>
+                    <CreateJobContainer />
                 </div>
             </div>
         )

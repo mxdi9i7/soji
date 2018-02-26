@@ -1,0 +1,46 @@
+.createJobContainer {
+    padding: 30px 60px;
+    box-shadow: 0 1px 8px 0 rgba(0,0,0,.2), 0 3px 4px 0 rgba(0,0,0,.14), 0 3px 3px -2px rgba(0,0,0,.12);
+    width: 100%;
+    margin: 15px 0 0 15px;
+}
+.createJobContainer .jobInfoContainer {
+    display: flex;
+    justify-content: space-between;
+} 
+.createJobContainer h1 {
+    font-weight: 400;
+    font-size: 22px;
+    color: purple;
+}
+.createJobContainer .createJobCol {
+    width: 50%;
+    padding: 30px;
+}
+.createJobContainer input {
+    border:none;
+    border-bottom: 1px solid #999;
+    padding-bottom: 10px;
+    outline: none;
+}
+.createJobContainer .jobGeneralInfo input {
+    width: 100%;
+    min-width: 300px;
+}
+.createJobContainer .jobRecurringInfo input {
+    margin: 0 10px;
+    width: 50px;
+    text-align: center;
+}
+.createJobContainer h2 {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 10px;
+}
+.jobRecurringInfo h1 {
+    display: inline;
+}
+.jobRecurringInfo .divider {
+    height: 15px;
+    width: 100%;
+}

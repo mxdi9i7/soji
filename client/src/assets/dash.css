@@ -1,6 +1,7 @@
 .dashContent {
     margin-left: 95px;
-    padding: 15px
+    padding: 15px;
+    min-height: 500px;
 }
 .dashContent .dashHeader {
     display: flex;
@@ -14,14 +15,93 @@
 .dashContent .dashHeader button {
     background-color: purple;
     color: #fff;
-    padding: 5px 3px;
+    padding: 5px 15px 5px 5px;
     border-radius: 25px;
     border: none;
     display: flex;
     justify-content: space-between;
+    outline: none;
+    transition: .2s;
 }
-.dashHeader svg {
+.dashContent .dashHeader button span {
+    vertical-align: 5px;
+    position: relative;
+    top: 4px;
+    margin-left: 5px;
+    font-size: 13px;
+    cursor: pointer;
+}
+.dashContent .dashHeader button:hover {
+    background-color: blueviolet;
+    cursor: pointer;
+}
+.dashHeader button svg {
     padding: 5px;
     border: 2px solid #fff;
     border-radius: 50%;
+    font-size: 10px;
+}
+.dashContent .dashActions {
+    display: flex;
+}
+.dashActions input {
+    padding: 0px 10px 0px 25px;
+    border-radius: 25px;
+    border: 1px solid #999;
+    font-size: 9px;
+    height: 28px;
+    width: 200px;
+    outline: none;
+    box-sizing: border-box;
+    margin-top: 5px;
+}
+.dashActions .fa-search {
+    font-size: 12px;
+    position: relative;
+    left: 20px;
+    top: 13px;
+}
+.dashCreateContainer {
+    display: flex;
+    justify-content: center;
+}
+.dashUserPrompt {
+    align-self: center;
+    text-align: center;
+}
+.dashUserPrompt h1 {
+    font-weight: 300;
+    color: #666;
+    margin: 10px 0;
+    font-size: 38px;
+}
+.dashUserPrompt p {
+    margin: 0;
+    color: #666;
+    font-size: 18px;
+}
+.dashUserPrompt svg {
+    border-radius: 50%;
+    border: 2px solid #666;
+    padding: 8px;
+    margin-top: 20px;
+    transition: .2s;
+    font-size: 10px;
+}
+.dashUserPrompt svg:hover {
+    color: #fff;
+    background-color: #666;
+    cursor: pointer;
+}
+.jobTaskListContainer {
+    padding: 30px;
+}
+.jobTaskListContainer h1 {
+    margin: 0;
+    margin-bottom: 15px;
+}
+.jobTaskListContainer p {
+    color: #999;
+    margin: 0;
+    line-height: 8px;
 }
