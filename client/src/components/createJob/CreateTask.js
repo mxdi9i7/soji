@@ -1,24 +1,28 @@
 import React, { Component } from 'react';
-import { AddTaskCount } from '../../actions/CreateTask';
+import { CreateTaskInStore } from '../../actions/CreateTask';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import { createStore } from 'redux';
+import { TaskContainer } from './TaskContainer';
 
 import '../../assets/createJob.css';
 
-const onCreateTaskClick = () => {
-    return
-}
-
-
+let task
 
 class CreateTask extends Component {
    
     render() {
-        const { createCount, onCreateTaskClick } = this.props;
+        const { createTaskInStore, tasks } = this.props;
+        task = {
+            title: "",
+            description: "",
+            duration: 0,
+            taskFile: {},
+            taskVideo: {},
+            currentIndex: tasks.length
+        }
         let taskBlocks = [];
-        for (let i = 0; i < createCount; i ++) {
-            taskBlocks.push(<div> tasks </div>) 
+        for (let i = 0; i < tasks.length; i ++) {
+            taskBlocks.push(<TaskContainer task={tasks[i]} currentIndex={i + 1} />) 
         }
         const renderTaskBlocks = taskBlocks.map((e, i) => {
             return (
@@ -31,11 +35,15 @@ class CreateTask extends Component {
             <div className="jobTaskListContainer">
                 <h1>Task List</h1>
                 <p>Create tasks for your job</p>
-                {createCount}
                 <div className="createTaskContainer">
                     { renderTaskBlocks }
                 </div>
-                <button onClick={onCreateTaskClick}>Add a New Task</button>
+                <button onClick={() => {
+                    createTaskInStore(task)
+                    }} className="addTaskBtn">
+                    <i className="fa fa-plus"></i>
+                    <span>Add a New Task</span>
+                </button>
             </div>
         )
     }
@@ -45,13 +53,13 @@ class CreateTask extends Component {
 
 const mapStateToProps = state => {
     return {
-        createCount: state.createTask.createCount
+        tasks: state.createTask.task
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        onCreateTaskClick: () => dispatch(AddTaskCount)
+        createTaskInStore: (task) => dispatch(CreateTaskInStore(task))
     }
 }
 

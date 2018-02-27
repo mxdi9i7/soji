@@ -9,7 +9,7 @@
     justify-content: space-between;
 } 
 .createJobContainer h1 {
-    font-weight: 400;
+    font-weight: 500;
     font-size: 22px;
     color: purple;
 }
@@ -43,4 +43,91 @@
 .jobRecurringInfo .divider {
     height: 15px;
     width: 100%;
+}
+.jobTaskListContainer .addTaskBtn {
+    background-color: purple;
+    color: #fff;
+    padding: 5px 15px 5px 5px;
+    border-radius: 25px;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    outline: none;
+    transition: .2s;
+    margin: 0 auto;
+}
+.jobTaskListContainer .addTaskBtn span {
+    vertical-align: 5px;
+    position: relative;
+    top: 4px;
+    margin-left: 5px;
+    font-size: 13px;
+    cursor: pointer;
+}
+.jobTaskListContainer .addTaskBtn:hover {
+    background-color: blueviolet;
+    cursor: pointer;
+}
+.jobTaskListContainer .addTaskBtn svg {
+    padding: 5px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    font-size: 10px;
+}
+.jobTaskListContainer .taskContainer {
+    display: flex;
+    margin: 50px 0;
+}
+.jobTaskListContainer .taskBox {
+    border: 3px solid purple;
+    width: 95%;
+    padding: 30px;
+}
+.jobTaskListContainer .taskCount {
+    width: 5%;
+    align-self: center;
+    font-size: 28px;
+    font-weight: 500;
+    color: purple;
+    text-align: center;
+    transition: .2s;
+}
+.jobTaskListContainer .taskCount .taskDelete {
+    display: none;
+    transition: .2s;
+}
+.jobTaskListContainer .taskCount:hover .taskCountLabel {
+    display: none;
+    transition: .2s;
+    cursor: pointer;
+}
+.jobTaskListContainer .taskCount:hover .taskDelete {
+    display: block;
+    transition: .2s;
+    cursor: pointer;
+}
+
+.jobTaskListContainer .taskBox .taskRow {
+    display: flex;
+    width: 100%;
+}
+.taskBox .taskInputContainer h1 {
+    font-weight: 500;
+    font-size: 22px;
+    color: purple;
+}
+.taskBox .taskInputContainer {
+    margin: 20px 0;
+    width: 100%;
+    padding: 0 30px;
+}
+.taskBox .taskInputContainer input {
+    width: 100%;
+}
+.taskBox .taskInputContainer label {
+    font-weight: 500;
+    font-size: 22px;
+    color: purple;
+    margin: 0 0 20px 0;
+    display: block;
 }

@@ -1,10 +1,10 @@
-import { combineReducers } from 'redux';
+import { combineReducers, createStore } from 'redux';
 import handleClientLogin from './auth';
 import createTask from './CreateTask';
 
-const sojiApp = combineReducers({
+export const sojiApp = combineReducers({
     handleClientLogin,
     createTask
 })
 
-export default sojiApp
+export const store = createStore(sojiApp)

@@ -12,7 +12,7 @@ export default class DashboardPage extends Component {
     triggerCreateJobContainer() {
         this.setState({
             isCreateJobActive: true
-        }, console.log(this.state))
+        })
     }
     render() {
         return (
