@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv='X-UA-Compatible' content='IE=11' />
+    <title>Soji API文档</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <link href='css/base.css' rel='stylesheet' />
+    <link href='css/style.css' rel='stylesheet' />
+    <link href='css/railscasts.css' rel='stylesheet' />
+  </head>
+  <body>
+    <!--START-->
+    <div id='app'>
+      <div class="container unlimiter" data-reactroot="">
+        <div class="fixed-top fixed-right space-left16">
+          <div class="fill-light col6 pin-right">
+            <!--最后记得把example response都改掉-->
+          </div>
+        </div>
+        <div class="space-top5 scroll-styled overflow-auto pad1 width16 sidebar fixed-left fill-dark dark">
+          <div class="pad0x small">
+            <div class="small pad0x quiet space-top1">Soji API</div>
+            <a href="#文档介绍" class="line-height15 pad0x pad00y quiet block ">文档介绍</a>
+            <div class="small pad0x quiet space-top1">User API</div>
+            <a href="#普通用户登录" class="line-height15 pad0x pad00y quiet block ">普通用户登录</a>
+            <a href="#Staff登录" class="line-height15 pad0x pad00y quiet block ">Staff登录</a>
+            <a href="#普通用户注册" class="line-height15 pad0x pad00y quiet block ">普通用户注册</a>
+            <a href="#Staff注册" class="line-height15 pad0x pad00y quiet block ">Staff注册</a>
+            <a href="#Staff查询" class="line-height15 pad0x pad00y quiet block ">Staff查询</a>
+            <a href="#Staff删除" class="line-height15 pad0x pad00y quiet block ">Staff删除</a>
+            <a href="#Staff更新" class="line-height15 pad0x pad00y quiet block ">Staff更新</a>
+            <div class="small pad0x quiet space-top1">Job API</div>
+            <a href="#Job添加" class="line-height15 pad0x pad00y quiet block ">Job添加</a>
+            <a href="#Job查询" class="line-height15 pad0x pad00y quiet block ">Job查询</a>
+            <a href="#Job删除" class="line-height15 pad0x pad00y quiet block ">Job删除</a>
+            <a href="#Job更新" class="line-height15 pad0x pad00y quiet block ">Job更新</a>
+            <div class="small pad0x quiet space-top1">Search API</div>
+            <div class="small pad0x quiet space-top1">Contact API</div>
+            <div class="small pad0x quiet space-top1">News API</div>
+            <div class="small pad0x quiet space-top1">Ads API</div>
+            <div class="small pad0x quiet space-top1">Report API</div>
+          </div>
+        </div>
+        <div class="space-left16">
+          <div class=""></div>
+          <div class="clearfix">
+            <div data-title="文档介绍" class="keyline-top section contain clearfix ">
+              <div class="space-bottom8 col6 pad2x prose clip"><h2 id="文档介绍">文档介绍</h2>
+                这个是Soji的API
+              </div>
+            </div>
+          </div>
+
+          <div data-title="普通用户登录" class="keyline-top section contain clearfix ">
+            <div class="space-bottom8 col6 pad2x prose clip">
+              <h3 id="普通用户登录">普通用户登录</h3>
+              <p>普通用户登录</p>
+              <table>
+              <thead>
+              <tr>
+              <th>Property</th>
+              <th>Description</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+              <td><code>username</code></td>
+              <td>(required) 账号</td>
+              </tr>
+              <tr>
+              <td><code>password</code></td>
+              <td>(required) 密码</td>
+              </tr>
+              </tbody>
+              </table>
+            </div>
+            <div class="space-bottom4 col6 pad2 prose clip fill-light space-top5">
+              <div class='endpoint dark fill-dark round '>
+                <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>POST</div>
+                <div class='pad0 code small endpoint-url'>/api/v1/users/auth/login</div>
+              </div>
+              <h4 id="example-response">Example response</h4>
+<pre class='hljs'>{
+  <span class="hljs-attr">"success"</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">"token"</span>: <span class="hljs-string">"{JWT TOKEN}"</span>
+}</pre>
+              <h4 id="status-code">Status Code</h4>
+              <pre class='hljs'></pre>
+            </div>
+          </div>
+
+          <div data-title="Staff登录" class="keyline-top section contain clearfix ">
+            <div class="space-bottom8 col6 pad2x prose clip">
+              <h3 id="Staff登录">Staff登录</h3>
+              <p>Staff登录</p>
+              <table>
+              <thead>
+              <tr>
+              <th>Property</th>
+              <th>Description</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+              <td><code>username</code></td>
+              <td>(required) 账号</td>
+              </tr>
+              <tr>
+              <td><code>password</code></td>
+              <td>(required) 密码</td>
+              </tr>
+              </tbody>
+              </table>
+            </div>
+            <div class="space-bottom4 col6 pad2 prose clip fill-light space-top5">
+              <div class='endpoint dark fill-dark round '>
+                <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>POST</div>
+                <div class='pad0 code small endpoint-url'>/api/v1/users/auth/staffLogin</div>
+              </div>
+              <h4 id="example-response">Example response</h4>
+<pre class='hljs'>{
+  <span class="hljs-attr">"success"</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">"token"</span>: <span class="hljs-string">"{JWT TOKEN}"</span>
+}</pre>
+              <h4 id="status-code">Status Code</h4>
+              <pre class='hljs'></pre>
+            </div>
+          </div>
+
+          <div data-title="普通用户注册" class="keyline-top section contain clearfix ">
+            <div class="space-bottom8 col6 pad2x prose clip">
+              <h3 id="普通用户注册">普通用户注册</h3>
+              <p>普通用户注册</p>
+              <table>
+              <thead>
+              <tr>
+              <th>Property</th>
+              <th>Description</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+              <td><code>username</code></td>
+              <td>(required) 账号</td>
+              </tr>
+              <tr>
+              <td><code>password</code></td>
+              <td>(required) 密码</td>
+              </tr>
+              <tr>
+              <td><code>email</code></td>
+              <td>(required) 邮箱</td>
+              </tr>
+              <tr>
+              <td><code>name</code></td>
+              <td>(required) 姓名</td>
+              </tr>
+              <tr>
+              <td><code>photo</code></td>
+              <td>(required) 照片</td>
+              </tr>
+              </tbody>
+              </table>
+            </div>
+            <div class="space-bottom4 col6 pad2 prose clip fill-light space-top5">
+              <div class='endpoint dark fill-dark round '>
+                <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>POST</div>
+                <div class='pad0 code small endpoint-url'>/api/v1/users/auth/register</div>
+              </div>
+              <h4 id="example-response">Example response</h4>
+<pre class='hljs'>{
+  <span class="hljs-attr">"success"</span>: <span class="hljs-literal">true</span>,
+}</pre>
+              <h4 id="status-code">Status Code</h4>
+              <pre class='hljs'></pre>
+            </div>
+          </div>
+
+          <div data-title="Staff注册" class="keyline-top section contain clearfix ">
+            <div class="space-bottom8 col6 pad2x prose clip">
+              <h3 id="Staff注册">Staff注册</h3>
+              <p>Staff注册</p>
+              <table>
+              <thead>
+              <tr>
+              <th>Property</th>
+              <th>Description</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+              <td><code>username</code></td>
+              <td>(required) 账号</td>
+              </tr>
+              <tr>
+              <td><code>password</code></td>
+              <td>(required) 密码</td>
+              </tr>
+              <tr>
+              <td><code>email</code></td>
+              <td>(required) 邮箱</td>
+              </tr>
+              <tr>
+              <td><code>name</code></td>
+              <td>(required) 姓名</td>
+              </tr>
+              <tr>
+              <td><code>photo</code></td>
+              <td>(required) 照片</td>
+              </tr>
+              </tbody>
+              </table>
+            </div>
+            <div class="space-bottom4 col6 pad2 prose clip fill-light space-top5">
+              <div class='endpoint dark fill-dark round '>
+                <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>POST</div>
+                <div class='pad0 code small endpoint-url'>/api/v1/users/create</div>
+              </div>
+              <h4 id="example-response">Example response</h4>
+<pre class='hljs'>{
+  <span class="hljs-attr">"success"</span>: <span class="hljs-literal">true</span>,
+}</pre>
+              <h4 id="status-code">Status Code</h4>
+              <pre class='hljs'></pre>
+            </div>
+          </div>
+
+          <div data-title="Staff查询" class="keyline-top section contain clearfix ">
+            <div class="space-bottom8 col6 pad2x prose clip">
+              <h3 id="Staff查询">Staff查询</h3>
+              <p>Staff查询</p>
+              <table>
+              <thead>
+              <tr>
+              <th>Property</th>
+              <th>Description</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+              <td><code>staffID</code></td>
+              <td>(required) Staff的编号</td>
+              </tr>
+              </tbody>
+              </table>
+            </div>
+            <div class="space-bottom4 col6 pad2 prose clip fill-light space-top5">
+              <div class='endpoint dark fill-dark round '>
+                <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>POST</div>
+                <div class='pad0 code small endpoint-url'>/api/v1/users/search</div>
+              </div>
+              <h4 id="example-response">Example response</h4>
+<pre class='hljs'>{
+  <span class="hljs-attr">"success"</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">"data"</span>: <span class="hljs-string">"{JWT TOKEN}"</span>
+}</pre>
+              <h4 id="status-code">Status Code</h4>
+              <pre class='hljs'></pre>
+            </div>
+          </div>
+
+          <div data-title="Staff删除" class="keyline-top section contain clearfix ">
+            <div class="space-bottom8 col6 pad2x prose clip">
+              <h3 id="Staff删除">Staff删除</h3>
+              <p>Staff删除</p>
+              <table>
+              <thead>
+              <tr>
+              <th>Property</th>
+              <th>Description</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+              <td><code>staffID</code></td>
+              <td>(required) Staff的编号</td>
+              </tr>
+              </tbody>
+              </table>
+            </div>
+            <div class="space-bottom4 col6 pad2 prose clip fill-light space-top5">
+              <div class='endpoint dark fill-dark round '>
+                <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>POST</div>
+                <div class='pad0 code small endpoint-url'>/api/v1/users/delete</div>
+              </div>
+              <h4 id="example-response">Example response</h4>
+<pre class='hljs'>{
+  <span class="hljs-attr">"success"</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">"data"</span>: <span class="hljs-string">"{JWT TOKEN}"</span>
+}</pre>
+              <h4 id="status-code">Status Code</h4>
+              <pre class='hljs'></pre>
+            </div>
+          </div>
+
+          <div data-title="Staff更新" class="keyline-top section contain clearfix ">
+            <div class="space-bottom8 col6 pad2x prose clip">
+              <h3 id="Staff更新">Staff更新</h3>
+              <p>Staff更新</p>
+              <table>
+              <thead>
+              <tr>
+              <th>Property</th>
+              <th>Description</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+              <td><code>teamID</code></td>
+              <td>(required) 队伍ID</td>
+              </tr>
+              <tr>
+              <td><code>password</code></td>
+              <td>(required) 密码</td>
+              </tr>
+              <tr>
+              <td><code>email</code></td>
+              <td>(required) 邮箱</td>
+              </tr>
+              <tr>
+              <td><code>name</code></td>
+              <td>(required) 姓名</td>
+              </tr>
+              <tr>
+              <td><code>photo</code></td>
+              <td>(required) 照片</td>
+              </tr>
+              </tbody>
+              </table>
+            </div>
+            <div class="space-bottom4 col6 pad2 prose clip fill-light space-top5">
+              <div class='endpoint dark fill-dark round '>
+                <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>POST</div>
+                <div class='pad0 code small endpoint-url'>/api/v1/users/update</div>
+              </div>
+              <h4 id="example-response">Example response</h4>
+<pre class='hljs'>{
+  <span class="hljs-attr">"success"</span>: <span class="hljs-literal">true</span>,
+}</pre>
+              <h4 id="status-code">Status Code</h4>
+              <pre class='hljs'></pre>
+            </div>
+          </div>
+
+          <div data-title="job添加" class="keyline-top section contain clearfix ">
+            <div class="space-bottom8 col6 pad2x prose clip">
+              <h3 id="job添加">job添加</h3>
+              <p>job添加</p>
+              <table>
+              <thead>
+              <tr>
+              <th>Property</th>
+              <th>Description</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+              <td><code>jobTitle</code></td>
+              <td>(required) job 名</td>
+              </tr>
+              <tr>
+              <td><code>jobDescription</code></td>
+              <td>(required) job 说明</td>
+              </tr>
+              </tbody>
+              </table>
+            </div>
+            <div class="space-bottom4 col6 pad2 prose clip fill-light space-top5">
+              <div class='endpoint dark fill-dark round '>
+                <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>POST</div>
+                <div class='pad0 code small endpoint-url'>/api/v1/jobs/create</div>
+              </div>
+              <h4 id="example-response">Example response</h4>
+<pre class='hljs'>{
+  <span class="hljs-attr">"success"</span>: <span class="hljs-literal">true</span>,
+}</pre>
+              <h4 id="status-code">Status Code</h4>
+              <pre class='hljs'></pre>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div><!--STOP-->
+    
+    <script src='bundle.js'></script>
+  </body>
+</html>
