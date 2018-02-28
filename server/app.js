@@ -29,6 +29,12 @@ const searchTask = require('./routes/tasks/search');
 const deleteTask = require('./routes/tasks/delete');
 const updateTask = require('./routes/tasks/update');
 
+// file route
+const createFile = require('./routes/files/create');
+const searchFile = require('./routes/files/search');
+const deleteFile = require('./routes/files/delete');
+const updateFile = require('./routes/files/update');
+
 var app = express();
 
 
@@ -82,6 +88,12 @@ app.use('/api/v1/tasks/create', createTask);
 app.use('/api/v1/tasks/search', searchTask);
 app.use('/api/v1/tasks/delete', deleteTask);
 app.use('/api/v1/tasks/update', updateTask);
+
+// file path
+app.use('/api/v1/files/create', createFile);
+app.use('/api/v1/files/search', searchFile);
+app.use('/api/v1/files/delete', deleteFile);
+app.use('/api/v1/files/update', updateFile);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -25,6 +25,7 @@
             <div class="small pad0x quiet space-top1">User API</div>
             <a href="#普通用户登录" class="line-height15 pad0x pad00y quiet block ">普通用户登录</a>
             <a href="#Staff登录" class="line-height15 pad0x pad00y quiet block ">Staff登录</a>
+            <a href="#Admin登录" class="line-height15 pad0x pad00y quiet block ">Admin登录</a>
             <a href="#普通用户注册" class="line-height15 pad0x pad00y quiet block ">普通用户注册</a>
             <a href="#Staff注册" class="line-height15 pad0x pad00y quiet block ">Staff注册</a>
             <a href="#Staff查询" class="line-height15 pad0x pad00y quiet block ">Staff查询</a>
@@ -40,6 +41,12 @@
             <a href="#Task查询" class="line-height15 pad0x pad00y quiet block ">Task查询</a>
             <a href="#Task删除" class="line-height15 pad0x pad00y quiet block ">Task删除</a>
             <a href="#Task更新" class="line-height15 pad0x pad00y quiet block ">Task更新</a>
+            <div class="small pad0x quiet space-top1">File API</div>
+            <a href="#File添加" class="line-height15 pad0x pad00y quiet block ">File添加</a>
+            <a href="#File根据fileName查询" class="line-height15 pad0x pad00y quiet block ">File根据fileName查询</a>
+            <a href="#File根据taskID查询" class="line-height15 pad0x pad00y quiet block ">File根据taskID查询</a>
+            <a href="#File根据jobID查询" class="line-height15 pad0x pad00y quiet block ">File根据jobID查询</a>
+            <a href="#File删除" class="line-height15 pad0x pad00y quiet block ">File删除</a>
           </div>
         </div>
         <div class="space-left16">
@@ -128,6 +135,44 @@
             </div>
           </div>
 
+          <div data-title="Admin登录" class="keyline-top section contain clearfix ">
+            <div class="space-bottom8 col6 pad2x prose clip">
+              <h3 id="Admin登录">Admin登录</h3>
+              <p>Admin登录</p>
+              <table>
+              <thead>
+              <tr>
+              <th>Property</th>
+              <th>Description</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+              <td><code>username</code></td>
+              <td>(required) 账号</td>
+              </tr>
+              <tr>
+              <td><code>password</code></td>
+              <td>(required) 密码</td>
+              </tr>
+              </tbody>
+              </table>
+            </div>
+            <div class="space-bottom4 col6 pad2 prose clip fill-light space-top5">
+              <div class='endpoint dark fill-dark round '>
+                <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>POST</div>
+                <div class='pad0 code small endpoint-url'>/api/v1/users/auth/adminLogin</div>
+              </div>
+              <h4 id="example-response">Example response</h4>
+<pre class='hljs'>{
+  <span class="hljs-attr">"success"</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">"token"</span>: <span class="hljs-string">"{JWT TOKEN}"</span>
+}</pre>
+              <h4 id="status-code">Status Code</h4>
+              <pre class='hljs'></pre>
+            </div>
+          </div>
+
           <div data-title="普通用户注册" class="keyline-top section contain clearfix ">
             <div class="space-bottom8 col6 pad2x prose clip">
               <h3 id="普通用户注册">普通用户注册</h3>
@@ -171,6 +216,7 @@
               <h4 id="example-response">Example response</h4>
 <pre class='hljs'>{
   <span class="hljs-attr">"success"</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">"data"</span>: <span class="hljs-literal">"User created"</span>
 }</pre>
               <h4 id="status-code">Status Code</h4>
               <pre class='hljs'></pre>
@@ -220,6 +266,7 @@
               <h4 id="example-response">Example response</h4>
 <pre class='hljs'>{
   <span class="hljs-attr">"success"</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">"data"</span>: <span class="hljs-literal">"Staff created"</span>
 }</pre>
               <h4 id="status-code">Status Code</h4>
               <pre class='hljs'></pre>
@@ -253,7 +300,17 @@
               <h4 id="example-response">Example response</h4>
 <pre class='hljs'>{
   <span class="hljs-attr">"success"</span>: <span class="hljs-literal">true</span>,
-  <span class="hljs-attr">"data"</span>: <span class="hljs-string">"{JWT TOKEN}"</span>
+  <span class="hljs-attr">"data"</span>: {
+      <span class="hljs-attr">"_id"</span>: <span class="hljs-string">"5a6237b0dd03dd0f14437d2c"</span>
+      <span class="hljs-attr">"staffID"</span>: <span class="hljs-string">"000011"</span>
+      <span class="hljs-attr">"username"</span>: <span class="hljs-string">"req.body.username"</span>
+      <span class="hljs-attr">"password"</span>: <span class="hljs-string">"req.body.password"</span>
+      <span class="hljs-attr">"email"</span>: <span class="hljs-string">"req.body.email"</span>
+      <span class="hljs-attr">"name"</span>: <span class="hljs-string">"req.body.name"</span>
+      <span class="hljs-attr">"photo"</span>: <span class="hljs-string">"req.body.photo"</span>
+      <span class="hljs-attr">"rating"</span>: 0
+      <span class="hljs-attr">"__v"</span>: <span class="hljs-string">"0"</span>
+    }
 }</pre>
               <h4 id="status-code">Status Code</h4>
               <pre class='hljs'></pre>
@@ -287,7 +344,7 @@
               <h4 id="example-response">Example response</h4>
 <pre class='hljs'>{
   <span class="hljs-attr">"success"</span>: <span class="hljs-literal">true</span>,
-  <span class="hljs-attr">"data"</span>: <span class="hljs-string">"{JWT TOKEN}"</span>
+  <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Staff deleted"</span>
 }</pre>
               <h4 id="status-code">Status Code</h4>
               <pre class='hljs'></pre>
@@ -337,6 +394,7 @@
               <h4 id="example-response">Example response</h4>
 <pre class='hljs'>{
   <span class="hljs-attr">"success"</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Staff updated"</span>
 }</pre>
               <h4 id="status-code">Status Code</h4>
               <pre class='hljs'></pre>
@@ -374,6 +432,7 @@
               <h4 id="example-response">Example response</h4>
 <pre class='hljs'>{
   <span class="hljs-attr">"success"</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Job created"</span>
 }</pre>
               <h4 id="status-code">Status Code</h4>
               <pre class='hljs'></pre>
@@ -406,12 +465,28 @@
               </div>
               <h4 id="example-response">Example response</h4>
 <pre class='hljs'>{
-  <span class="hljs-attr">"success"</span>: <span class="hljs-literal">true</span>,
-}</pre>
+    <span class="hljs-attr">"success"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">"data"</span>:[
+        {
+            <span class="hljs-attr">"_id"</span>: <span class="hljs-string">"5a620d400de4d93ec49036ab"</span>
+            <span class="hljs-attr">"jobID"</span>: <span class="hljs-string">"9517685"</span>
+            <span class="hljs-attr">"teamID"</span>: <span class="hljs-string">"11111"</span>
+            <span class="hljs-attr">"jobTitle"</span>: <span class="hljs-string">"req.body.jobTitle"</span>
+            <span class="hljs-attr">"jobDescription"</span>: <span class="hljs-string">"description"</span>
+            <span class="hljs-attr">"quote"</span>: 233
+            <span class="hljs-attr">"approved"</span>: true
+            <span class="hljs-attr">"approvedBy"</span>: <span class="hljs-string">"020202"</span>
+            <span class="hljs-attr">"createdAt"</span>: <span class="hljs-string">"2018-01-19T15:22:40.163Z"</span>
+            <span class="hljs-attr">"updatedAt"</span>: <span class="hljs-string">"2018-01-19T15:57:29.869Z"</span>
+            <span class="hljs-attr">"__v"</span>: <span class="hljs-string">"0"</span>
+        },
+      more json arrays..
+]</pre>
               <h4 id="status-code">Status Code</h4>
               <pre class='hljs'></pre>
             </div>
           </div>
+          
 
           <div data-title="Job删除" class="keyline-top section contain clearfix ">
             <div class="space-bottom8 col6 pad2x prose clip">
@@ -440,6 +515,7 @@
               <h4 id="example-response">Example response</h4>
 <pre class='hljs'>{
   <span class="hljs-attr">"success"</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Job deleted"</span>
 }</pre>
               <h4 id="status-code">Status Code</h4>
               <pre class='hljs'></pre>
@@ -497,6 +573,7 @@
               <h4 id="example-response">Example response</h4>
 <pre class='hljs'>{
   <span class="hljs-attr">"success"</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Job updated"</span>
 }</pre>
               <h4 id="status-code">Status Code</h4>
               <pre class='hljs'></pre>
@@ -550,6 +627,7 @@
               <h4 id="example-response">Example response</h4>
 <pre class='hljs'>{
   <span class="hljs-attr">"success"</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Task created"</span>
 }</pre>
               <h4 id="status-code">Status Code</h4>
               <pre class='hljs'></pre>
@@ -583,6 +661,7 @@
               <h4 id="example-response">Example response</h4>
 <pre class='hljs'>{
   <span class="hljs-attr">"success"</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Task deleted"</span>
 }</pre>
               <h4 id="status-code">Status Code</h4>
               <pre class='hljs'></pre>
@@ -617,7 +696,20 @@
               <h4 id="example-response">Example response</h4>
 <pre class='hljs'>{
   <span class="hljs-attr">"success"</span>: <span class="hljs-literal">true</span>,
-}</pre>
+  <span class="hljs-attr">"data"</span>:[
+  {
+      <span class="hljs-attr">"_id"</span>: <span class="hljs-string">"5a620d400de4d93ec49036ab"</span>
+      <span class="hljs-attr">"jobID"</span>: <span class="hljs-string">"9517685"</span>
+      <span class="hljs-attr">"taskID"</span>: <span class="hljs-string">"6679588"</span>
+      <span class="hljs-attr">"taskTitle"</span>: <span class="hljs-string">"req.body.taskTitle"</span>
+      <span class="hljs-attr">"taskDescription"</span>: <span class="hljs-string">"description"</span>
+      <span class="hljs-attr">"video"</span>: <span class="hljs-string">"gbciosjcenwroohw1zgl"</span>
+      <span class="hljs-attr">"minute"</span>: 5
+      <span class="hljs-attr">"createdAt"</span>: <span class="hljs-string">"2018-01-15T15:00:37.736Z"</span>
+      <span class="hljs-attr">"__v"</span>: <span class="hljs-string">"0"</span>
+  },
+more json arrays..
+]</pre>
               <h4 id="status-code">Status Code</h4>
               <pre class='hljs'></pre>
             </div>
@@ -666,7 +758,217 @@
               <h4 id="example-response">Example response</h4>
 <pre class='hljs'>{
   <span class="hljs-attr">"success"</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Task updated"</span>
 }</pre>
+              <h4 id="status-code">Status Code</h4>
+              <pre class='hljs'></pre>
+            </div>
+          </div>
+
+          
+          <div data-title="File添加" class="keyline-top section contain clearfix ">
+            <div class="space-bottom8 col6 pad2x prose clip">
+              <h3 id="File添加">File添加</h3>
+              <p>File添加</p>
+              <table>
+              <thead>
+              <tr>
+              <th>Property</th>
+              <th>Description</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+              <td><code>jobID</code></td>
+              <td>(required) file 对应的 job 编号</td>
+              </tr>
+              <tr>
+                <td><code>taskID</code></td>
+                <td>(required) file 对应的 task 编号</td>
+              </tr>
+              <tr>
+                <td><code>fileName</code></td>
+                <td>(required) file 名</td>
+              </tr>
+              </tbody>
+              </table>
+            </div>
+            <div class="space-bottom4 col6 pad2 prose clip fill-light space-top5">
+              <div class='endpoint dark fill-dark round '>
+                <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>POST</div>
+                <div class='pad0 code small endpoint-url'>/api/v1/files/create</div>
+              </div>
+              <h4 id="example-response">Example response</h4>
+<pre class='hljs'>{
+  <span class="hljs-attr">"success"</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">"data"</span>: <span class="hljs-string">"File uploaded"</span>
+}</pre>
+              <h4 id="status-code">Status Code</h4>
+              <pre class='hljs'></pre>
+            </div>
+          </div>
+
+          <div data-title="File删除" class="keyline-top section contain clearfix ">
+            <div class="space-bottom8 col6 pad2x prose clip">
+              <h3 id="File删除">File删除</h3>
+              <p>File删除</p>
+              <table>
+              <thead>
+              <tr>
+              <th>Property</th>
+              <th>Description</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+              <td><code>fileID</code></td>
+              <td>(required) file 编号</td>
+              </tr>
+              </tbody>
+              </table>
+            </div>
+            <div class="space-bottom4 col6 pad2 prose clip fill-light space-top5">
+              <div class='endpoint dark fill-dark round '>
+                <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>POST</div>
+                <div class='pad0 code small endpoint-url'>/api/v1/files/delete</div>
+              </div>
+              <h4 id="example-response">Example response</h4>
+<pre class='hljs'>{
+  <span class="hljs-attr">"success"</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">"data"</span>: <span class="hljs-string">"File deleted"</span>
+}</pre>
+              <h4 id="status-code">Status Code</h4>
+              <pre class='hljs'></pre>
+            </div>
+          </div>
+
+          
+          <div data-title="File根据fileName查询" class="keyline-top section contain clearfix ">
+            <div class="space-bottom8 col6 pad2x prose clip">
+              <h3 id="File根据fileName查询">File根据fileName查询</h3>
+              <p>File根据fileName查询</p>
+              <table>
+              <thead>
+              <tr>
+              <th>Property</th>
+              <th>Description</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+              <td><code>fileName</code></td>
+              <td>(required) file 名</td>
+              </tr>
+              </tbody>
+              </table>
+            </div>
+            <div class="space-bottom4 col6 pad2 prose clip fill-light space-top5">
+              <div class='endpoint dark fill-dark round '>
+                <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>POST</div>
+                <div class='pad0 code small endpoint-url'>/api/v1/files/search/name</div>
+              </div>
+              <h4 id="example-response">Example response</h4>
+<pre class='hljs'>{
+  <span class="hljs-attr">"success"</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">"data"</span>:[
+      {
+            <span class="hljs-attr">"_id"</span>: <span class="hljs-string">"5a96fe865b6a162330eec9b3"</span>
+            <span class="hljs-attr">"jobID"</span>: <span class="hljs-string">"2730251"</span>
+            <span class="hljs-attr">"taskID"</span>: <span class="hljs-string">"0607434"</span>
+            <span class="hljs-attr">"fileID"</span>: <span class="hljs-string">"3346222"</span>
+            <span class="hljs-attr">"fileName"</span>: <span class="hljs-string">"random file"</span>
+            <span class="hljs-attr">"createdAt"</span>: <span class="hljs-string">"2018-02-28T19:09:58.900Z"</span>
+            <span class="hljs-attr">"__v"</span>: <span class="hljs-string">"0"</span>
+      },
+more json arrays..
+]</pre>
+              <h4 id="status-code">Status Code</h4>
+              <pre class='hljs'></pre>
+            </div>
+          </div>
+
+          <div data-title="File根据taskID查询" class="keyline-top section contain clearfix ">
+            <div class="space-bottom8 col6 pad2x prose clip">
+              <h3 id="File根据taskID查询">File根据taskID查询</h3>
+              <p>File根据taskID查询</p>
+              <table>
+              <thead>
+              <tr>
+              <th>Property</th>
+              <th>Description</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+              <td><code>taskID</code></td>
+              <td>(required) file 对应的 task 编号</td>
+              </tr>
+              </tbody>
+              </table>
+            </div>
+            <div class="space-bottom4 col6 pad2 prose clip fill-light space-top5">
+              <div class='endpoint dark fill-dark round '>
+                <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>POST</div>
+                <div class='pad0 code small endpoint-url'>/api/v1/files/search/taskID</div>
+              </div>
+              <h4 id="example-response">Example response</h4>
+<pre class='hljs'>{
+  <span class="hljs-attr">"success"</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">"data"</span>:[
+      {
+            <span class="hljs-attr">"_id"</span>: <span class="hljs-string">"5a96fe865b6a162330eec9b3"</span>
+            <span class="hljs-attr">"jobID"</span>: <span class="hljs-string">"2730251"</span>
+            <span class="hljs-attr">"taskID"</span>: <span class="hljs-string">"0607434"</span>
+            <span class="hljs-attr">"fileID"</span>: <span class="hljs-string">"3346222"</span>
+            <span class="hljs-attr">"fileName"</span>: <span class="hljs-string">"random file"</span>
+            <span class="hljs-attr">"createdAt"</span>: <span class="hljs-string">"2018-02-28T19:09:58.900Z"</span>
+            <span class="hljs-attr">"__v"</span>: <span class="hljs-string">"0"</span>
+      },
+more json arrays..
+]</pre>
+              <h4 id="status-code">Status Code</h4>
+              <pre class='hljs'></pre>
+            </div>
+          </div>
+          <div data-title="File根据jobID查询" class="keyline-top section contain clearfix ">
+            <div class="space-bottom8 col6 pad2x prose clip">
+              <h3 id="File根据jobID查询">File根据jobID查询</h3>
+              <p>File根据jobID查询</p>
+              <table>
+              <thead>
+              <tr>
+              <th>Property</th>
+              <th>Description</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+              <td><code>jobID</code></td>
+              <td>(required) file 对应的 job 编号</td>
+              </tr>
+              </tbody>
+              </table>
+            </div>
+            <div class="space-bottom4 col6 pad2 prose clip fill-light space-top5">
+              <div class='endpoint dark fill-dark round '>
+                <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>POST</div>
+                <div class='pad0 code small endpoint-url'>/api/v1/files/search/jobID</div>
+              </div>
+              <h4 id="example-response">Example response</h4>
+<pre class='hljs'>{
+  <span class="hljs-attr">"success"</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">"data"</span>:[
+      {
+            <span class="hljs-attr">"_id"</span>: <span class="hljs-string">"5a96fe865b6a162330eec9b3"</span>
+            <span class="hljs-attr">"jobID"</span>: <span class="hljs-string">"2730251"</span>
+            <span class="hljs-attr">"taskID"</span>: <span class="hljs-string">"0607434"</span>
+            <span class="hljs-attr">"fileID"</span>: <span class="hljs-string">"3346222"</span>
+            <span class="hljs-attr">"fileName"</span>: <span class="hljs-string">"random file"</span>
+            <span class="hljs-attr">"createdAt"</span>: <span class="hljs-string">"2018-02-28T19:09:58.900Z"</span>
+            <span class="hljs-attr">"__v"</span>: <span class="hljs-string">"0"</span>
+      },
+more json arrays..
+]</pre>
               <h4 id="status-code">Status Code</h4>
               <pre class='hljs'></pre>
             </div>

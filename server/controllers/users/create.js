@@ -1,4 +1,5 @@
 const Staff = require('../../model/Staff');
+const key = "123456";
 
 handleStaffCreate = (req, res, next) => {
     Staff.find().sort({staffID: -1}).limit(1).exec((err, callback)=>{
@@ -17,22 +18,33 @@ handleStaffCreate = (req, res, next) => {
             email: req.body.email,
             name: req.body.name,
             photo: req.body.photo,
+            key: req.body.key,
             totalRating: 0,
             ratingCount: 0
         });
-        staff.save((err, callback) => {
-            if (err) {
-                res.json({
-                    success: false,
-                    data: err
-                });
-            } else {
-                res.json({
-                    success: true,
-                    data: "Staff created"
-                });
-            } 
-        });
+
+        if(staff.key == key)
+        {
+            staff.save((err, callback) => {
+                if (err) {
+                    res.json({
+                        success: false,
+                        data: err
+                    });
+                } else {
+                    res.json({
+                        success: true,
+                        data: "Staff created"
+                    });
+                } 
+            });
+        } else {
+            res.json({
+                success: false,
+                data: "key does not match"
+            });
+        }
+        
     });
     
 }

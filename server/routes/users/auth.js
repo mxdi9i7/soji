@@ -14,6 +14,10 @@ router.post('/staffLogin', auth.token_status, function(req, res, next){
   auth.handleStaffLogin(req, res, next);
 });
 
+router.post('/adminLogin', auth.token_status, function(req, res, next){
+  auth.handleAdminLogin(req, res, next);
+});
+
 router.post('/register', function(req, res, next){
   auth.handleClientRegister(req, res, next);
 });
