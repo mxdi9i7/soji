@@ -9,11 +9,15 @@ export const CreateTaskInStore = (task) => {
     }
 }
 
-export const HandleTaskTitleInput = (value, name, currentIndex) => {
+export const HandleTaskInput = (value, name, currentIndex) => {
     return {
-        type: 'HANDLE_TASK_TITLE_INPUT',
+        type: 'HANDLE_TASK_INPUT',
         value, 
         currentIndex,
         name
     }
+}
+
+export const SetCreateJobToActive = {
+    type: 'SET_CREATE_JOB_TO_ACTIVE'
 }

@@ -1,24 +1,16 @@
 import React, { Component } from 'react';
 import { CreateTaskContainer } from './CreateTask';
 import '../../assets/createJob.css';
+import { SetCreateJobToActive } from '../../actions/CreateTask'
+import { connect } from 'react-redux';
 
-export default class DashboardPage extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            isCreateJobActive: false
-        }
-    }
-    triggerCreateJobContainer() {
-        this.setState({
-            isCreateJobActive: true
-        })
-    }
+class CreateJob extends Component {
     render() {
+        let { setCreateJobToActive, isCreateJobActive } = this.props;
         return (
             <div className="dashCreateContainer">
                 {
-                    this.state.isCreateJobActive ? 
+                    isCreateJobActive ? 
                     <div className="createJobContainer">
                         <div className="jobInfoContainer">
                             <div className="createJobCol jobGeneralInfo">
@@ -50,8 +42,8 @@ export default class DashboardPage extends Component {
                         <h1>Create your first job</h1>
                         <p>Tell us about your project and the specific tasks required.</p>
                         <p>We'll help you achieve your company's goals.</p>
-                        <div onClick={this.triggerCreateJobContainer.bind(this)}>
-                            <i onClick={this.triggerCreateJobContainer.bind(this)} className="fa fa-plus"></i>
+                        <div onClick={setCreateJobToActive}>
+                            <i onClick={setCreateJobToActive} className="fa fa-plus"></i>
                         </div>
                     </div>
                 }
@@ -59,3 +51,24 @@ export default class DashboardPage extends Component {
         )
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        isCreateJobActive: state.createTask.isCreateJobActive
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setCreateJobToActive: () => {
+            dispatch(SetCreateJobToActive)
+        }
+    }
+}
+
+
+
+export const CreateJobContainer = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(CreateJob)

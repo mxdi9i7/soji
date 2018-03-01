@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
 import Dashnav from '../partials/Dashnav';
 import SideNav from '../partials/SideNav';
-import CreateJobContainer from '../createJob/CreateJobContainer';
+import { CreateJobContainer } from '../createJob/CreateJobContainer';
+import { SetCreateJobToActive } from '../../actions/CreateTask'
+import { connect } from 'react-redux';
 
 import '../../assets/dash.css'
-export default class DashboardPage extends Component {
+
+class Dashboard extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            
+            createJob: false
         }
     }
-    
     render() {
+        let { setCreateJobToActive } = this.props
         return(
             <div>
                 <Dashnav />
@@ -23,7 +26,7 @@ export default class DashboardPage extends Component {
                             <h1>Dashboard</h1>
                         </div>
                         <div className="dashActions">
-                            <button>
+                            <button onClick={setCreateJobToActive}>
                                 <i className="fa fa-plus"></i>
                                 <span>Create a New Job</span>
                             </button>
@@ -37,3 +40,25 @@ export default class DashboardPage extends Component {
         )
     }
 }
+
+
+const mapStateToProps = state => {
+    return {
+        isCreateJobActive: state.isCreateJobActive
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setCreateJobToActive: () => {
+            dispatch(SetCreateJobToActive)
+        }
+    }
+}
+
+
+
+export const DashboardPage = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Dashboard)

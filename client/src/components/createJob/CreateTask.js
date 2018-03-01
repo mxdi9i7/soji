@@ -55,6 +55,13 @@ class CreateTask extends Component {
                         <span>Add a New Task</span>
                     </button>
                 </div>
+                {
+                    tasks.length > 0 ?
+                    <button className="submitJobBtn">
+                        Submit For Review
+                    </button> :
+                    ""
+                }
             </div>
         )
     }

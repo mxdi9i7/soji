@@ -136,3 +136,20 @@
     cursor: pointer;
     padding: 10px 12px;
 }
+.jobTaskListContainer .submitJobBtn {
+    float: right;
+    background-color: darkmagenta;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+    transition: .2s;
+    border: 2px solid transparent;
+}
+.jobTaskListContainer .submitJobBtn:hover {
+    cursor: pointer;
+    background-color: #fff;
+    color: darkmagenta;
+    border: 2px solid darkmagenta;
+}

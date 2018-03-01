@@ -1,38 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { store } from '../../reducers/index';
-import { HandleTaskTitleInput } from '../../actions/CreateTask';
+import { HandleTaskInput } from '../../actions/CreateTask';
 
 export class Task extends Component {
-    // constructor() {
-    //     super()
-    //     this.state = {
-    //     }
-    // } 
-    // handleInputChange(event) {
-    //     const target = event.target;
-    //     const value = target.type === 'checkbox' ? target.checked : target.value;
-    //     const name = target.name;
-    //     const index = this.props.task.length;
-    //     let tasks;
-    //     if (!this.state.tasks) {
-    //         tasks = []
-    //         let task = {
-    //             [name]: value
-    //         }
-    //         tasks.push(task)
-    //     } else {
-    //         tasks = this.state.tasks
-    //         tasks[index] = {
-    //             ...tasks[index],
-    //             [name]: value
-    //         }
-    //     }
-
-    //     this.setState({
-    //         tasks
-    //     }, console.log(tasks));
-    // }
     render() {
         const { task, handleTaskInput } = this.props
         return (
@@ -50,23 +21,23 @@ export class Task extends Component {
                         </div>
                         <div className="taskInputContainer">
                             <h1>Estimated Duration: </h1>
-                            <input type="number" placeholder="Minutes" />
+                            <input type="number" placeholder="Minutes"  name="duration" onChange={handleTaskInput} />
                         </div>
                     </div>
                     <div className="taskRow">
                         <div className="taskInputContainer">
                             <h1>Description: </h1>
-                            <input type="text" placeholder="Add a full and clear description of your task" />
+                            <input type="text" placeholder="Add a full and clear description of your task"  name="description" onChange={handleTaskInput} />
                         </div>
                     </div>
                     <div className="taskRow">
                         <div className="taskInputContainer">
                             <label htmlFor="taskFile">Task File Upload</label>
-                            <input type="file" id="taskFile" />
+                            <input type="file" id="taskFile"  name="taskFile" onChange={handleTaskInput} />
                         </div>
                         <div className="taskInputContainer">
                             <label htmlFor="taskVideo">Task Video Upload</label>
-                            <input type="file" id="taskVideo" />
+                            <input type="file" id="taskVideo"  name="taskVideo" onChange={handleTaskInput} />
                         </div>
                     </div>
                 </div>
@@ -80,13 +51,13 @@ const mapStateToProps = state => {
     }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         handleTaskInput: (e) => {
-            const taskCount = store.getState().createTask.task.length;
+            const currentIndex = ownProps.currentIndex;
             const name = e.target.name;
             const value = e.target.value;
-            dispatch(HandleTaskTitleInput(value, name, taskCount - 1))
+            dispatch(HandleTaskInput(value, name, currentIndex - 1))
         }
     }
 }

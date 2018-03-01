@@ -1,5 +1,6 @@
 const createTask = (state = {
-    task: []
+    task: [],
+    isCreateJobActive: false
 }, action) => {
     switch (action.type) {
         case 'CREATE_TASK_IN_STORE':
@@ -19,7 +20,7 @@ const createTask = (state = {
                     ...delState.task,
                 ]
             }
-        case 'HANDLE_TASK_TITLE_INPUT':
+        case 'HANDLE_TASK_INPUT':
             let taskForm = state.task[action.currentIndex]
             taskForm[action.name] = action.value
             state.task.splice(action.currentIndex, 1, taskForm)
@@ -28,6 +29,11 @@ const createTask = (state = {
                 task: [
                     ...state.task
                 ]
+            }
+        case 'SET_CREATE_JOB_TO_ACTIVE':
+            return {
+                ...state,
+                isCreateJobActive: true
             }
         default: 
             return state
