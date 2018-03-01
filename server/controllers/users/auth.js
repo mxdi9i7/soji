@@ -1,5 +1,6 @@
 const Clients = require('../../model/Clients');
 const Staff = require('../../model/Staff');
+const Admin = require('../../model/Admin');
 const jwt = require('jsonwebtoken');
 const secret = require('./secret');
 
@@ -65,6 +66,42 @@ handleStaffLogin = (req, res, next) => {
     const password = req.body.password;
     let query = {username: username}
     Staff.findOne(query, (err, user) => {
+        if (err) {
+            res.json({
+                success: false,
+                data: err
+            })
+        }
+        if (user) {
+            if (password == user.password){
+                const token = jwt.sign({ data: user }, secret.secret, {
+                    expiresIn: 604800
+                });
+    
+                res.json({
+                    success: true,
+                    data: token
+                });
+            } else {
+                res.json({
+                    success: false,
+                    data: "incorrect password"
+                })
+            }
+        } else {
+            res.json({
+                success: false,
+                data: "no user found"
+            })
+        }
+    });
+}
+
+handleAdminLogin = (req, res, next) => {
+    const username = req.body.username;
+    const password = req.body.password;
+    let query = {username: username}
+    Admin.findOne(query, (err, user) => {
         if (err) {
             res.json({
                 success: false,

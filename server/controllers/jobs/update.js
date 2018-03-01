@@ -5,7 +5,7 @@ handleJobUpdate = (req, res, next) => {
     let job = {
         teamID: req.body.teamID,
         jobTitle: req.body.jobTitle,
-        jobDesciption: req.body.jobDesciption,
+        jobDescription: req.body.jobDescription,
         quote: req.body.quote,
         approved: req.body.approved,
         approvedBy: req.body.approvedBy,

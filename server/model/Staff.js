@@ -11,6 +11,7 @@ const StaffSchema = new Schema
     email: String,
     name: String,
     photo: String,
+    key: String,
     totalRating: Number,
     ratingCount: Number
 });
