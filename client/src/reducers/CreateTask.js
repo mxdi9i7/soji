@@ -11,25 +11,22 @@ const createTask = (state = {
                 ]
             }
         case 'DELETE_TASK':
-            console.log(action)
-            if (action.current === 1) {
-                return state
-            } else {
-                const delState = state;
-                delState.task.splice(action.current - 1, 1)
-                return {
-                    ...state,
-                    task: [
-                        ...delState.task,
-                    ]
-                }
-            }
-        case 'HANDLE_TASK_INPUT':
-            const newTaskInputValue = action.value
+            let delState = state;
+            delState.task.splice(state.task.length - 1, 1)
             return {
                 ...state,
                 task: [
-                    ...state.task,
+                    ...delState.task,
+                ]
+            }
+        case 'HANDLE_TASK_TITLE_INPUT':
+            let taskForm = state.task[action.currentIndex]
+            taskForm[action.name] = action.value
+            state.task.splice(action.currentIndex, 1, taskForm)
+            return {
+                ...state,
+                task: [
+                    ...state.task
                 ]
             }
         default: 

@@ -1,23 +1,43 @@
 import React, { Component } from 'react';
-import { DeleteTask } from '../../actions/CreateTask';
 import { connect } from 'react-redux';
 import { store } from '../../reducers/index';
-
+import { HandleTaskTitleInput } from '../../actions/CreateTask';
 
 export class Task extends Component {
+    // constructor() {
+    //     super()
+    //     this.state = {
+    //     }
+    // } 
+    // handleInputChange(event) {
+    //     const target = event.target;
+    //     const value = target.type === 'checkbox' ? target.checked : target.value;
+    //     const name = target.name;
+    //     const index = this.props.task.length;
+    //     let tasks;
+    //     if (!this.state.tasks) {
+    //         tasks = []
+    //         let task = {
+    //             [name]: value
+    //         }
+    //         tasks.push(task)
+    //     } else {
+    //         tasks = this.state.tasks
+    //         tasks[index] = {
+    //             ...tasks[index],
+    //             [name]: value
+    //         }
+    //     }
 
-
+    //     this.setState({
+    //         tasks
+    //     }, console.log(tasks));
+    // }
     render() {
-        const { handleTaskDelete, currentIndex, task } = this.props
-        console.log(store.getState().createTask.task)
+        const { task, handleTaskInput } = this.props
         return (
             <div className="taskContainer">
                 <div className="taskCount">
-                    <div className="taskDelete" onClick={() => {
-                        handleTaskDelete(currentIndex)
-                    }}>
-                        <i className="fa fa-trash"></i>
-                    </div>
                     <div className="taskCountLabel">
                         {this.props.currentIndex}
                     </div>
@@ -26,7 +46,7 @@ export class Task extends Component {
                     <div className="taskRow">
                         <div className="taskInputContainer">
                             <h1>Task Title: </h1>
-                            <input type="text" placeholder="Add a title to your task" />
+                            <input type="text" placeholder="Add a title to your task" name="title" onChange={handleTaskInput} />
                         </div>
                         <div className="taskInputContainer">
                             <h1>Estimated Duration: </h1>
@@ -62,11 +82,16 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        handleTaskDelete: (current) => {
-            dispatch(DeleteTask(current))
+        handleTaskInput: (e) => {
+            const taskCount = store.getState().createTask.task.length;
+            const name = e.target.name;
+            const value = e.target.value;
+            dispatch(HandleTaskTitleInput(value, name, taskCount - 1))
         }
     }
 }
+
+
 
 export const TaskContainer = connect(
     mapStateToProps,

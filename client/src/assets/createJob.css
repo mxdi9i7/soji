@@ -44,20 +44,23 @@
     height: 15px;
     width: 100%;
 }
+.jobTaskListContainer .taskAction {
+    margin: 30px auto;
+    display: flex;
+    width: 200px;
+    justify-content: space-between;
+}
 .jobTaskListContainer .addTaskBtn {
     background-color: purple;
     color: #fff;
     padding: 5px 15px 5px 5px;
     border-radius: 25px;
     border: none;
-    display: flex;
-    justify-content: space-between;
     outline: none;
     transition: .2s;
-    margin: 0 auto;
 }
 .jobTaskListContainer .addTaskBtn span {
-    vertical-align: 5px;
+    vertical-align: 10px;
     position: relative;
     top: 4px;
     margin-left: 5px;
@@ -92,18 +95,7 @@
     text-align: center;
     transition: .2s;
 }
-.jobTaskListContainer .taskCount .taskDelete {
-    display: none;
-    transition: .2s;
-}
 .jobTaskListContainer .taskCount:hover .taskCountLabel {
-    display: none;
-    transition: .2s;
-    cursor: pointer;
-}
-.jobTaskListContainer .taskCount:hover .taskDelete {
-    display: block;
-    transition: .2s;
     cursor: pointer;
 }
 
@@ -130,4 +122,17 @@
     color: purple;
     margin: 0 0 20px 0;
     display: block;
+}
+.jobTaskListContainer .taskDelete {
+   display: inline-block;
+   color: purple;
+   border-radius: 50%;
+   padding: 10px 12px;
+   transition: .2s;
+}
+.jobTaskListContainer .taskDelete:hover {
+    background-color: purple;
+    color: white;
+    cursor: pointer;
+    padding: 10px 12px;
 }

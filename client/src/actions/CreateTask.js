@@ -1,8 +1,5 @@
-export const DeleteTask = current => {
-    return {
-        type: 'DELETE_TASK',
-        current
-    }
+export const DeleteTask = {
+    type: 'DELETE_TASK'
 }
 
 export const CreateTaskInStore = (task) => {
@@ -12,9 +9,11 @@ export const CreateTaskInStore = (task) => {
     }
 }
 
-export const HandleTaskInput = (field, value, currentIndex) => {
+export const HandleTaskTitleInput = (value, name, currentIndex) => {
     return {
-        type: 'HANDLE_TASK_INPUT',
-        field, value, currentIndex
+        type: 'HANDLE_TASK_TITLE_INPUT',
+        value, 
+        currentIndex,
+        name
     }
 }

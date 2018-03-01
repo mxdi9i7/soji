@@ -3,6 +3,7 @@ import { CreateTaskInStore } from '../../actions/CreateTask';
 import { connect } from 'react-redux';
 import { createStore } from 'redux';
 import { TaskContainer } from './TaskContainer';
+import { DeleteTask } from '../../actions/CreateTask';
 
 import '../../assets/createJob.css';
 
@@ -11,7 +12,7 @@ let task
 class CreateTask extends Component {
    
     render() {
-        const { createTaskInStore, tasks } = this.props;
+        const { handleTaskDelete, createTaskInStore, tasks } = this.props;
         task = {
             title: "",
             description: "",
@@ -38,12 +39,22 @@ class CreateTask extends Component {
                 <div className="createTaskContainer">
                     { renderTaskBlocks }
                 </div>
-                <button onClick={() => {
-                    createTaskInStore(task)
-                    }} className="addTaskBtn">
-                    <i className="fa fa-plus"></i>
-                    <span>Add a New Task</span>
-                </button>
+                <div className="taskAction">
+                    {
+                        tasks.length > 0 ? 
+                        <span className="taskDelete" onClick={() => {
+                                handleTaskDelete()
+                            }}>
+                                <i className="fa fa-trash"></i>
+                        </span> : ""
+                    }
+                    <button onClick={() => {
+                        createTaskInStore(task)
+                        }} className="addTaskBtn">
+                        <i className="fa fa-plus"></i>
+                        <span>Add a New Task</span>
+                    </button>
+                </div>
             </div>
         )
     }
@@ -59,7 +70,13 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        createTaskInStore: (task) => dispatch(CreateTaskInStore(task))
+        createTaskInStore: (task) => dispatch(CreateTaskInStore(task)),
+        handleTaskDelete: () => {
+            let confirmDelete = window.confirm("Are you sure you want to delete this task?")
+            if (confirmDelete) {
+                dispatch(DeleteTask)
+            }
+        }
     }
 }
 
