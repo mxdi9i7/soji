@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { CreateTaskContainer } from './CreateTask';
 import '../../assets/createJob.css';
-import { SetCreateJobToActive } from '../../actions/CreateTask'
+import { SetCreateJobToActive, HandleJobInput } from '../../actions/CreateTask'
 import { connect } from 'react-redux';
 
 class CreateJob extends Component {
     render() {
-        let { setCreateJobToActive, isCreateJobActive } = this.props;
+        let { setCreateJobToActive, isCreateJobActive, handleJobInput } = this.props;
         return (
             <div className="dashCreateContainer">
                 {
@@ -15,9 +15,9 @@ class CreateJob extends Component {
                         <div className="jobInfoContainer">
                             <div className="createJobCol jobGeneralInfo">
                                 <h1>Job Title:</h1>
-                                <input type="text" placeholder="Add a title to your job" />
+                                <input type="text" placeholder="Add a title to your job" name="title" onChange={handleJobInput} />
                                 <h1>Description:</h1>
-                                <input type="text" placeholder="Add a description to your job"/>
+                                <input type="text" placeholder="Add a description to your job" name="description" onChange={handleJobInput} />
                             </div>
                             <div className="createJobCol jobRecurringInfo">
                                 <h2>Job Settings</h2>
@@ -62,6 +62,11 @@ const mapDispatchToProps = (dispatch) => {
     return {
         setCreateJobToActive: () => {
             dispatch(SetCreateJobToActive)
+        },
+        handleJobInput: (e) => {
+            let value = e.target.value;
+            let name = e.target.name
+            dispatch(HandleJobInput(value, name))
         }
     }
 }

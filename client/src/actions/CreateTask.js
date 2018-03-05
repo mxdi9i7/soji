@@ -18,6 +18,18 @@ export const HandleTaskInput = (value, name, currentIndex) => {
     }
 }
 
+export const HandleJobInput = (value, name) => {
+    return {
+        type: 'HANDLE_JOB_INPUT',
+        value,
+        name
+    }
+}
+
+export const SubmitJob = (title, desc) => {
+    
+}
+
 export const SetCreateJobToActive = {
     type: 'SET_CREATE_JOB_TO_ACTIVE'
 }
