@@ -12,6 +12,9 @@ const JobsSchema = new Schema
     approved: Boolean,
     approvedBy: String,
     assignedTo: String,
+    repeatEvery: Number,
+    numberOfRepeat: Number,
+    neverExpire: Boolean,
     createdAt: Date,
     updatedAt: Date
 });

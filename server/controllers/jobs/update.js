@@ -10,6 +10,9 @@ handleJobUpdate = (req, res, next) => {
         approved: req.body.approved,
         approvedBy: req.body.approvedBy,
         assignedTo: req.body.assignedTo,
+        repeatEvery: req.body.repeatEvery,
+        numberOfRepeat: req.body.numberOfRepeat,
+        neverExpire: req.body.neverExpire,
         updatedAt: new Date()
     };
 

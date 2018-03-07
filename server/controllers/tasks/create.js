@@ -24,6 +24,7 @@ handleTaskCreate = (req, res, next) => {
             taskID: tasksID,
             taskTitle: req.body.taskTitle,
             taskDescription: req.body.taskDescription,
+            taskFile: req.body.taskFile,
             video: req.body.video,
             minute: req.body.minute,
             createdAt: new Date(),
