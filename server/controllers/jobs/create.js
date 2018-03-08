@@ -40,7 +40,8 @@ handleJobCreate = (req, res, next) => {
             } else {
                 res.json({
                     success: true,
-                    message: "Job created"
+                    message: "Job created",
+                    data: callback
                 });
             } 
         });

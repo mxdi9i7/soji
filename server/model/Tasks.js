@@ -9,6 +9,7 @@ const tasksSchema = new Schema
     taskTitle: String,
     taskDescription: String,
     video: String,
+    file: String,
     minute: Number,
     createdAt: Date,
     updatedAt: Date

@@ -3,7 +3,11 @@ import { CreateTaskInStore } from '../../actions/CreateTask';
 import { connect } from 'react-redux';
 import { createStore } from 'redux';
 import { TaskContainer } from './TaskContainer';
-import { DeleteTask } from '../../actions/CreateTask';
+import { DeleteTask, SubmitJob } from '../../actions/CreateTask';
+
+import axios from 'axios';
+import { apiUrl } from '../../serverConfig';
+
 
 import '../../assets/createJob.css';
 
@@ -12,13 +16,13 @@ let task
 class CreateTask extends Component {
    
     render() {
-        const { handleTaskDelete, createTaskInStore, tasks } = this.props;
+        const { handleTaskDelete, createTaskInStore, tasks, submitJob } = this.props;
         task = {
             title: "",
             description: "",
             duration: 0,
-            taskFile: {},
-            taskVideo: {},
+            file: {},
+            video: {},
             currentIndex: tasks.length
         }
         let taskBlocks = [];
@@ -57,7 +61,7 @@ class CreateTask extends Component {
                 </div>
                 {
                     tasks.length > 0 ?
-                    <button className="submitJobBtn">
+                    <button className="submitJobBtn" onClick={submitJob}>
                         Submit For Review
                     </button> :
                     ""
@@ -71,11 +75,13 @@ class CreateTask extends Component {
 
 const mapStateToProps = state => {
     return {
-        tasks: state.createTask.task
+        tasks: state.createTask.task,
+        job: state.createTask.job
     }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, ownProps) => {
+    
     return {
         createTaskInStore: (task) => dispatch(CreateTaskInStore(task)),
         handleTaskDelete: () => {
@@ -83,11 +89,49 @@ const mapDispatchToProps = dispatch => {
             if (confirmDelete) {
                 dispatch(DeleteTask)
             }
+        },
+        submitJob: () => {},
+        onJobCreated: () => {
+            console.log('created')
+            dispatch(SubmitJob)
+        }
+    }
+}
+
+const mergeProps = (stateProps, dispatchProps, ownProps) => {
+    return {
+        tasks: stateProps.tasks,
+        job: stateProps.job,
+        createTaskInStore: dispatchProps.createTaskInStore,
+        handleTaskDelete: dispatchProps.handleTaskDelete,
+        submitJob: (e) => {
+            const jobUrl = apiUrl + '/jobs/create';
+            const taskUrl = apiUrl + '/tasks/create';
+            axios.post(jobUrl, stateProps.job).then((jobData) => {
+                const taskResults = stateProps.tasks.map(async (task) => {
+                    const newTask = {
+                        title: task.title,
+                        description: task.description,
+                        jobID: jobData.data.data.jobID,
+                        // video: task.video,
+                        // file: task.file,
+                        duration: task.duration
+                    }
+                    return axios.post(taskUrl, newTask).then((taskData) => {
+                        return taskData
+                    })
+                })
+                Promise.all(taskResults).then((completed) => {
+                    console.log(dispatchProps)
+                    dispatchProps.onJobCreated
+                })
+            })
         }
     }
 }
 
 export const CreateTaskContainer = connect(
     mapStateToProps,
-    mapDispatchToProps
+    mapDispatchToProps,
+    mergeProps
 )(CreateTask)

@@ -6,11 +6,17 @@ const createTask = (state = {
     switch (action.type) {
         case 'HANDLE_JOB_INPUT':
             let prevJob = state.job;
-            prevJob[action.name] = action.value 
-            console.log(prevJob)
+            prevJob[action.name] = action.value
             return {
                 ...state,
                 prevJob
+            }
+        case 'SUBMIT_JOB': 
+            return {
+                ...state,
+                job: {},
+                task: [],
+                isCreateJobActive: false
             }
         case 'CREATE_TASK_IN_STORE':
             return {

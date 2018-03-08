@@ -26,8 +26,8 @@ export const HandleJobInput = (value, name) => {
     }
 }
 
-export const SubmitJob = (title, desc) => {
-    
+export const SubmitJob = {
+    type: 'SUBMIT_JOB'
 }
 
 export const SetCreateJobToActive = {
