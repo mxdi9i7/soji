@@ -12,6 +12,7 @@ handleTaskUpdate = (req, res, next) => {
     let task = {
         taskTitle: req.body.taskTitle,
         taskDescription: req.body.taskDescription,
+        taskFile: req.body.taskFile,
         video: req.body.video,
         minute: req.body.minute,
         updatedAt: new Date()
@@ -19,6 +20,14 @@ handleTaskUpdate = (req, res, next) => {
     
     Tasks.findOneAndUpdate({taskID:taskID}, task, (err, callback) =>
     {
+        if (task.taskFile != undefined)
+        {
+            cloudinary.v2.uploader.destroy(callback.video, { resource_type: "video" }, function(error, result)
+            {
+                if (error) throw error;
+                console.log(result);
+            });
+        }
         if (task.video != undefined)
         {
             cloudinary.v2.uploader.destroy(callback.video, { resource_type: "video" }, function(error, result)
@@ -26,12 +35,11 @@ handleTaskUpdate = (req, res, next) => {
                 if (error) throw error;
                 console.log(result);
             });
-        } else {
-            res.json({
-                success: true,
-                data: "Task updated"
-            });
-        } 
+        }
+        res.json({
+            success: true,
+            data: "Task updated"
+        }); 
     });
 }
 

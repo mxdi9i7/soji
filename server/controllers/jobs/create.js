@@ -28,6 +28,9 @@ handleJobCreate = (req, res, next) => {
             approved: false,
             approvedBy: '',
             assignedTo: '',
+            repeatEvery: req.body.repeatEvery,
+            numberOfRepeat: req.body.numberOfRepeat,
+            neverExpire: req.body.neverExpire,
             createdAt: new Date(),
             updatedAt: new Date()
         });
