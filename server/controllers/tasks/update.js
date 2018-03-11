@@ -12,7 +12,7 @@ handleTaskUpdate = (req, res, next) => {
     let task = {
         taskTitle: req.body.taskTitle,
         taskDescription: req.body.taskDescription,
-        taskFile: req.body.taskFile,
+        file: req.body.file,
         video: req.body.video,
         minute: req.body.minute,
         updatedAt: new Date()
@@ -20,7 +20,7 @@ handleTaskUpdate = (req, res, next) => {
     
     Tasks.findOneAndUpdate({taskID:taskID}, task, (err, callback) =>
     {
-        if (task.taskFile != undefined)
+        if (task.file != undefined)
         {
             cloudinary.v2.uploader.destroy(callback.video, { resource_type: "video" }, function(error, result)
             {
