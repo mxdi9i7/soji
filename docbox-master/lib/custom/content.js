@@ -1,3 +1,5 @@
+'use strict';
+
 var fs = require('fs');
 
 /**
@@ -9,14 +11,4 @@ var fs = require('fs');
  * into strings of those files' content before the file is delivered to a
  * browser: the content is read ahead-of-time and included in bundle.js.
  */
-module.exports =
-  '# Soji API\n' +
-  fs.readFileSync('./content/introduction.md', 'utf8') + '\n' +
-  '# Staff\n' +
-  fs.readFileSync('./content/staff.md', 'utf8') + '\n' +
-  '# Job\n' +
-  fs.readFileSync('./content/job.md', 'utf8') + '\n' +
-  '# Task\n' +
-  fs.readFileSync('./content/task.md', 'utf8') + '\n' +
-  '# File\n' +
-  fs.readFileSync('./content/file.md', 'utf8') + '\n';
+module.exports = '# Soji API\n' + fs.readFileSync('./content/introduction.md', 'utf8') + '\n' + '# Staff\n' + fs.readFileSync('./content/staff.md', 'utf8') + '\n' + '# Job\n' + fs.readFileSync('./content/job.md', 'utf8') + '\n' + '# Task\n' + fs.readFileSync('./content/task.md', 'utf8') + '\n' + '# File\n' + fs.readFileSync('./content/file.md', 'utf8') + '\n';
