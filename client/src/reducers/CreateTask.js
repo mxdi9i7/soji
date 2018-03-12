@@ -12,6 +12,7 @@ const createTask = (state = {
                 prevJob
             }
         case 'SUBMIT_JOB': 
+            console.log('submitted')
             return {
                 ...state,
                 job: {},

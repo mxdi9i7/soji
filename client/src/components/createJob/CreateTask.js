@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { CreateTaskInStore } from '../../actions/CreateTask';
 import { connect } from 'react-redux';
-import { createStore } from 'redux';
 import { TaskContainer } from './TaskContainer';
 import { DeleteTask, SubmitJob } from '../../actions/CreateTask';
+import { store } from '../../reducers/index'
 
 import axios from 'axios';
 import { apiUrl } from '../../serverConfig';
@@ -90,11 +90,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
                 dispatch(DeleteTask)
             }
         },
-        submitJob: () => {},
-        onJobCreated: () => {
-            console.log('created')
-            dispatch(SubmitJob)
-        }
+        submitJob: () => {}
     }
 }
 
@@ -122,8 +118,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
                     })
                 })
                 Promise.all(taskResults).then((completed) => {
-                    console.log(dispatchProps)
-                    dispatchProps.onJobCreated
+                    store.dispatch(SubmitJob)
                 })
             })
         }

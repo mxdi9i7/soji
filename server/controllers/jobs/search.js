@@ -1,6 +1,6 @@
 const Jobs = require('../../model/Jobs')
 
-handleJobSearch= (req, res, next) => {
+handleJobSearch = (req, res, next) => {
     let jobTitle = req.body.jobTitle;
     let titleArray = jobTitle.split(' ');
     let search = '\.*';

@@ -1,3 +1,98 @@
+.pagination {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    border-radius: 0.25rem;
+  }
+  
+  .page-link {
+    position: relative;
+    display: block;
+    padding: 0.5rem 0.75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #007bff;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+  }
+  
+  .page-link:hover {
+    color: #0056b3;
+    text-decoration: none;
+    background-color: #e9ecef;
+    border-color: #dee2e6;
+  }
+  
+  .page-link:focus {
+    z-index: 2;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+  
+  .page-link:not(:disabled):not(.disabled) {
+    cursor: pointer;
+  }
+  
+  .page-item:first-child .page-link {
+    margin-left: 0;
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+  }
+  
+  .page-item:last-child .page-link {
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+  }
+  
+  .page-item.active .page-link {
+    z-index: 1;
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  .page-item.disabled .page-link {
+    color: #6c757d;
+    pointer-events: none;
+    cursor: auto;
+    background-color: #fff;
+    border-color: #dee2e6;
+  }
+  
+  .pagination-lg .page-link {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+  }
+  
+  .pagination-lg .page-item:first-child .page-link {
+    border-top-left-radius: 0.3rem;
+    border-bottom-left-radius: 0.3rem;
+  }
+  
+  .pagination-lg .page-item:last-child .page-link {
+    border-top-right-radius: 0.3rem;
+    border-bottom-right-radius: 0.3rem;
+  }
+  
+  .pagination-sm .page-link {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+  
+  .pagination-sm .page-item:first-child .page-link {
+    border-top-left-radius: 0.2rem;
+    border-bottom-left-radius: 0.2rem;
+  }
+  
+  .pagination-sm .page-item:last-child .page-link {
+    border-top-right-radius: 0.2rem;
+    border-bottom-right-radius: 0.2rem;
+  }
+  
 .dashContent {
     margin-left: 95px;
     padding: 15px;
@@ -104,4 +199,102 @@
     color: #999;
     margin: 0;
     line-height: 8px;
+}
+.jobsDash .dashTitle {
+    display: flex;
+}
+.jobsDash .dashTitle h1.active {
+    color: red;
+}
+.jobsDash .dashTableContainer {
+    box-shadow: 0 1px 8px 0 rgba(0,0,0,.2), 0 3px 4px 0 rgba(0,0,0,.14), 0 3px 3px -2px rgba(0,0,0,.12);
+    padding: 30px;
+    margin: 30px 15px;
+}
+.dashTableContainer .dashTableFilterHeader {
+    display: flex;
+}
+.dashTableFilterHeader h2 {
+    margin: 0 5px;
+    padding: 5px 20px;
+    font-size: 18px;
+    font-weight: 300;
+    border: 3px solid transparent;
+    transition: .2s;
+    border-radius: 5px;    
+}
+.dashTableFilterHeader h2.active {
+    border: 3px solid #333;
+}
+.dashTableFilterHeader h2:hover {
+    cursor: pointer;
+    border: 3px solid #555;
+}
+.dashTableTitles {
+    display: flex;
+    justify-content: space-between;
+}
+.dashTableTitles h1 {
+    font-weight: 400;
+    font-size: 24px;
+    margin: 30px;
+}
+.dashTableTitles select {
+    display: flex;
+    align-self: center;
+}
+.dashTableTitles .dashItemFilters * {
+    display: inline;
+}
+.dashTable {
+    width: 100%;
+    border-collapse: collapse
+}
+.dashTable tbody {
+    border: 1px solid #999;
+}
+.dashTable thead {
+    border-bottom: 3px solid red;
+    text-align: left;
+}
+.dashTable thead tr {
+    padding: 5px 15px;
+}
+.dashTable tbody tr td {
+    border-bottom: 1px solid #999;
+    border-top: 1px solid #999;
+}
+.paginationContainer {
+    margin: 30px auto 0 auto;
+    display: flex;
+    justify-content: center;
+}
+.react-paginate ul {
+    display: inline-block;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.react-paginate li {
+    display: inline-block;
+    margin: 0 10px;
+}
+.react-paginate a:hover {
+    cursor: pointer;
+    background-color: purple;
+    color: #fff;
+}
+.react-paginate a {
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 50%;
+    background-color: transparent;
+    transition: .2s;
+    display: inline-block;
+    outline: none;
+}
+.react-paginate li.active {
+    background-color: purple;
+    color: #fff;
+    border-radius: 50%;
 }

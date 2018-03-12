@@ -4,8 +4,7 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import { sojiApp, store } from './reducers/index'
+import { store } from './reducers/index'
 
 
 ReactDOM.render(

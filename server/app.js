@@ -21,6 +21,7 @@ const create = require('./routes/jobs/create');
 const search = require('./routes/jobs/search');
 const deletes = require('./routes/jobs/delete');
 const update = require('./routes/jobs/update');
+const fetch = require('./routes/jobs/fetch');
 // delete 会报错
 
 // task route
@@ -82,6 +83,7 @@ app.use('/api/v1/jobs/create', create);
 app.use('/api/v1/jobs/search', search);
 app.use('/api/v1/jobs/delete', deletes);
 app.use('/api/v1/jobs/update', update);
+app.use('/api/v1/jobs/fetch', fetch);
 
 // task path
 app.use('/api/v1/tasks/create', createTask);
