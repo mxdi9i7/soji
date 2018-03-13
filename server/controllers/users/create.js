@@ -17,11 +17,13 @@ handleStaffCreate = (req, res, next) => {
             password: req.body.password,
             email: req.body.email,
             name: req.body.name,
-            photo: req.body.photo,
+            photo: req.file.filename,
             key: req.body.key,
             totalRating: 0,
             ratingCount: 0
         });
+
+        console.log(staff)
 
         if(staff.key == key)
         {

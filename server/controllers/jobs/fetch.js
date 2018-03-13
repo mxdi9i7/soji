@@ -9,7 +9,6 @@ fetchJobsWithFilter = (req, res) => {
 
     Jobs.find({}, (err, jobs) => {
         let paginationData = pagination(jobs, itemsPerPage, page)
-       
         const data = {
             pageCount: paginationData.pageCount,
             results: paginationData.results,
