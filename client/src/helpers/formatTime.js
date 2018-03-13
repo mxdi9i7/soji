@@ -1,4 +1,4 @@
-const formatTimeToYYMMDD = (dateObj) => {
+export const formatTimeToYYMMDD = (dateObj) => {
     const formattedTime = new Date(dateObj)
     const year = formattedTime.getFullYear()
     const month = formattedTime.getMonth() + 1
@@ -8,8 +8,4 @@ const formatTimeToYYMMDD = (dateObj) => {
         month,
         date
     }
-}
-
-export {
-    formatTimeToYYMMDD
 }

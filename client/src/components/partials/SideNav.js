@@ -11,19 +11,19 @@ export default class SideNav extends Component {
                     <i className="fa fa-arrow-left"></i>
                 </div>
                 <div className="divider"></div>
-                <Link to="/" className="navButton active dashboard">
+                <Link to="/dash/" className={this.props.currentPage == "dash" ? "active navButton dashboard" : "navButton dashboard"}>
                     <i className="fa fa-home"></i>
                     <h2>Dashboard</h2>
                 </Link>
-                <Link to="/jobs" className="navButton jobs">
+                <Link to="/dash/jobs" className={this.props.currentPage == "jobs" ? "active navButton dashboard" : "navButton dashboard"}>
                     <i className="fa fa-briefcase"></i>
                     <h2>Jobs</h2>
                 </Link>
-                <Link to="/files" className="navButton files">
+                <Link to="/dash/files" className={this.props.currentPage == "files" ? "active navButton dashboard" : "navButton dashboard"}>
                     <i className="fa fa-paperclip"></i>
                     <h2>Files</h2>
                 </Link>
-                <Link to="/employees" className="navButton employees">
+                <Link to="/dash/employees" className={this.props.currentPage == "employees" ? "active navButton dashboard" : "navButton dashboard"}>
                     <i className="fa fa-users"></i>
                     <h2>Employees</h2>
                 </Link>

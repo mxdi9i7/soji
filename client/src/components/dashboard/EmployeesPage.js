@@ -3,72 +3,62 @@ import Dashnav from '../partials/Dashnav';
 import SideNav from '../partials/SideNav';
 import { connect } from 'react-redux';
 import { store } from '../../reducers/index'
-import { getJobs } from '../../actions/ManageJobs';
 import axios from 'axios';
 import { apiUrl } from '../../serverConfig';
-import { JobsTableBlock } from '../tableComponents/JobsTableBlock';
 import ReactPaginate from 'react-paginate';
-
+import { getEmployees } from '../../actions/ManageEmployees'; 
+import { EmployeesTableBlock } from '../tableComponents/EmployeesTableBlock';
 
 import '../../assets/dash.css'
 
-class Jobs extends Component {
+export class Employees extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            jobs: this.props.jobs
         }
     }
     componentWillMount() {
     }
     render() {
-        const { totalItems } = this.props
         return(
-            <div className="jobsDash">
+            <div className="employeesDash">
                 <Dashnav />
-                <SideNav currentPage={"jobs"} />
+                <SideNav currentPage={"employees"} />
                 <div className="dashContent">
                     <div className="dashHeader">
                         <div className="dashTitle">
-                            <h1 className="active">Jobs</h1><h1>/</h1><h1>Tasks</h1>
+                            <h1 className="active">Employees</h1><h1>/</h1><h1>Teams</h1>
                         </div>
                     </div>
                     <div className="dashTableContainer">
-                        <div className="dashTableFilterHeader">
-                            <h2 className="active">All</h2>
-                            <h2>Unassigned</h2>
-                            <h2>Assigned</h2>
-                        </div>
                         <div className="dashTableTitles">
-                            <h1>All Jobs</h1>
+                            <h1>All Employees</h1>
                             <div className="dashItemFilters">
-                                <select name="" id="">
-                                    <option value="day">Last Day</option>
-                                    <option value="day">Last Week</option>
-                                    <option value="day">Last Month</option>
-                                    <option value="day">Last Year</option>
-                                </select>
-                                <input type="text" placeholder="Search Jobs"/>
+                                <input type="text" placeholder="Search Employees"/>
                             </div>
                         </div>
                         <table className="dashTable">
                             <thead className="dashTableHeader">
                                 <tr>
-                                    <th>Created</th>
-                                    <th>Job</th>
-                                    <th>Assigned to</th>
-                                    <th>Manager</th>
-                                    <th>Client</th>
+                                    <th>Employee Name</th>
+                                    <th>Rating</th>
+                                    <th>Status</th>
+                                    <th>Current Team</th>
+                                    <th>Join Date</th>
+                                    <th>Setting</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {
-                                    this.props.jobs.map((e, i) => {
-                                        return (
-                                            <JobsTableBlock key={i} job={e} />
-                                        )
-                                    })
+                                    console.log(this.props.employees)
                                 }
+                                    {
+                                        this.props.employees.map((e, i) => {
+                                            return (
+                                                <EmployeesTableBlock key={i} employee={e} />
+                                            )
+                                        })
+                                    }
                             </tbody>
                         </table>
                         <div className="paginationContainer">
@@ -77,7 +67,7 @@ class Jobs extends Component {
                                 pageRangeDisplayed={3}
                                 marginPageDispayed={2}
                                 onPageChange={(e) => {
-                                    this.props.fetchJobs(e.selected + 1)
+                                    this.props.fetchEmployees(e.selected + 1)
                                 }}
                                 activeClassName={"active"}
                                 containerClassName={"react-paginate"}
@@ -95,24 +85,24 @@ class Jobs extends Component {
 
 const mapStateToProps = state => {
     return {
-        jobs: state.manageJobs.jobs,
-        page: state.manageJobs.page,
-        totalPage: state.manageJobs.totalPage,
-        totalItems: state.manageJobs.totalItems
+        employees: state.manageEmployees.employees,
+        page: state.manageEmployees.page,
+        totalPage: state.manageEmployees.totalPage,
+        totalItems: state.manageEmployees.totalItems
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchJobs: (e) => {
-            axios.get(apiUrl + '/jobs/fetch', {
+        fetchEmployees: (e) => {
+            axios.get(apiUrl + '/users/fetch/staff', {
                 params: {
-                    page: e
+                    page: 1
                 }
             })
             .then(response => {
-                const jobsData = response.data.data
-                store.dispatch(getJobs(jobsData.page, jobsData.pageCount, jobsData.results, jobsData.totalCount))
+                const employeesData = response.data.data
+                store.dispatch(getEmployees(employeesData.page, employeesData.pageCount, employeesData.results, employeesData.totalCount))
             })
         }
     }
@@ -120,17 +110,17 @@ const mapDispatchToProps = (dispatch) => {
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => {
     return {
-        jobs: stateProps.jobs,
+        fetchEmployees: dispatchProps.fetchEmployees,
         page: stateProps.page,
         totalItems: stateProps.totalItems,
         totalPage: stateProps.totalPage,
-        fetchJobs: dispatchProps.fetchJobs
+        employees: stateProps.employees
     }
 }
 
 
-export const JobsPage = connect(
+export const EmployeesPage = connect(
     mapStateToProps,
     mapDispatchToProps,
     mergeProps
-)(Jobs)
+)(Employees)

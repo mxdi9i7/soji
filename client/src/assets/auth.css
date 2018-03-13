@@ -1,0 +1,83 @@
+.authWrapper {
+    background-image: url(./employeebg.png);
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.authContainer {
+    align-self: center;
+    background-color: #fff;
+    padding: 30px 15px;
+    border: 1px solid #eee;
+    min-width: 400px;
+}
+.authHeader h1 {
+    font-size: 32px;
+    margin: 0;
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: 400;
+}
+.authForm {
+    width: inherit;
+    margin:  0 auto;
+}
+.authForm .authInputGroup {
+    display: block;
+    padding: 5px 0;
+    width: 100%;
+}
+.authInputGroup label {
+    font-weight: 500;
+    font-size: 11px;
+    display: block;
+    margin: 5px 0;
+}
+.authInputGroup input {
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #C5CAE9;
+    outline: none;
+    border-radius: 5px;
+}
+.authInputGroup input:focus {
+    border: 1px solid #448AFF;
+}
+.authForm button {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    background-color: #448AFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    transition: .1s;
+}
+.authForm button:hover {
+    cursor: pointer;
+    background-color: #303F9F;
+}
+.authFooter p {
+    font-size: 12px;
+    color: #999;
+    text-align: center;
+}
+.authFooter p a {
+    color: #303F9F;
+}
+.authFooter p a:hover {
+    color: #448AFF;
+    cursor: pointer;
+}
+.authIdentifier {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+.authIdentifier p {
+    margin: 0;
+    font-weight: 900;
+}

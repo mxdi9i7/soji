@@ -19,7 +19,7 @@ class Dashboard extends Component {
         return(
             <div>
                 <Dashnav />
-                <SideNav />
+                <SideNav currentPage={"dash"} />
                 <div className="dashContent">
                     <div className="dashHeader">
                         <div className="dashTitle">

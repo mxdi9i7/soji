@@ -200,13 +200,16 @@
     margin: 0;
     line-height: 8px;
 }
-.jobsDash .dashTitle {
+.dashTitle {
     display: flex;
 }
 .jobsDash .dashTitle h1.active {
     color: red;
 }
-.jobsDash .dashTableContainer {
+.employeesDash .dashTitle h1.active {
+    color: blue;
+}
+.dashTableContainer {
     box-shadow: 0 1px 8px 0 rgba(0,0,0,.2), 0 3px 4px 0 rgba(0,0,0,.14), 0 3px 3px -2px rgba(0,0,0,.12);
     padding: 30px;
     margin: 30px 15px;
@@ -264,6 +267,9 @@
     border-bottom: 1px solid #999;
     border-top: 1px solid #999;
 }
+.dashTable tbody tr td p {
+    margin: 0;
+}
 .paginationContainer {
     margin: 30px auto 0 auto;
     display: flex;
@@ -279,7 +285,7 @@
     display: inline-block;
     margin: 0 10px;
 }
-.react-paginate a:hover {
+.react-paginate li.page-item a:hover {
     cursor: pointer;
     background-color: purple;
     color: #fff;
