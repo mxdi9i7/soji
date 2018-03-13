@@ -15,6 +15,7 @@ const createStaff = require('./routes/users/create');
 const searchStaff = require('./routes/users/search');
 const deleteStaff = require('./routes/users/delete');
 const updateStaff = require('./routes/users/update');
+const fetchUsers = require('./routes/users/fetch');
 
 // job route
 const create = require('./routes/jobs/create');
@@ -77,6 +78,7 @@ app.use('/api/v1/users/create', createStaff);
 app.use('/api/v1/users/search', searchStaff);
 app.use('/api/v1/users/delete', deleteStaff);
 app.use('/api/v1/users/update', updateStaff);
+app.use('/api/v1/users/fetch', fetchUsers);
 
 // job path
 app.use('/api/v1/jobs/create', create);

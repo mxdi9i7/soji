@@ -18,13 +18,12 @@ handleStaffCreate = (req, res, next) => {
             email: req.body.email,
             name: req.body.name,
             photo: req.file.filename,
+            active: true,
             key: req.body.key,
             totalRating: 0,
-            ratingCount: 0
+            ratingCount: 0,
+            createdAt: new Date()
         });
-
-        console.log(staff)
-
         if(staff.key == key)
         {
             staff.save((err, callback) => {

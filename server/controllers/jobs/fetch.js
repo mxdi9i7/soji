@@ -15,8 +15,10 @@ fetchJobsWithFilter = (req, res) => {
             totalCount: paginationData.totalCount,
             page: Number(page)
         }
-        console.log(data)
-        res.json(data)
+        res.json({
+            success: true,
+            data: data
+        })
     })
 }
 

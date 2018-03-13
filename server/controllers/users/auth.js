@@ -62,9 +62,9 @@ handleClientLogin = (req, res, next) => {
 }
 
 handleStaffLogin = (req, res, next) => {
-    const username = req.body.username;
+    const email = req.body.email;
     const password = req.body.password;
-    let query = {username: username}
+    let query = {email}
     Staff.findOne(query, (err, user) => {
         if (err) {
             res.json({

@@ -10,10 +10,12 @@ const StaffSchema = new Schema
     password: String,
     email: String,
     name: String,
+    active: Boolean,
     photo: String,
     key: String,
     totalRating: Number,
-    ratingCount: Number
+    ratingCount: Number,
+    createdAt: Date
 });
 
 const Staff = module.exports = mongoose.model('Staff', StaffSchema);
