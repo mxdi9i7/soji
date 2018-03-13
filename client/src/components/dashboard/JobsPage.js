@@ -20,7 +20,7 @@ class Jobs extends Component {
         }
     }
     componentWillMount() {
-        this.props.fetchJobs()
+        // this.props.fetchJobs()
     }
     render() {
         const { totalItems } = this.props
@@ -57,7 +57,6 @@ class Jobs extends Component {
                                 <tr>
                                     <th>Created</th>
                                     <th>Job</th>
-                                    <th>Est. Duration</th>
                                     <th>Assigned to</th>
                                     <th>Manager</th>
                                     <th>Client</th>
@@ -114,7 +113,7 @@ const mapDispatchToProps = (dispatch) => {
             })
             .then(data => {
                 const jobsData = data.data
-                store.dispatch(getJobs(jobsData.page, jobsData.totalPage, jobsData.jobs, jobsData.totalCount))
+                store.dispatch(getJobs(jobsData.page, jobsData.pageCount, jobsData.results, jobsData.totalCount))
             })
         }
     }
@@ -135,7 +134,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
             })
             .then(data => {
                 const jobsData = data.data
-                store.dispatch(getJobs(jobsData.page, jobsData.totalPage, jobsData.jobs, jobsData.totalCount))
+                store.dispatch(getJobs(jobsData.page, jobsData.pageCount, jobsData.results, jobsData.totalCount))
             })
         }
     }

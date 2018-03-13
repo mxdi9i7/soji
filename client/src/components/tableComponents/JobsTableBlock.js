@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { store } from '../../reducers/index'
-
+import { formatTimeToYYMMDD } from '../../helpers/formatTime'
 import '../../assets/dash.css'
 
 class block extends Component {
@@ -12,14 +12,14 @@ class block extends Component {
         }
     }
     render() {
+        const YYMMDD = formatTimeToYYMMDD(this.state.job.createdAt)
         return(
             <tr>
-                <td>{this.state.job.createdAt}</td>
+                <td>{YYMMDD.year}/{YYMMDD.month}/{YYMMDD.date}</td>
                 <td>
                     <p>{this.state.job.jobTitle}</p>
                     <span>Job ID: {this.state.job.jobID}</span>
                 </td>
-                <td>{this.state.job.duration}</td>
                 <td>
                     <p>Team ID: {this.state.job.teamID}</p>
                 </td>
