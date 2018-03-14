@@ -27,14 +27,14 @@ export default class SideNav extends Component {
                     <i className="fa fa-users"></i>
                     <h2>Employees</h2>
                 </Link>
-                <Link to="/clients" className="navButton clients">
+                {/* <Link to="/dash/clients" className={this.props.currentPage == "clients" ? "active navButton dashboard" : "navButton dashboard"}>
                     <i className="fa fa-address-book "></i>
                     <h2>Clients</h2>
                 </Link>
-                <Link to="/billing" className="navButton billing">
+                <Link to="/dash/billing" className={this.props.currentPage == "billing" ? "active navButton dashboard" : "navButton dashboard"}>
                     <i className="fa fa-credit-card "></i>
                     <h2>Billing</h2>
-                </Link>
+                </Link> */}
             </div>
         )
     }

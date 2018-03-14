@@ -6,6 +6,7 @@ const JobsSchema = new Schema
 ({
     jobID: String,
     teamID: String,
+    clientID: String,
     jobTitle: String,
     jobDescription: String,
     quote: Number,

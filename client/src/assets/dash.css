@@ -203,6 +203,9 @@
 .dashTitle {
     display: flex;
 }
+.dashTitle a {
+    text-decoration: none;
+}
 .jobsDash .dashTitle h1.active {
     color: red;
 }

@@ -23,6 +23,8 @@ handleFileCreate = (req, res, next) => {
             taskID: req.body.taskID,
             fileID: fileID,
             fileName: req.body.fileName,
+            //fieldName: wait for multer setup and file upload structure
+            //rating: wait for multer setup and file upload structure
             createdAt: new Date()
         });
         newFile.save((err, callback) => {

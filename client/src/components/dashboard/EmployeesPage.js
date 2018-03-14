@@ -52,13 +52,13 @@ export class Employees extends Component {
                                 {
                                     console.log(this.props.employees)
                                 }
-                                    {
-                                        this.props.employees.map((e, i) => {
-                                            return (
-                                                <EmployeesTableBlock key={i} employee={e} />
-                                            )
-                                        })
-                                    }
+                                {
+                                    this.props.employees.map((e, i) => {
+                                        return (
+                                            <EmployeesTableBlock key={i} employee={e} />
+                                        )
+                                    })
+                                }
                             </tbody>
                         </table>
                         <div className="paginationContainer">
@@ -97,7 +97,7 @@ const mapDispatchToProps = (dispatch) => {
         fetchEmployees: (e) => {
             axios.get(apiUrl + '/users/fetch/staff', {
                 params: {
-                    page: 1
+                    page: e
                 }
             })
             .then(response => {

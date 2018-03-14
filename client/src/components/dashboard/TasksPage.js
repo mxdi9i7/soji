@@ -3,20 +3,20 @@ import Dashnav from '../partials/Dashnav';
 import SideNav from '../partials/SideNav';
 import { connect } from 'react-redux';
 import { store } from '../../reducers/index'
-import { getJobs } from '../../actions/ManageJobs';
+import { getTasks } from '../../actions/ManageTasks';
 import axios from 'axios';
 import { apiUrl } from '../../serverConfig';
-import { JobsTableBlock } from '../tableComponents/JobsTableBlock';
+import { TasksTableBlock } from '../tableComponents/TasksTableBlock';
 import ReactPaginate from 'react-paginate';
 
 
 import '../../assets/dash.css'
 
-class Jobs extends Component {
+class Tasks extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            jobs: this.props.jobs
+            tasks: this.props.tasks
         }
     }
     componentWillMount() {
@@ -24,23 +24,18 @@ class Jobs extends Component {
     render() {
         const { totalItems } = this.props
         return(
-            <div className="jobsDash">
+            <div className="tasksDash">
                 <Dashnav />
                 <SideNav currentPage={"jobs"} />
                 <div className="dashContent">
                     <div className="dashHeader">
                         <div className="dashTitle">
-                            <h1 className="active"><a href="/dash/jobs">Jobs</a></h1><h1>/</h1><h1><a href="/dash/tasks">Tasks</a></h1>
+                        <h1><a href="/dash/jobs">Jobs</a></h1><h1>/</h1><h1 className="active"><a href="/dash/tasks">Tasks</a></h1>
                         </div>
                     </div>
                     <div className="dashTableContainer">
-                        <div className="dashTableFilterHeader">
-                            <h2 className="active">All</h2>
-                            <h2>Unassigned</h2>
-                            <h2>Assigned</h2>
-                        </div>
                         <div className="dashTableTitles">
-                            <h1>All Jobs</h1>
+                            <h1>All Tasks</h1>
                             <div className="dashItemFilters">
                                 <select name="" id="">
                                     <option value="day">Last Day</option>
@@ -48,24 +43,26 @@ class Jobs extends Component {
                                     <option value="day">Last Month</option>
                                     <option value="day">Last Year</option>
                                 </select>
-                                <input type="text" placeholder="Search Jobs"/>
+                                <input type="text" placeholder="Search tasks"/>
                             </div>
                         </div>
                         <table className="dashTable">
                             <thead className="dashTableHeader">
                                 <tr>
                                     <th>Created</th>
+                                    <th>Task</th>
                                     <th>Job</th>
-                                    <th>Assigned to</th>
+                                    <th>Download</th>
+                                    <th>Team</th>
                                     <th>Manager</th>
                                     <th>Client</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {
-                                    this.props.jobs.map((e, i) => {
+                                    this.props.tasks.map((e, i) => {
                                         return (
-                                            <JobsTableBlock key={i} job={e} />
+                                            <TasksTableBlock key={i} task={e} />
                                         )
                                     })
                                 }
@@ -77,7 +74,7 @@ class Jobs extends Component {
                                 pageRangeDisplayed={3}
                                 marginPageDispayed={2}
                                 onPageChange={(e) => {
-                                    this.props.fetchJobs(e.selected + 1)
+                                    this.props.fetchTasks(e.selected + 1)
                                 }}
                                 activeClassName={"active"}
                                 containerClassName={"react-paginate"}
@@ -95,24 +92,24 @@ class Jobs extends Component {
 
 const mapStateToProps = state => {
     return {
-        jobs: state.manageJobs.jobs,
-        page: state.manageJobs.page,
-        totalPage: state.manageJobs.totalPage,
-        totalItems: state.manageJobs.totalItems
+        tasks: state.manageTasks.tasks,
+        page: state.manageTasks.page,
+        totalPage: state.manageTasks.totalPage,
+        totalItems: state.manageTasks.totalItems
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchJobs: (e) => {
-            axios.get(apiUrl + '/jobs/fetch', {
+        fetchTasks: (e) => {
+            axios.get(apiUrl + '/tasks/fetch', {
                 params: {
                     page: e
                 }
             })
             .then(response => {
-                const jobsData = response.data.data
-                store.dispatch(getJobs(jobsData.page, jobsData.pageCount, jobsData.results, jobsData.totalCount))
+                const tasksData = response.data.data
+                store.dispatch(getTasks(tasksData.page, tasksData.pageCount, tasksData.results, tasksData.totalCount))
             })
         }
     }
@@ -120,17 +117,17 @@ const mapDispatchToProps = (dispatch) => {
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => {
     return {
-        jobs: stateProps.jobs,
+        tasks: stateProps.tasks,
         page: stateProps.page,
         totalItems: stateProps.totalItems,
         totalPage: stateProps.totalPage,
-        fetchJobs: dispatchProps.fetchJobs
+        fetchTasks: dispatchProps.fetchTasks
     }
 }
 
 
-export const JobsPage = connect(
+export const TasksPage = connect(
     mapStateToProps,
     mapDispatchToProps,
     mergeProps
-)(Jobs)
+)(Tasks)

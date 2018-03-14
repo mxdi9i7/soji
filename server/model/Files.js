@@ -8,7 +8,9 @@ const FilesSchema = new Schema
     taskID: String,
     fileID: String,
     fileName: String,
-    createdAt: Date
+    fieldName: String,
+    createdAt: Date,
+    rating: Number
 });
 
 const Files = module.exports = mongoose.model('Files', FilesSchema);

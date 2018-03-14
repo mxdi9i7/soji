@@ -3,44 +3,36 @@ import Dashnav from '../partials/Dashnav';
 import SideNav from '../partials/SideNav';
 import { connect } from 'react-redux';
 import { store } from '../../reducers/index'
-import { getJobs } from '../../actions/ManageJobs';
 import axios from 'axios';
 import { apiUrl } from '../../serverConfig';
-import { JobsTableBlock } from '../tableComponents/JobsTableBlock';
 import ReactPaginate from 'react-paginate';
-
+import { getFiles } from '../../actions/ManageFiles';
+import { FilesTableBlock } from '../tableComponents/FilesTableBlock';
 
 import '../../assets/dash.css'
 
-class Jobs extends Component {
+export class Files extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            jobs: this.props.jobs
         }
     }
     componentWillMount() {
     }
     render() {
-        const { totalItems } = this.props
         return(
-            <div className="jobsDash">
+            <div className="filesDash">
                 <Dashnav />
-                <SideNav currentPage={"jobs"} />
+                <SideNav currentPage={"files"} />
                 <div className="dashContent">
                     <div className="dashHeader">
                         <div className="dashTitle">
-                            <h1 className="active"><a href="/dash/jobs">Jobs</a></h1><h1>/</h1><h1><a href="/dash/tasks">Tasks</a></h1>
+                            <h1 className="active">File Submissions</h1>
                         </div>
                     </div>
                     <div className="dashTableContainer">
-                        <div className="dashTableFilterHeader">
-                            <h2 className="active">All</h2>
-                            <h2>Unassigned</h2>
-                            <h2>Assigned</h2>
-                        </div>
                         <div className="dashTableTitles">
-                            <h1>All Jobs</h1>
+                            <h1>All Files</h1>
                             <div className="dashItemFilters">
                                 <select name="" id="">
                                     <option value="day">Last Day</option>
@@ -54,18 +46,20 @@ class Jobs extends Component {
                         <table className="dashTable">
                             <thead className="dashTableHeader">
                                 <tr>
-                                    <th>Created</th>
-                                    <th>Job</th>
-                                    <th>Assigned to</th>
+                                    <th>Uploaded</th>
+                                    <th>Task/Job</th>
+                                    <th>Download</th>
+                                    <th>Team</th>
                                     <th>Manager</th>
+                                    <th>File Rating</th>
                                     <th>Client</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {
-                                    this.props.jobs.map((e, i) => {
+                                    this.props.files.map((e, i) => {
                                         return (
-                                            <JobsTableBlock key={i} job={e} />
+                                            <FilesTableBlock key={i} file={e} />
                                         )
                                     })
                                 }
@@ -77,7 +71,7 @@ class Jobs extends Component {
                                 pageRangeDisplayed={3}
                                 marginPageDispayed={2}
                                 onPageChange={(e) => {
-                                    this.props.fetchJobs(e.selected + 1)
+                                    this.props.fetchFiles(e.selected + 1)
                                 }}
                                 activeClassName={"active"}
                                 containerClassName={"react-paginate"}
@@ -95,24 +89,24 @@ class Jobs extends Component {
 
 const mapStateToProps = state => {
     return {
-        jobs: state.manageJobs.jobs,
-        page: state.manageJobs.page,
-        totalPage: state.manageJobs.totalPage,
-        totalItems: state.manageJobs.totalItems
+        files: state.manageFiles.files,
+        page: state.manageFiles.page,
+        totalPage: state.manageFiles.totalPage,
+        totalItems: state.manageFiles.totalItems
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchJobs: (e) => {
-            axios.get(apiUrl + '/jobs/fetch', {
+        fetchFiles: (e) => {
+            axios.get(apiUrl + '/files/fetch', {
                 params: {
                     page: e
                 }
             })
             .then(response => {
-                const jobsData = response.data.data
-                store.dispatch(getJobs(jobsData.page, jobsData.pageCount, jobsData.results, jobsData.totalCount))
+                const filesData = response.data.data
+                store.dispatch(getFiles(filesData.page, filesData.pageCount, filesData.results, filesData.totalCount))
             })
         }
     }
@@ -120,17 +114,17 @@ const mapDispatchToProps = (dispatch) => {
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => {
     return {
-        jobs: stateProps.jobs,
+        fetchFiles: dispatchProps.fetchFiles,
+        files: stateProps.files,
         page: stateProps.page,
         totalItems: stateProps.totalItems,
         totalPage: stateProps.totalPage,
-        fetchJobs: dispatchProps.fetchJobs
     }
 }
 
 
-export const JobsPage = connect(
+export const FilesPage = connect(
     mapStateToProps,
     mapDispatchToProps,
     mergeProps
-)(Jobs)
+)(Files)
