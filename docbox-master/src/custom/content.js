@@ -19,4 +19,6 @@ module.exports =
   '# Task\n' +
   fs.readFileSync('./content/task.md', 'utf8') + '\n' +
   '# File\n' +
-  fs.readFileSync('./content/file.md', 'utf8') + '\n';
+  fs.readFileSync('./content/file.md', 'utf8') + '\n' +
+  '# Team\n' +
+  fs.readFileSync('./content/team.md', 'utf8') + '\n';

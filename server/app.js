@@ -39,6 +39,12 @@ const deleteFile = require('./routes/files/delete');
 const updateFile = require('./routes/files/update');
 const fetchFile = require('./routes/files/fetch');
 
+// team route
+const createTeam = require('./routes/teams/create');
+const searchTeam = require('./routes/teams/search');
+const deleteTeam = require('./routes/teams/delete');
+const updateTeam = require('./routes/teams/update');
+
 var app = express();
 
 
@@ -102,6 +108,12 @@ app.use('/api/v1/files/search', searchFile);
 app.use('/api/v1/files/delete', deleteFile);
 app.use('/api/v1/files/update', updateFile);
 app.use('/api/v1/files/fetch', fetchFile);
+
+// team path
+app.use('/api/v1/teams/create', createTeam);
+app.use('/api/v1/teams/search', searchTeam);
+app.use('/api/v1/teams/delete', deleteTeam);
+app.use('/api/v1/teams/update', updateTeam);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

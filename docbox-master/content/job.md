@@ -108,6 +108,7 @@ POST /api/v1/jobs/update
 ```
 Property | Description
 ---|---
+`jobID` | (required) 要更改的 job 的 id
 `teamID` | (required) 负责该job的队伍编号
 `jobTitle` | (required) job 名 
 `jobDescription` | (required) job 说明

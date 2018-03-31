@@ -3,15 +3,14 @@ const Staff = require('../../model/Staff');
 handleStaffUpdate = (req, res, next) => {
     let staff = {
         teamID: req.body.teamID,
-        password: req.body.teamID,
+        password: req.body.password,
         email: req.body.email,
         name: req.body.name,
         photo: req.body.photo
     }
-
-    if (photo != undefined) {
-        let query = {staffID: req.body.staffID}
-
+    let query = {staffID: req.body.staffID}
+    
+    if (staff.photo != undefined && staff.photo != '') {
         Staff.findOne(query, {photo: 1, _id:0}, (err, callback) =>
         {
             cloudinary.v2.uploader.destroy(callback[0].photo, function(error, result)

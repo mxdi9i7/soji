@@ -21,6 +21,7 @@ handleFileCreate = (req, res, next) => {
         ({
             jobID: req.body.jobID,
             taskID: req.body.taskID,
+            managerID: req.body.managerID,
             fileID: fileID,
             fileName: req.body.fileName,
             //fieldName: wait for multer setup and file upload structure

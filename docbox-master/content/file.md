@@ -9,6 +9,7 @@ Property | Description
 ---|---
 `jobID` | (required) file 对应的 job 编号
 `taskID` | (required) file 对应的 task 编号
+`managerID` | (required) 上传该 file 的负责人 id
 `fileName` | (required) file 名
 #### Example response
 ```json

@@ -6,6 +6,7 @@ const FilesSchema = new Schema
 ({
     jobID: String,
     taskID: String,
+    managerID: String,
     fileID: String,
     fileName: String,
     fieldName: String,

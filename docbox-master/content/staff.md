@@ -157,17 +157,26 @@ Property | Description
 ```json
 {
     "success": true,
-    "data": {
-        "_id": "5a6237b0dd03dd0f14437d2c"
-        "staffID": "000011"
-        "username": "req.body.username"
-        "password": "req.body.password"
-        "email": "req.body.email"
-        "name": "req.body.name"
-        "photo": "req.body.photo"
-        "rating": 0
-        "__v": "0"
-    }
+    "data": [
+        {
+            "_id": "5aa843472a1657079015945d",
+            "staffID": "000015",
+            "teamID": "650177",
+            "username": "peter zheng",
+            "password": "",
+            "email": "",
+            "photo": "",
+            "key": "123456",
+            "active": true,
+            "totalRating": 0,
+            "ratingCount": 0,
+            "__v": 0,
+            "name": ""
+        },
+        {
+            "managerID": "000016"
+        }
+    ]
 }
 
 ```
@@ -213,6 +222,7 @@ POST /api/v1/users/update
 ```
 Property | Description
 ---|---
+`staffID` | (required) 要更改的 staff 的 id
 `teamID` | (required) 队伍ID
 `password` | (required) 密码
 `email` | (required) 邮箱

@@ -1,4 +1,5 @@
 const Staff = require('../../model/Staff');
+const Teams = require('../../model/Teams');
 
 handleStaffSearch= (req, res, next) => {
     let query = {staffID: req.body.staffID}
@@ -11,9 +12,24 @@ handleStaffSearch= (req, res, next) => {
                 data: err
             });
         } else {
-            res.json({
-                success: true,
-                data: callback
+            let data = JSON.parse(JSON.stringify(callback));
+            query = {teamID: data[0].teamID};
+            Teams.findOne(query, (err, callback) => 
+            {
+                if (err) {
+                    res.json({
+                        success: false,
+                        data: err
+                    });
+                } else {
+                    let managerID = JSON.parse(JSON.stringify(callback)).managerID;
+                    let idJson = {"managerID":managerID};
+                    data.push(idJson);
+                    res.json({
+                        success: true,
+                        data: data
+                    });
+                }
             });
         }
     });

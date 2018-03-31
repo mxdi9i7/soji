@@ -6,6 +6,7 @@ const TeamsSchema = new Schema
 ({
     teamID: String,
     teamName: String,
+    managerID: String,
     creationDate: Date
 });
 
