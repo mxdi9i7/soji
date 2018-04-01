@@ -29,12 +29,56 @@ Property | Description
 
 ```
 
-### Job查询
+### Job查询（根据名称查询）
 
 Job查询
 
 ```endpoint
-POST /api/v1/jobs/search
+POST /api/v1/jobs/search/title
+```
+Property | Description
+---|---
+`jobTitle` | (required) job 名
+#### Example response
+
+```json
+{
+    "success": true,
+    "data":[
+        {
+            "_id": "5a620d400de4d93ec49036ab",
+            "jobID": "9517685",
+            "teamID": "11111",
+            "jobTitle": "req.body.jobTitle",
+            "jobDescription": "description",
+            "quote": 233,
+            "approved": true,
+            "approvedBy": "020202",
+            "createdAt": "2018-01-19T15:22:40.163Z",
+            "updatedAt": "2018-01-19T15:57:29.869Z",
+            "repeatEvery": "7",
+            "numberOfRepeat": "5",
+            "neverExpire": true,
+            "__v": "0"
+        },
+      more json arrays..
+]
+
+```
+
+#### Status Code
+
+```json
+
+```
+
+
+### Job查询（根据team查询）
+
+Job查询
+
+```endpoint
+POST /api/v1/jobs/search/teamID
 ```
 Property | Description
 ---|---
