@@ -9,7 +9,8 @@ const ClientsSchema = new Schema
     password: String,
     email: String,
     name: String,
-    photo: String
+    photo: String,
+    role: String
 });
 
 const Clients = module.exports = mongoose.model('Clients', ClientsSchema);

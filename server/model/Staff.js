@@ -15,7 +15,8 @@ const StaffSchema = new Schema
     key: String,
     totalRating: Number,
     ratingCount: Number,
-    createdAt: Date
+    createdAt: Date,
+    role: String
 });
 
 const Staff = module.exports = mongoose.model('Staff', StaffSchema);

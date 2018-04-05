@@ -22,7 +22,8 @@ handleStaffCreate = (req, res, next) => {
             key: req.body.key,
             totalRating: 0,
             ratingCount: 0,
-            createdAt: new Date()
+            createdAt: new Date(),
+            role: "employee"
         });
         if(staff.key == key)
         {

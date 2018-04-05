@@ -22,4 +22,7 @@ router.post('/register', function(req, res, next){
   auth.handleClientRegister(req, res, next);
 });
 
+router.post('/check', function(req, res, next) {
+  auth.checkIdentity(req, res, next)
+})
 module.exports = router;

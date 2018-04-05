@@ -21,6 +21,24 @@ token_status = (req, res, next) => {
     }
 }
 
+checkIdentity = (req, res) => {
+    const token = req.body.token
+    jwt.verify(token, secret.secret, (err, decoded) => {
+        if (decoded) {
+            console.log(decoded.data)
+            res.json({
+                success: true,
+                data: decoded.data
+            })
+        } else {
+            res.json({
+                success: false,
+                data: "Not identified"
+            })
+        }
+    })
+}
+
 handleClientLogin = (req, res, next) => {
     const username = req.body.username;
     const password = req.body.password;
@@ -166,7 +184,8 @@ handleClientRegister = (req, res, next) => {
                     password: req.body.password,
                     email: req.body.email,
                     name: req.body.name,
-                    photo: req.body.photo
+                    photo: req.body.photo,
+                    role: "client"
                 });
 
                 newUser.save((err, callback) => {
@@ -194,4 +213,4 @@ handleClientRegister = (req, res, next) => {
 
 
 
-module.exports = { token_status, handleClientLogin, handleStaffLogin, handleClientRegister }
+module.exports = { token_status, handleClientLogin, handleStaffLogin, handleClientRegister, checkIdentity }
