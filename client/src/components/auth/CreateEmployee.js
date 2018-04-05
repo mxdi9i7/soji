@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { store } from '../../reducers/index';
 import axios from 'axios';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { apiUrl } from '../../serverConfig';
 import Alert from 'react-s-alert';
 import 'react-s-alert/dist/s-alert-default.css'
 import 'react-s-alert/dist/s-alert-css-effects/scale.css'
-import { topRightNotification } from '../../helpers/alertConfig';
 import { saveTokenToBrowser } from '../../helpers/authenticate';
 
 import '../../assets/auth.css';
@@ -98,7 +95,7 @@ export class CreateEmployee extends Component {
                     <p>SOJI Employees Portal</p>
                 </div>
                     {
-                        this.state.isSignup == true ? 
+                        this.state.isSignup === true ? 
                         <div className="authContainer">
                             <div className="authHeader">
                                 <h1>Create Account</h1>

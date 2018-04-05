@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { store } from '../../reducers/index';
+// import { store } from '../../reducers/index';
 import { HandleTaskInput } from '../../actions/CreateTask';
 
 export class Task extends Component {
     render() {
-        const { task, handleTaskInput } = this.props
+        const { handleTaskInput } = this.props
         return (
             <div className="taskContainer">
                 <div className="taskCount">

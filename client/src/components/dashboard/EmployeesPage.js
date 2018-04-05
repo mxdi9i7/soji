@@ -50,9 +50,6 @@ export class Employees extends Component {
                             </thead>
                             <tbody>
                                 {
-                                    console.log(this.props.employees)
-                                }
-                                {
                                     this.props.employees.map((e, i) => {
                                         return (
                                             <EmployeesTableBlock key={i} employee={e} />

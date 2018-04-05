@@ -22,7 +22,6 @@ class Tasks extends Component {
     componentWillMount() {
     }
     render() {
-        const { totalItems } = this.props
         return(
             <div className="tasksDash">
                 <Dashnav />

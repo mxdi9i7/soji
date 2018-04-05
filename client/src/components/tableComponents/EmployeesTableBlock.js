@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { store } from '../../reducers/index'
-import { formatTimeToYYMMDD } from '../../helpers/formatTime'
+// import { formatTimeToYYMMDD } from '../../helpers/formatTime'
 import '../../assets/dash.css'
 
 class block extends Component {

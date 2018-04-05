@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { store } from '../../reducers/index'
-import { formatTimeToYYMMDD } from '../../helpers/formatTime'
+// import { formatTimeToYYMMDD } from '../../helpers/formatTime'
 import '../../assets/dash.css'
 
 class block extends Component {
@@ -12,7 +11,7 @@ class block extends Component {
         }
     }
     render() {
-        const YYMMDD = formatTimeToYYMMDD(this.state.file.createdAt)
+        // const YYMMDD = formatTimeToYYMMDD(this.state.file.createdAt)
         const file = this.state.file
         return(
             <tr>
