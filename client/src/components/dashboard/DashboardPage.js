@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Dashnav from '../partials/Dashnav';
-import SideNav from '../partials/SideNav';
+import {Dashnav} from '../partials/Dashnav';
+import {SideNav} from '../partials/SideNav';
 import { CreateJobContainer } from '../createJob/CreateJobContainer';
 import { SetCreateJobToActive } from '../../actions/CreateTask'
 import { connect } from 'react-redux';

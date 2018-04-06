@@ -27,5 +27,38 @@ handleTasksFetch = (req, res, next) => {
     });
 }
 
+getTasksByJobID = (req, res, next) => {
+    let jobID = req.query.jobID
+    Tasks.find({jobID}, (err, tasks) => {
+        if (err) {
+            res.json({
+                success: false,
+                data: err
+            })
+        } else {
+            res.json({
+                success: true,
+                data: tasks
+            })
+        }
+    })
+}
 
-module.exports = { handleTasksFetch }
+getTaskByTaskID = (req, res, next) => {
+    let taskID = req.query.id
+    Tasks.findOne({taskID}, (err, task) => {
+        if (err) {
+            res.json({
+                success: false,
+                data: err
+            })
+        } else {
+            res.json({
+                success: true,
+                data: task
+            })
+        }
+    })
+}
+
+module.exports = { handleTasksFetch, getTasksByJobID, getTaskByTaskID }

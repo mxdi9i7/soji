@@ -1,0 +1,35 @@
+.dashInfo {
+    margin: 20px 10px;
+}
+.dashInfo .infoContainer {
+    margin: 5px 0;
+    display: inline-block;
+}
+.dashInfo .infoContainer label {
+    color: #7B1FA2;
+    font-weight: 600;
+    font-size: 14px;
+    width: 150px;
+    display: inline-block;
+}
+.dashInfo .infoContainer span {
+    display: inline-block;
+    font-weight: 500;
+}
+.infoContainer.fluid {
+    width: 100%;
+}
+.infoContainer.half {
+    width: 50%;
+}
+.infoContainer.third {
+    width: 33%;
+}
+.dashRow {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.dashColumn.half {
+    width: 48%;
+}

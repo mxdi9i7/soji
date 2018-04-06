@@ -25,7 +25,6 @@ checkIdentity = (req, res) => {
     const token = req.body.token
     jwt.verify(token, secret.secret, (err, decoded) => {
         if (decoded) {
-            console.log(decoded.data)
             res.json({
                 success: true,
                 data: decoded.data

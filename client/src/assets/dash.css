@@ -108,7 +108,7 @@
     font-size: 28px;
 }
 .dashContent .dashHeader button {
-    background-color: purple;
+    background-color: #7B1FA2;
     color: #fff;
     padding: 5px 15px 5px 5px;
     border-radius: 25px;
@@ -290,7 +290,7 @@
 }
 .react-paginate li.page-item a:hover {
     cursor: pointer;
-    background-color: purple;
+    background-color: #7B1FA2;
     color: #fff;
 }
 .react-paginate a {
@@ -303,7 +303,7 @@
     outline: none;
 }
 .react-paginate li.active {
-    background-color: purple;
+    background-color: #7B1FA2;
     color: #fff;
     border-radius: 50%;
 }

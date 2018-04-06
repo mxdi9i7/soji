@@ -1,14 +1,8 @@
-export const handleLoginUsername = (username) => {
+
+
+export const setUserInfo = (info) => {
     return {
-        type: 'HANDLE_USERNAME',
-        username
+        type: 'SET_INFO',
+        info
     }
 }
-
-export const handleLoginPassword = (password) => {
-    return {
-        type: 'HANDLE_PASSWORD',
-        password
-    }
-}
-

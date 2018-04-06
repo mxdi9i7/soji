@@ -7,4 +7,8 @@ router.get('/', function(req, res, next){
     fetch.fetchJobsWithFilter(req, res);
 });
 
+router.get('/single', function(req, res, next) {
+    fetch.fetchJob(req, res)
+})
+
 module.exports = router;

@@ -11,7 +11,7 @@
 .createJobContainer h1 {
     font-weight: 500;
     font-size: 22px;
-    color: purple;
+    color: #7B1FA2;
 }
 .createJobContainer .createJobCol {
     width: 50%;
@@ -51,7 +51,7 @@
     justify-content: space-between;
 }
 .jobTaskListContainer .addTaskBtn {
-    background-color: purple;
+    background-color: #7B1FA2;
     color: #fff;
     padding: 5px 15px 5px 5px;
     border-radius: 25px;
@@ -82,7 +82,7 @@
     margin: 50px 0;
 }
 .jobTaskListContainer .taskBox {
-    border: 3px solid purple;
+    border: 3px solid #7B1FA2;
     width: 95%;
     padding: 30px;
 }
@@ -91,7 +91,7 @@
     align-self: center;
     font-size: 28px;
     font-weight: 500;
-    color: purple;
+    color: #7B1FA2;
     text-align: center;
     transition: .2s;
 }
@@ -106,7 +106,7 @@
 .taskBox .taskInputContainer h1 {
     font-weight: 500;
     font-size: 22px;
-    color: purple;
+    color: #7B1FA2;
 }
 .taskBox .taskInputContainer {
     margin: 20px 0;
@@ -119,19 +119,19 @@
 .taskBox .taskInputContainer label {
     font-weight: 500;
     font-size: 22px;
-    color: purple;
+    color: #7B1FA2;
     margin: 0 0 20px 0;
     display: block;
 }
 .jobTaskListContainer .taskDelete {
    display: inline-block;
-   color: purple;
+   color: #7B1FA2;
    border-radius: 50%;
    padding: 10px 12px;
    transition: .2s;
 }
 .jobTaskListContainer .taskDelete:hover {
-    background-color: purple;
+    background-color: #7B1FA2;
     color: white;
     cursor: pointer;
     padding: 10px 12px;

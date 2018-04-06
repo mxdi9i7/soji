@@ -2,5 +2,64 @@ body {
 	margin: 0;
 }
 * {
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Roboto', 'Microsoft Yahei', sans-serif;
+}
+.announcementContainer {
+	border-top: 5px solid purple;
+}
+.dashTab {
+	width: 100%;
+	padding: 15px;
+	box-shadow: 1px 4px 5px #eee;
+	margin-bottom: 20px;
+}
+.dashTab h1 {
+	margin: 0 0 15px 0;
+	font-size: 22px;
+	font-weight: 500;
+}
+.todoContainer {
+	border-top: 5px solid #FBC02D;
+}
+.announcementContainer .announcementTab {
+	display: flex;
+	justify-content: space-between;
+}
+.announcementContainer span.content {
+	color: #999;
+	font-size: 16px;
+	font-weight: 600;
+}
+.announcementContainer span.date {
+	color: #999;
+	font-size: 14px;
+	font-weight: 300;
+}
+.taskContainer {
+	border-top: 5px solid #448AFF;
+	height: 400px;
+}
+.taskContainer .taskList {
+	height: 350px;
+	overflow-y: scroll;
+}
+.taskContainer .taskFolder {
+	border-bottom: 1px solid #eee;
+	padding: 15px 5px;
+}
+.taskFolder svg {
+	font-size: 30px;
+	color: #999;
+}
+.taskFolder a {
+	font-weight: 600;
+	color: #7B1FA2;
+	vertical-align: 5px;
+	margin-left: 20px;
+	text-decoration: none;
+}
+.taskFolder a:hover {
+	color: #333;
+	text-decoration: underline;
+	cursor: pointer;
 }

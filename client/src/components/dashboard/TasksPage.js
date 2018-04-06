@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Dashnav from '../partials/Dashnav';
-import SideNav from '../partials/SideNav';
+import {Dashnav} from '../partials/Dashnav';
+import {SideNav} from '../partials/SideNav';
 import { connect } from 'react-redux';
 import { store } from '../../reducers/index'
 import { getTasks } from '../../actions/ManageTasks';

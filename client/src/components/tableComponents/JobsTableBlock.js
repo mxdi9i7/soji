@@ -4,23 +4,17 @@ import { formatTimeToYYMMDD } from '../../helpers/formatTime'
 import '../../assets/dash.css'
 
 class block extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            job: this.props.job
-        }
-    }
     render() {
-        const YYMMDD = formatTimeToYYMMDD(this.state.job.createdAt)
+        const YYMMDD = formatTimeToYYMMDD(this.props.job.createdAt)
         return(
-            <tr>
+            <tr onClick={() => {window.location.href=`/dash/job/${this.props.job.jobID}`}}>
                 <td>{YYMMDD.year}/{YYMMDD.month}/{YYMMDD.date}</td>
                 <td>
-                    <p>{this.state.job.jobTitle}</p>
-                    <span>Job ID: {this.state.job.jobID}</span>
+                    <p>{this.props.job.jobTitle}</p>
+                    <span>Job ID: {this.props.job.jobID}</span>
                 </td>
                 <td>
-                    <p>Team ID: {this.state.job.teamID}</p>
+                    <p>Team ID: {this.props.job.teamID}</p>
                 </td>
                 <td>
                     <p>W.B. Yeats</p>
