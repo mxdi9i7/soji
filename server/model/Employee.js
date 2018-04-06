@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const StaffSchema = new Schema
+const EmployeeSchema = new Schema
 ({
-    staffID: String,
+    EmployeeID: String,
     teamID: String,
     username: String,
     password: String,
@@ -19,4 +19,4 @@ const StaffSchema = new Schema
     role: String
 });
 
-const Staff = module.exports = mongoose.model('Staff', StaffSchema);
+const Employee = module.exports = mongoose.model('Employee', EmployeeSchema);

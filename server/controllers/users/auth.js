@@ -1,5 +1,5 @@
 const Clients = require('../../model/Clients');
-const Staff = require('../../model/Staff');
+const Employee = require('../../model/Employee');
 const Admin = require('../../model/Admin');
 const jwt = require('jsonwebtoken');
 const secret = require('./secret');
@@ -78,11 +78,11 @@ handleClientLogin = (req, res, next) => {
     });
 }
 
-handleStaffLogin = (req, res, next) => {
+handleEmployeeLogin = (req, res, next) => {
     const email = req.body.email;
     const password = req.body.password;
     let query = {email}
-    Staff.findOne(query, (err, user) => {
+    Employee.findOne(query, (err, user) => {
         if (err) {
             res.json({
                 success: false,
@@ -212,4 +212,4 @@ handleClientRegister = (req, res, next) => {
 
 
 
-module.exports = { token_status, handleClientLogin, handleStaffLogin, handleClientRegister, checkIdentity }
+module.exports = { token_status, handleClientLogin, handleEmployeeLogin, handleClientRegister, checkIdentity }

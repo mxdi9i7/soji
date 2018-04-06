@@ -12,8 +12,8 @@ var fs = require('fs');
 module.exports =
   '# Soji API\n' +
   fs.readFileSync('./content/introduction.md', 'utf8') + '\n' +
-  '# Staff\n' +
-  fs.readFileSync('./content/staff.md', 'utf8') + '\n' +
+  '# Employee\n' +
+  fs.readFileSync('./content/employee.md', 'utf8') + '\n' +
   '# Job\n' +
   fs.readFileSync('./content/job.md', 'utf8') + '\n' +
   '# Task\n' +
