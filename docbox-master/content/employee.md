@@ -27,12 +27,12 @@ Property | Description
 ```
 
 
-### Staff登录
+### Employee登录
 
-Staff登录
+Employee登录
 
 ```endpoint
-POST /api/v1/users/auth/staffLogin
+POST /api/v1/users/auth/employeeLogin
 ```
 Property | Description
 ---|---
@@ -113,9 +113,9 @@ Property | Description
 
 ```
 
-### Staff注册
+### Employee注册
 
-Staff注册
+Employee注册
 
 ```endpoint
 POST /api/v1/users/create
@@ -132,7 +132,7 @@ Property | Description
 ```json
 {
     "success": true,
-    "data": "Staff created"
+    "data": "Employee created"
 }
 
 ```
@@ -142,16 +142,16 @@ Property | Description
 ```json
 
 ```
-### Staff查询
+### Employee查询
 
-Staff查询
+Employee查询
 
 ```endpoint
 POST /api/v1/users/search
 ```
 Property | Description
 ---|---
-`staffID` | (required) Staff的编号
+`employeeID` | (required) Employee的编号
 #### Example response
 
 ```json
@@ -160,7 +160,7 @@ Property | Description
     "data": [
         {
             "_id": "5aa843472a1657079015945d",
-            "staffID": "000015",
+            "employeeID": "000015",
             "teamID": "650177",
             "username": "peter zheng",
             "password": "",
@@ -171,7 +171,8 @@ Property | Description
             "totalRating": 0,
             "ratingCount": 0,
             "__v": 0,
-            "name": ""
+            "name": "",
+            "role":"employee"
         },
         {
             "managerID": "000016"
@@ -187,22 +188,22 @@ Property | Description
 
 ```
 
-### Staff删除
+### Employee删除
 
-Staff删除
+Employee删除
 
 ```endpoint
 POST /api/v1/users/delete
 ```
 Property | Description
 ---|---
-`staffID` | (required) Staff的编号
+`employeeID` | (required) Employee的编号
 #### Example response
 
 ```json
 {
     "success": true,
-    "data": "Staff deleted"
+    "data": "Employee deleted"
 }
 
 ```
@@ -213,16 +214,16 @@ Property | Description
 
 ```
 
-### Staff更新
+### Employee更新
 
-Staff更新
+Employee更新
 
 ```endpoint
 POST /api/v1/users/update
 ```
 Property | Description
 ---|---
-`staffID` | (required) 要更改的 staff 的 id
+`employeeID` | (required) 要更改的 Employee 的 id
 `teamID` | (required) 队伍ID
 `password` | (required) 密码
 `email` | (required) 邮箱
@@ -233,7 +234,7 @@ Property | Description
 ```json
 {
     "success": true,
-    "data": "Staff updated"
+    "data": "Employee updated"
 }
 
 ```

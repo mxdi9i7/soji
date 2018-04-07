@@ -1,10 +1,10 @@
-const Staff = require('../../model/Staff');
+const Employee = require('../../model/Employee');
 const Teams = require('../../model/Teams');
 
 handleStaffSearch= (req, res, next) => {
     let query = {staffID: req.body.staffID}
 
-    Staff.find(query, (err, callback) =>
+    Employee.find(query, (err, callback) =>
     {
         if (err) {
             res.json({

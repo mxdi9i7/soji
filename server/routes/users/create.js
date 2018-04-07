@@ -13,7 +13,7 @@ let storage = multer.diskStorage({
 })
 let upload = multer({storage: storage})
 
-router.post('/staff', upload.single('photo'), function(req, res, next){
+router.post('/employee', upload.single('photo'), function(req, res, next){
     create.handleStaffCreate(req, res, next);
 });
 

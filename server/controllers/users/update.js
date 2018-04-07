@@ -1,7 +1,7 @@
-const Staff = require('../../model/Staff');
+const Employee = require('../../model/Employee');
 
 handleStaffUpdate = (req, res, next) => {
-    let staff = {
+    let employee = {
         teamID: req.body.teamID,
         password: req.body.password,
         email: req.body.email,
@@ -10,8 +10,8 @@ handleStaffUpdate = (req, res, next) => {
     }
     let query = {staffID: req.body.staffID}
     
-    if (staff.photo != undefined && staff.photo != '') {
-        Staff.findOne(query, {photo: 1, _id:0}, (err, callback) =>
+    if (employee.photo != undefined && employee.photo != '') {
+        Employee.findOne(query, {photo: 1, _id:0}, (err, callback) =>
         {
             cloudinary.v2.uploader.destroy(callback[0].photo, function(error, result)
             {
@@ -19,7 +19,7 @@ handleStaffUpdate = (req, res, next) => {
                 console.log(result);
             });
         }).then(function() {
-            Staff.findOneAndUpdate(query, staff, (err, callback) => {
+            Employee.findOneAndUpdate(query, employee, (err, callback) => {
                 if (err) {
                     res.json({
                         success: false,
@@ -28,13 +28,13 @@ handleStaffUpdate = (req, res, next) => {
                 } else {
                     res.json({
                         success: true,
-                        data: "Staff updated"
+                        data: "Employee updated"
                     });
                 }
             });
         });
     } else {
-        Staff.findOneAndUpdate(query, staff, (err, callback) => {
+        Employee.findOneAndUpdate(query, employee, (err, callback) => {
             if (err) {
                 res.json({
                     success: false,
@@ -43,7 +43,7 @@ handleStaffUpdate = (req, res, next) => {
             } else {
                 res.json({
                     success: true,
-                    data: "Staff updated"
+                    data: "Employee updated"
                 });
             }
         });
@@ -54,7 +54,7 @@ handleStaffRatingUpdate = (req, res, next) => {
     let query = {staffID: req.body.staffID}
     let rating = {$inc: {totalRating: req.body.totalRating, ratingCount: 1}}
     
-    Staff.findOneAndUpdate(query, rating, (err, callback) => {
+    Employee.findOneAndUpdate(query, rating, (err, callback) => {
         if (err) {
             res.json({
                 success: false,
@@ -63,7 +63,7 @@ handleStaffRatingUpdate = (req, res, next) => {
         } else {
             res.json({
                 success: true,
-                data: "Staff rating updated"
+                data: "Employee rating updated"
             });
         }
     });

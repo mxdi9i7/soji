@@ -1,4 +1,4 @@
-const Staff = require('../../model/Staff');
+const Employee = require('../../model/Employee');
 const cloudinary = require('cloudinary');
 
 cloudinary.config({ 
@@ -7,10 +7,10 @@ cloudinary.config({
     api_secret: '94kiVzYXxasFHWYdTajKcvW8imY' 
 });
 
-handleStaffDelete = (req, res, next) => {
-    let query = {staffID: req.body.staffID}
+handleEmployeeDelete = (req, res, next) => {
+    let query = {employeeID: req.body.employeeID}
 
-    Staff.findOne(query, {photo: 1, _id:0}, (err, callback) =>
+    Employee.findOne(query, {photo: 1, _id:0}, (err, callback) =>
     {
         cloudinary.v2.uploader.destroy(callback[0].photo, function(error, result)
         {
@@ -18,7 +18,7 @@ handleStaffDelete = (req, res, next) => {
             console.log(result);
         });
     }).then(function(){
-        Staff.deleteOne(query, (err, callback) => {
+        Employee.deleteOne(query, (err, callback) => {
             if (err) {
                 res.json({
                     success: false,
@@ -27,7 +27,7 @@ handleStaffDelete = (req, res, next) => {
             } else {
                 res.json({
                     success: true,
-                    data: "Staff deleted"
+                    data: "Employee deleted"
                 });
             } 
         });
@@ -35,4 +35,4 @@ handleStaffDelete = (req, res, next) => {
     
 }
 
-module.exports = { handleStaffDelete }
+module.exports = { handleEmployeeDelete }

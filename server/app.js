@@ -11,10 +11,10 @@ const secret = require('./controllers/users/secret');
 
 // user route
 const auth = require('./routes/users/auth');
-const createStaff = require('./routes/users/create');
-const searchStaff = require('./routes/users/search');
-const deleteStaff = require('./routes/users/delete');
-const updateStaff = require('./routes/users/update');
+const createEmployee = require('./routes/users/create');
+const searchEmployee = require('./routes/users/search');
+const deleteEmployee = require('./routes/users/delete');
+const updateEmployee = require('./routes/users/update');
 const fetchUsers = require('./routes/users/fetch');
 
 // job route
@@ -82,10 +82,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //user path
 app.use('/api/v1/users/auth', auth);
-app.use('/api/v1/users/create', createStaff);
-app.use('/api/v1/users/search', searchStaff);
-app.use('/api/v1/users/delete', deleteStaff);
-app.use('/api/v1/users/update', updateStaff);
+app.use('/api/v1/users/create', createEmployee);
+app.use('/api/v1/users/search', searchEmployee);
+app.use('/api/v1/users/delete', deleteEmployee);
+app.use('/api/v1/users/update', updateEmployee);
 app.use('/api/v1/users/fetch', fetchUsers);
 
 // job path

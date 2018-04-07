@@ -1,17 +1,17 @@
-const Staff = require('../../model/Staff');
+const Employee = require('../../model/Employee');
 const key = "123456";
 
-handleStaffCreate = (req, res, next) => {
-    Staff.find().sort({staffID: -1}).limit(1).exec((err, callback)=>{
-        let staffID = callback[0].staffID;
-        staffID = (parseInt(staffID) + 1).toString();
-        while (staffID.length < 6)
+handleEmployeeCreate = (req, res, next) => {
+    Employee.find().sort({employeeID: -1}).limit(1).exec((err, callback)=>{
+        let employeeID = callback[0].employeeID;
+        employeeID = (parseInt(employeeID) + 1).toString();
+        while (employeeID.length < 6)
         {
-            staffID = '0' + staffID;
+            employeeID = '0' + employeeID;
         }
 
-        let staff = new Staff({
-            staffID: staffID,
+        let employee = new Employee({
+            employeeID: employeeID,
             teamID: '',
             username: req.body.username,
             password: req.body.password,
@@ -25,9 +25,9 @@ handleStaffCreate = (req, res, next) => {
             createdAt: new Date(),
             role: "employee"
         });
-        if(staff.key == key)
+        if(employee.key == key)
         {
-            staff.save((err, callback) => {
+            employee.save((err, callback) => {
                 if (err) {
                     res.json({
                         success: false,
@@ -36,7 +36,7 @@ handleStaffCreate = (req, res, next) => {
                 } else {
                     res.json({
                         success: true,
-                        data: "Staff created"
+                        data: "Employee created"
                     });
                 } 
             });
@@ -51,4 +51,4 @@ handleStaffCreate = (req, res, next) => {
     
 }
 
-module.exports = { handleStaffCreate }
+module.exports = { handleEmployeeCreate }

@@ -1,12 +1,12 @@
-const Staff = require('../../model/Staff');
+const Employee = require('../../model/Employee');
 const { itemsPerPage } = require('../../constant')
 const pagination = require('../pagination')
 
 handleStaffFetch = (req, res, next) => {
     let page = req.query.page
     let query = {}
-    Staff.find(query, (err, staff) => {
-        let paginationData = pagination(staff, itemsPerPage, page)
+    Employee.find(query, (err, employee) => {
+        let paginationData = pagination(employee, itemsPerPage, page)
         const staffData = {
             pageCount: paginationData.pageCount,
             results: paginationData.results,
