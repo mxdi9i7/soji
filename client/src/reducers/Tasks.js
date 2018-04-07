@@ -5,10 +5,12 @@ const tasks = (state = {
     switch (action.type) {  
         case 'INITIALIZE_TASKS':
             return {
+                ...state,
                 taskList: action.tasks
             }
         case 'INITIALIZE_TASK':
             return {
+                ...state,
                 task: action.task
             }
         default: 

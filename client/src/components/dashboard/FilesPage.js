@@ -8,6 +8,7 @@ import { apiUrl } from '../../serverConfig';
 import ReactPaginate from 'react-paginate';
 import { getFiles } from '../../actions/ManageFiles';
 import { FilesTableBlock } from '../tableComponents/FilesTableBlock';
+import { months } from '../../helpers/twelveMonths';
 
 import '../../assets/dash.css'
 
@@ -15,6 +16,7 @@ export class Files extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            title: months[this.props.match.params.month - 1].month
         }
     }
     componentWillMount() {
@@ -32,7 +34,7 @@ export class Files extends Component {
                     </div>
                     <div className="dashTableContainer">
                         <div className="dashTableTitles">
-                            <h1>All Files</h1>
+                            <h1>{this.props.task}, {this.state.title} 2018 Files</h1>
                             <div className="dashItemFilters">
                                 <select name="" id="">
                                     <option value="day">Last Day</option>
@@ -88,11 +90,14 @@ export class Files extends Component {
 
 
 const mapStateToProps = state => {
+    console.log(state.tasks)
     return {
         files: state.manageFiles.files,
         page: state.manageFiles.page,
         totalPage: state.manageFiles.totalPage,
-        totalItems: state.manageFiles.totalItems
+        totalItems: state.manageFiles.totalItems,
+        task: state.tasks.task.taskTitle,
+        job: state.job
     }
 }
 
@@ -119,6 +124,9 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
         page: stateProps.page,
         totalItems: stateProps.totalItems,
         totalPage: stateProps.totalPage,
+        task: stateProps.task,
+        job: stateProps.job,
+        ...ownProps
     }
 }
 

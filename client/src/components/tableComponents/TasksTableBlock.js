@@ -26,6 +26,13 @@ class block extends Component {
                 <td>
                     <p>
                         {
+                            task.taskID
+                        }
+                    </p>
+                </td>
+                <td>
+                    <p>
+                        {
                             task.jobID
                         }
                     </p>
@@ -40,9 +47,6 @@ class block extends Component {
                 <td>
                     <p>manager name</p>
                     <span>ACC ID:</span>
-                </td>
-                <td>
-                    <p>%</p>
                 </td>
                 <td>
                     <p>P.B. Shelley</p>

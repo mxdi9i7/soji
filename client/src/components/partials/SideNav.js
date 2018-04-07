@@ -44,10 +44,6 @@ class Navigation extends Component {
                             <i className="fa fa-briefcase"></i>
                             <h2>Jobs</h2>
                         </Link>
-                        <Link to="/dash/files" className={this.props.currentPage === "files" ? "active navButton dashboard" : "navButton dashboard"}>
-                            <i className="fa fa-paperclip"></i>
-                            <h2>Files</h2>
-                        </Link>
                     </div> : ""
                 }
                 {
@@ -60,10 +56,6 @@ class Navigation extends Component {
                         <Link to="/dash/jobs" className={this.props.currentPage === "jobs" ? "active navButton dashboard" : "navButton dashboard"}>
                             <i className="fa fa-briefcase"></i>
                             <h2>Jobs</h2>
-                        </Link>
-                        <Link to="/dash/files" className={this.props.currentPage === "files" ? "active navButton dashboard" : "navButton dashboard"}>
-                            <i className="fa fa-paperclip"></i>
-                            <h2>Files</h2>
                         </Link>
                         <Link to="/dash/billing" className={this.props.currentPage === "billing" ? "active navButton dashboard" : "navButton dashboard"}>
                             <i className="fa fa-credit-card "></i>

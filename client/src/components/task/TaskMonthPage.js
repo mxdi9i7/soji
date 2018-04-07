@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Dashnav} from '../partials/Dashnav';
+import { Link } from 'react-router-dom'
 import {SideNav} from '../partials/SideNav';
 import { connect } from 'react-redux';
 import { store } from '../../reducers/index';
@@ -8,12 +9,12 @@ import axios from 'axios';
 import { apiUrl } from '../../serverConfig';
 import '../../assets/dash.css'
 import '../../assets/job.css'
+import { months } from '../../helpers/twelveMonths'
 
 export class TaskMonth extends Component {
     async componentDidMount() {
         let task = await axios.get(apiUrl + '/tasks/fetch/single?id=' + this.props.match.params.id)
-        console.log(task)
-        await this.props.initializeTask(task.data.data)
+        this.props.initializeTask(task.data.data)
     }
     render() {
         return (
@@ -52,6 +53,18 @@ export class TaskMonth extends Component {
                             <span>Manager Name | phone number | email</span>
                         </div>
                     </div>
+                    <div className="taskMonth">
+                        {
+                            months.map(month => {
+                                return (
+                                    <div className="taskFolder" key={month.index}>
+                                        <i className="fa fa-folder"></i>
+                                        <Link to={"/dash/task/" + this.props.task.taskID + '/' + month.index}>{month.month} 2018</Link>
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
                 </div>
             </div>
         )
@@ -59,7 +72,7 @@ export class TaskMonth extends Component {
 }
 
 const mapStateToProps = state => {
-    console.log(state)
+    console.log(state.tasks)
     return {
         task: state.tasks.task,
         job: state.job

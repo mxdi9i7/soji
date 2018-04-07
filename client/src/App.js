@@ -10,6 +10,7 @@ import { FilesPage } from './components/dashboard/FilesPage';
 import { TasksPage } from './components/dashboard/TasksPage';
 import { JobPage } from './components/job/JobPage'
 import { TaskMonthPage } from './components/task/TaskMonthPage';
+import { TaskFilesPage } from './components/task/taskFilesPage';
 
 // import { ClientsPage } from './components/dashboard/ClientsPage';
 // import { BillingPage } from './components/dashboard/BillingPage';
@@ -27,6 +28,7 @@ class App extends Component {
 					<Route exact path="/dash/jobs" component={JobsPage} />
 					<Route exact path="/dash/job/:id" component={JobPage} />
 					<Route exact path="/dash/task/:id" component={TaskMonthPage} />
+					<Route exact path="/dash/task/:id/:month" component={FilesPage} />
 					<Route exact path="/dash/employees" component={EmployeesPage} />
 					<Route exact path="/dash/files" component={FilesPage} />
 					<Route exact path="/dash/tasks" component={TasksPage} />
