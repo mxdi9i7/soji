@@ -3,7 +3,12 @@ const key = "123456";
 
 handleEmployeeCreate = (req, res, next) => {
     Employee.find().sort({employeeID: -1}).limit(1).exec((err, callback)=>{
-        let employeeID = callback[0].employeeID;
+        let employeeID;
+        if(callback[0] != undefined) {
+            employeeID = callback[0].employeeID;
+        } else {
+            employeeID = "0";
+        }
         employeeID = (parseInt(employeeID) + 1).toString();
         while (employeeID.length < 6)
         {

@@ -1,4 +1,5 @@
-const Files = require('../../model/Files')
+const Files = require('../../model/Files');
+
 
 handleFileCreate = (req, res, next) => {
     let filesArray;

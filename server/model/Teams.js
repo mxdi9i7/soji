@@ -11,5 +11,3 @@ const TeamsSchema = new Schema
 });
 
 const Teams = module.exports = mongoose.model('Teams', TeamsSchema);
-
-// this model is not being used yet

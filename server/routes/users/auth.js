@@ -10,8 +10,8 @@ router.post('/clientLogin', auth.token_status, function(req, res, next){
   auth.handleClientLogin(req, res, next);
 });
 
-router.post('/staffLogin', auth.token_status, function(req, res, next){
-  auth.handleStaffLogin(req, res, next);
+router.post('/employeeLogin', auth.token_status, function(req, res, next){
+  auth.handleEmployeeLogin(req, res, next);
 });
 
 router.post('/adminLogin', auth.token_status, function(req, res, next){

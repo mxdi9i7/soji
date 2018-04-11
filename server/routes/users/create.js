@@ -14,7 +14,7 @@ let storage = multer.diskStorage({
 let upload = multer({storage: storage})
 
 router.post('/employee', upload.single('photo'), function(req, res, next){
-    create.handleStaffCreate(req, res, next);
+    create.handleEmployeeCreate(req, res, next);
 });
 
 module.exports = router;

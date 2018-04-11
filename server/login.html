@@ -1,23 +1,156 @@
-Login<br>
+<!-- Login<br>
 username: <input type="text" id="username"><br>
 password: <input type="password" id="password"><br>
-<input type="submit" id="submit" value="submit">
+<input type="submit" id="submit" value="submit"> -->
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<br><br>
+Task upload <br>
+<form id="taskUploadForm" method="post" enctype="multipart/form-data">
+    jobID: <input type="text" id="jobID"><br>
+    taskTitle: <input type="text" id="taskTitle"><br>
+    taskDescription: <input type="text" id="taskDescription"><br>
+    video: <input type="file"id="video"><br>
+    file: <input type="file" id="file"><br>
+    duration: <input type="text" id="duration"><br>
+    <input type="submit" id="submitTask">
+</form>
+
+<!-- <br><br>
+File upload <br>
+<form id="fileUploadForm" method="post" enctype="multipart/form-data">
+    jobID: <input type="text" id="jobID"><br>
+    taskID: <input type="text" id="taskID"><br>
+    managerID: <input type="text" id="managerID"><br>
+    fileName: <input type="text"id="fileName"><br>
+    file: <input type="file" id="file"><br>
+    <input type="submit" id="submitFile">
+</form> -->
+
+<br><br>
+image upload <br>
+<form id="imageUploadForm" method="post" enctype="multipart/form-data">
+    username: <input type="text" id="username"><br>
+    password: <input type="text" id="password"><br>
+    email:<input type="text" id="email"><br>
+    name: <input type="text" id="name"><br>
+    photo: <input type="file" id="photo"><br>
+    <input type="submit" id="submitImage">
+</form>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
+    $("#submitTask").click(() => {
+        let formData = new FormData();
+        let video = document.getElementById("video").files[0];
+        let file = document.getElementById("file").files[0];
+        formData.append("jobID",$("#jobID").val());
+        formData.append("taskTitle",$("#taskTitle").val());
+        formData.append("taskDescription",$("#taskDescription").val());
+        formData.append("video",video);
+        formData.append("file",file);
+        formData.append("duration",$("#duration").val());
+
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:3000/api/v1/tasks/create/",
+            data: formData,
+            async: false,
+            processData: false,
+            contentType: false,
+            dataType: "JSON",
+            success: function(callback) { 
+                console.log(callback);
+            },
+            error: function(callback)
+            {
+                console.log("error");
+            }
+        });
+    });
+
+    $("#submitFile").click(() => {
+        let formData = new FormData();
+        let file = document.getElementById("file").files[0];
+        formData.append("jobID",$("#jobID").val());
+        formData.append("taskID",$("#taskID").val());
+        formData.append("managerID",$("#managerID").val());
+        formData.append("fileName",$("#fileName").val());
+        formData.append("file",file);
+
+        // let data = {
+        //     username: $("#username").val(),
+        //     password: $("#password").val(),
+        //     email: $("#email").val(),
+        //     name: $("#name").val(),
+        //     key: "123456"
+        // }
+
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:3000/api/v1/files/create/",
+            data: formData,
+            async: false,
+            processData: false,
+            contentType: false,
+            dataType: "JSON",
+            success: function(callback) { 
+                console.log(callback);
+            },
+            error: function(callback)
+            {
+                console.log("error");
+            }
+        });
+    });
+
+
+    $("#submitImage").click(() => {
+        let formData = new FormData();
+        let file = document.getElementById("photo").files[0];
+        formData.append("username",$("#username").val());
+        formData.append("password",$("#password").val());
+        formData.append("email",$("#email").val());
+        formData.append("name",$("#name").val());
+        formData.append("key","123456");
+        formData.append("photo",file);
+        // let data = {
+        //     username: $("#username").val(),
+        //     password: $("#password").val(),
+        //     email: $("#email").val(),
+        //     name: $("#name").val(),
+        //     key: "123456"
+        //}
+        $.ajax({
+            url: "http://localhost:3000/api/v1/users/create/employee/",
+            type: "POST",
+            data: formData,
+            async: false,
+            processData: false,
+            contentType: false,
+            dataType: "JSON",
+            success: function(callback) { 
+                console.log(callback);
+            },
+            error: function(callback)
+            {
+                console.log(callback);
+            }
+        });
+    });
+
     $("#submit").click(() => {
         let data = {
             username: $("#username").val(),
             password: $("#password").val()
         }
-        console.log(document.cookie.match(new RegExp('SOJI_TOKEN=([^;]+)')));
-        if(document.cookie.match(new RegExp('SOJI_TOKEN=([^;]+)')) != null)
+        console.log(document.cookie.match(new RegExp("SOJI_TOKEN=([^;]+)")));
+        if(document.cookie.match(new RegExp("SOJI_TOKEN=([^;]+)")) != null)
         {
-            data.soji_token = document.cookie.match(new RegExp('SOJI_TOKEN=([^;]+)'))[1]
+            data.soji_token = document.cookie.match(new RegExp("SOJI_TOKEN=([^;]+)"))[1]
         }
         $.ajax({
             type: "POST",
-            url: 'http://localhost:3000/api/v1/users/auth/login',
+            url: "http://localhost:3000/api/v1/users/auth/login",
             data: JSON.stringify(data),
             contentType: "application/json",
             dataType: "json",
@@ -27,7 +160,7 @@ password: <input type="password" id="password"><br>
             },
             error: function()
             {
-                console.log('error');
+                console.log("error");
             }
         });
     });
