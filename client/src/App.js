@@ -11,6 +11,9 @@ import { TasksPage } from './components/dashboard/TasksPage';
 import { JobPage } from './components/job/JobPage'
 import { TaskMonthPage } from './components/task/TaskMonthPage';
 import { TaskFilesPage } from './components/task/taskFilesPage';
+import { CreateClient } from "./components/auth/CreateClient";
+import { ClientNewJobPage } from "./components/dashboard/ClientNewJobPage";
+import { ClientDashboard } from './components/dashboard/ClientDashboard';
 
 // import { ClientsPage } from './components/dashboard/ClientsPage';
 // import { BillingPage } from './components/dashboard/BillingPage';
@@ -23,7 +26,11 @@ class App extends Component {
     return (
 			<Router>
 				<div>
-					<Route exact path="/auth/employees" component={CreateEmployee} />
+					<Route exact path="/" component={CreateEmployee} />
+					<Route exact path="/auth/client" component={CreateClient} />
+					<Route exact path="/auth/employee" component={CreateEmployee} />
+					<Route exact path="/dash/c" component={ClientDashboard} />
+					<Route exact path="/dash/c/new" component={ClientNewJobPage} />
 					<Route exact path="/dash/" component={DashboardPage} />
 					<Route exact path="/dash/jobs" component={JobsPage} />
 					<Route exact path="/dash/job/:id" component={JobPage} />

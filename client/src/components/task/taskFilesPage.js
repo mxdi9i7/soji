@@ -19,7 +19,6 @@ export class TaskFiles extends Component {
         return (
             <div>
                 <Dashnav />
-                <SideNav currentPage={"jobs"} />
                 <div className="dashContent">
                     <div className="dashHeader">
                         <div className="dashTitle">

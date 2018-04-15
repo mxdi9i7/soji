@@ -6,11 +6,11 @@ export class TaskTab extends Component {
         return (
             <div className="taskContainer dashTab">
                 <h1>Tasks ({tasks.length})</h1>
-                <div className="taskList">
+                <div className="taskList list">
                     {
                         tasks.map((task) => {
                             return (
-                                <div  className="taskFolder" key={task.taskID}>
+                                <div  className="taskFolder folder" key={task.taskID}>
                                     <i className="fa fa-folder"></i>
                                     <Link to={`/dash/task/${task.taskID}`}>{task.taskTitle}</Link>
                                 </div>

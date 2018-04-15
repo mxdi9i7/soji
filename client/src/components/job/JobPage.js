@@ -19,6 +19,7 @@ export class Job extends Component {
         await this.props.initializeJob(job.data.data)
         let taskList = await axios.get(apiUrl + '/tasks/fetch/list?jobID=' + job.data.data.jobID)
         await this.props.initializeTasks(taskList.data.data)
+        console.log(taskList.data.data)
     }
     render() {
         let totalDuration = 0;
@@ -33,7 +34,6 @@ export class Job extends Component {
         return (
             <div>
                 <Dashnav />
-                <SideNav currentPage={"jobs"} />
                 <div className="dashContent">
                     <div className="dashHeader">
                         <div className="dashTitle">
@@ -49,11 +49,11 @@ export class Job extends Component {
                     <div className="dashInfo">
                         <div className="infoContainer half">
                             <label>Client ID</label>
-                            <span>Client Name (Client ID)</span>
+                            <span>{this.props.client.username} ({this.props.client.clientID})</span>
                         </div>
                         <div className="infoContainer half">
                             <label>Client Contact Info</label>
-                            <span>Client Email, Phone number</span>
+                            <span>{this.props.client.email}</span>
                         </div>
                         <div className="infoContainer half">
                             <label>Job Title</label>
@@ -94,11 +94,12 @@ export class Job extends Component {
                     </div>
                     <div className="dashRow">
                         <div className="dashColumn half">
-                            <Announcements />
+                            
                             <TaskTab tasks={this.props.tasks}/>
                         </div>
                         <div className="dashColumn half">
-                            <Todo  />
+                            <Announcements />
+                            {/* <Todo  /> */}
                         </div>
                     </div>
                 </div>
@@ -110,7 +111,8 @@ export class Job extends Component {
 const mapStateToProps = state => {
     return {
         job: state.job,
-        tasks: state.tasks.taskList
+        tasks: state.tasks.taskList,
+        client: state.auth
     }
 }
 

@@ -22,6 +22,7 @@ handleJobCreate = (req, res, next) => {
         ({
             jobID: jobID,
             teamID: '',
+            clientID: req.body.clientID,
             jobTitle: req.body.title,
             jobDescription: req.body.description,
             quote: 0,
@@ -33,6 +34,7 @@ handleJobCreate = (req, res, next) => {
             createdAt: new Date(),
             updatedAt: new Date()
         });
+        console.log(newJob)
         newJob.save((err, callback) => {
             if (err) {
                 res.json({

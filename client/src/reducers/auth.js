@@ -13,7 +13,9 @@ const auth = (state = {
                 active: action.info.active,
                 totalRating: action.info.totalRating,
                 ratingCount: action.info.ratingCount,
-                identity: action.info.role
+                identity: action.info.role,
+                clientID: action.info.clientID,
+                email: action.info.email
             }
         default: 
             return state

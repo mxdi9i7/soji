@@ -39,10 +39,11 @@ checkIdentity = (req, res) => {
 }
 
 handleClientLogin = (req, res, next) => {
-    const username = req.body.username;
+    const email = req.body.email;
     const password = req.body.password;
-    let query = {username: username}
+    let query = {email}
     Clients.findOne(query, (err, user) => {
+        console.log(user, query)
         if (err) {
             res.json({
                 success: false,
@@ -51,15 +52,11 @@ handleClientLogin = (req, res, next) => {
         }
         if (user) {
             if (password == user.password){
-                const token = jwt.sign({
-                    _id: user._id,
-                    username: user.username,
-                    email: user.email
-                }, secret.secret, {
-                    expiresIn: 200
+                const token = jwt.sign({ data: user }, secret.secret, {
+                    expiresIn: 604800
                 });
-
-                res.cookie('SOJI_TOKEN', token, {expire : new Date() + 9999, secure:false, httpOnly: false}).json({
+    
+                res.json({
                     success: true,
                     data: token
                 });
@@ -150,66 +147,6 @@ handleAdminLogin = (req, res, next) => {
     });
 }
 
-handleClientRegister = (req, res, next) => {
-    let clientArray;
-    let clientID;
-    let newUser;
-    let query = {username: req.body.username }
-
-    Clients.findOne(query, (err, user) => {
-        if (err) {
-            res.json({
-                success: false,
-                data: err
-            });
-        }
-        if (user == null) {
-            Clients.find({ clientID:{$regex:'/*'} }, { clientID: 1, _id:0 }, (err, callback) =>
-            {
-                clientArray = callback;
-            }).then(function(){
-                do {
-                    clientID = String(parseInt(Math.random()*100000));
-                    while (clientID.length < 5)
-                    {
-                        clientID = '0' + clientID;
-                    }
-                }
-                while (JSON.stringify(clientArray).indexOf(clientID) != -1);
-
-                newUser = new Clients({
-                    clientID: clientID,
-                    username: req.body.username,
-                    password: req.body.password,
-                    email: req.body.email,
-                    name: req.body.name,
-                    photo: req.body.photo,
-                    role: "client"
-                });
-
-                newUser.save((err, callback) => {
-                    if (err) {
-                        res.json({
-                            success: false,
-                            data: err
-                        });
-                    } else {
-                        res.json({
-                            success: true,
-                            data: "User created"
-                        });
-                    } 
-                });
-            });
-        } else {
-            res.json({
-                success: false,
-                data: "User exist"
-            });
-        }
-    });
-}
 
 
-
-module.exports = { token_status, handleClientLogin, handleEmployeeLogin, handleClientRegister, checkIdentity }
+module.exports = { token_status, handleClientLogin, handleEmployeeLogin, checkIdentity }

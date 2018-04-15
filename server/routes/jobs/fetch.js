@@ -7,6 +7,10 @@ router.get('/', function(req, res, next){
     fetch.fetchJobsWithFilter(req, res);
 });
 
+router.get('/client', function(req, res, next){
+    fetch.fetchJobListByClient(req, res);
+});
+
 router.get('/single', function(req, res, next) {
     fetch.fetchJob(req, res)
 })

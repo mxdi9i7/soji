@@ -11,7 +11,7 @@ import '../../assets/auth.css';
 
 
 
-export class CreateEmployee extends Component {
+export class CreateClient extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -28,14 +28,13 @@ export class CreateEmployee extends Component {
     }
 
     handleSignup() {
-        if (this.state.username && this.state.email && this.fileInput.files[0] && this.state.password && this.state.key) {
+        if (this.state.username && this.state.email && this.fileInput.files[0] && this.state.password) {
             let data = new FormData()
             data.append("photo", this.fileInput.files[0])
             data.append("username", this.state.username)
             data.append("email", this.state.email)
             data.append("password", this.state.password)
-            data.append("key", this.state.key)
-            axios.post(apiUrl + '/users/create/employee', data)
+            axios.post(apiUrl + '/users/create/client', data)
             .then((response) => {
                 if (response.data.success) {
                     Alert.success(response.data.data)
@@ -50,9 +49,10 @@ export class CreateEmployee extends Component {
 
     handleSignin() {
         if (this.state.email && this.state.password) {
-            axios.post(apiUrl + '/users/auth/employeeLogin', {email: this.state.email, password: this.state.password})
+            axios.post(apiUrl + '/users/auth/clientLogin', {email: this.state.email, password: this.state.password})
             .then((response) => {
                 if (response.data.success) {
+                    console.log(response.data.data)
                     saveTokenToBrowser(response.data.data)
                     Alert.success("Successfully signed in!")
                     this.setState({
@@ -92,7 +92,7 @@ export class CreateEmployee extends Component {
                 this.state.isAuthenticated ? <Redirect to="/dash/" /> : ""
             }
                 <div className="authIdentifier">
-                    <p>SOJI Employees Portal</p>
+                    <p>SOJI Clients Portal</p>
                 </div>
                     {
                         this.state.isSignup === true ? 
@@ -118,10 +118,6 @@ export class CreateEmployee extends Component {
                                 <div className="authInputGroup">
                                     <label>Email:</label>
                                     <input onChange={this.handleInput} type="email" name="email" />
-                                </div>
-                                <div className="authInputGroup">
-                                    <label>Admin Key:</label>
-                                    <input onChange={this.handleInput} type="password" name="key" />
                                 </div>
                                 <div className="authInputGroup">
                                     <label>Password:</label>
@@ -151,7 +147,7 @@ export class CreateEmployee extends Component {
                             </div>
                             <div className="authFooter">
                                 <p>Don't have an account? <a onClick={this.toggleSignup.bind(this)}>Create an account</a></p>
-                                <p>Not an employee? <a href="/auth/client">Create Client Account</a></p>
+                                <p>Looking for employee's portal? <a href="/auth/employee">Create Employee Account</a></p>
                             </div>
                         </div>
                     }

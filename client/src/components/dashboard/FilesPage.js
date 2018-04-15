@@ -25,7 +25,6 @@ export class Files extends Component {
         return(
             <div className="filesDash">
                 <Dashnav />
-                <SideNav currentPage={"files"} />
                 <div className="dashContent">
                     <div className="dashHeader">
                         <div className="dashTitle">

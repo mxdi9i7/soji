@@ -94,7 +94,6 @@
   }
   
 .dashContent {
-    margin-left: 95px;
     padding: 15px;
     min-height: 500px;
 }
@@ -203,9 +202,10 @@
 .dashTitle {
     display: flex;
 }
-.dashTitle a {
-    text-decoration: none;
+.dashTitle span {
+    margin: 0 10px;
 }
+
 .jobsDash .dashTitle h1.active {
     color: red;
 }
@@ -306,4 +306,131 @@
     background-color: #7B1FA2;
     color: #fff;
     border-radius: 50%;
+}
+.dashContainer {
+    padding: 15px 0;
+    margin: 20px 0;
+    display: flex;
+}
+.dashContainer .containerBox {
+    background-color:#EFEDE3;
+    border: 1px solid #777;
+}
+.dashContainer .dashJobListContainer {
+    width: 60%;
+    margin-right: 5px;
+}
+.dashContainer .dashFilesList {
+    width: 40%;
+    margin-left: 5px;
+    border-top-color: #7B1FA2;
+}
+.containerList {
+    padding: 0px 10px 15px 10px;
+}
+.containerList p {
+    margin: 10px 0;
+    font-size: 14px;
+    color: #888;
+}
+.containerList h3 {
+    font-size: 16px;
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+    margin: 0;
+}
+.containerList a {
+    text-decoration: none;
+}
+.containerList span {
+    font-weight: 300;
+    font-size: 12px;
+    margin: 0 20px;
+}
+.containerList a:hover {
+    text-decoration: underline;
+}
+.dashContainer .containerHeader {
+    padding: 10px;
+    font-weight: 500;
+    border-bottom: 1px solid #ccc;
+}
+.announcementContainer.dashTab {
+    border-top: 5px solid purple;
+    height: 100px;
+}
+.dashTab {
+	width: 100%;
+	padding: 15px;
+	box-shadow: 1px 4px 5px #eee;
+	margin-bottom: 20px;
+}
+.dashTab h1 {
+	margin: 0 0 15px 0;
+	font-size: 22px;
+	font-weight: 500;
+}
+.todoContainer {
+	border-top: 5px solid #FBC02D;
+}
+.announcementContainer .announcementTab {
+	display: flex;
+	justify-content: space-between;
+}
+.announcementContainer span.content {
+	color: #999;
+	font-size: 16px;
+	font-weight: 600;
+}
+.announcementContainer span.date {
+	color: #999;
+	font-size: 14px;
+	font-weight: 300;
+}
+.dashTab {
+	border-top: 5px solid #448AFF;
+	height: 400px;
+}
+.dashTab .list {
+	height: 350px;
+	overflow-y: scroll;
+}
+.dashTab .folder {
+	border-bottom: 1px solid #eee;
+	padding: 15px 5px;
+}
+.folder svg {
+	font-size: 30px;
+	color: #999;
+}
+.folder a {
+	font-weight: 600;
+	color: #7B1FA2;
+	vertical-align: 5px;
+	margin-left: 20px;
+	text-decoration: none;
+}
+.folder a:hover {
+	color: #333;
+	text-decoration: underline;
+	cursor: pointer;
+}
+.dashTab span {
+    font-size: 12px;
+    font-weight: 300;
+    vertical-align: 5px;
+    margin: 0 20px;
+}
+.taskMonth {
+	margin: 20px 10px;
+}
+.taskMonth .taskFolder {
+	margin: 20px 0;
+}
+.taskMonth a {
+	font-size: 24px;
+	font-weight: 300;
+}
+.taskMonth svg {
+	font-size: 38px;
 }

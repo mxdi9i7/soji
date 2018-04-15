@@ -13,14 +13,6 @@ import ReactPaginate from 'react-paginate';
 import '../../assets/dash.css'
 
 class Jobs extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            jobs: this.props.jobs
-        }
-    }
-    componentWillMount() {
-    }
     render() {
         return(
             <div className="jobsDash">

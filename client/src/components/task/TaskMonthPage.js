@@ -20,7 +20,6 @@ export class TaskMonth extends Component {
         return (
             <div>
                 <Dashnav />
-                <SideNav currentPage={"jobs"} />
                 <div className="dashContent">
                     <div className="dashHeader">
                         <div className="dashTitle">
@@ -57,7 +56,7 @@ export class TaskMonth extends Component {
                         {
                             months.map(month => {
                                 return (
-                                    <div className="taskFolder" key={month.index}>
+                                    <div className="folder" key={month.index}>
                                         <i className="fa fa-folder"></i>
                                         <Link to={"/dash/task/" + this.props.task.taskID + '/' + month.index}>{month.month} 2018</Link>
                                     </div>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../../assets/navs.css'
 import axios from 'axios'
-import { apiUrl, employeeAvatarUrl } from '../../serverConfig'
+import { apiUrl, employeeAvatarUrl, clientAvatarUrl } from '../../serverConfig'
 import Alert from 'react-s-alert';
 import 'react-s-alert/dist/s-alert-default.css'
 import 'react-s-alert/dist/s-alert-css-effects/scale.css'
@@ -11,21 +11,11 @@ import { connect } from 'react-redux'
 
 class Navigation extends Component {
     componentDidMount() {
-        axios.post(apiUrl + '/users/auth/check', {token: sessionStorage.getItem('token')})
-        .then((res) => {
-            if (res.data.success) {
-                this.props.setInfo(res.data.data)
-            } else {
-                Alert.success(res.data.data)
-            }
-        })
+        this.props.decodeToken()
     }
     render() {
         return (
             <div className="dashnavContainer">
-                <div className="menuContainer">
-                    <i className="fa fa-bars"></i>
-                </div>
                 <div className="logoContainer">
                     <img src="http://lisatech.vn/upload/images/Soji-logo.jpg" alt="logo"/>
                 </div>
@@ -35,8 +25,13 @@ class Navigation extends Component {
                         <p>{this.props.info.identity}</p>
                     </div>
                     <div className="avatarContainer">
-                        <img src={employeeAvatarUrl + this.props.info.photo} alt="avatar"/>
+                        <img src={this.props.info.role === "employee" ?
+                         employeeAvatarUrl : clientAvatarUrl + this.props.info.photo} alt="avatar"
+                         />
                         <i className="fa fa-angle-down"></i>
+                        <div className="avatarTab">
+                            Logout
+                        </div>
                     </div>
                 </div>
             </div>
@@ -52,8 +47,15 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        setInfo: (info) => {
-            store.dispatch(setUserInfo(info))
+        decodeToken: () => {
+            axios.post(apiUrl + '/users/auth/check', {token: sessionStorage.getItem('token')})
+            .then((res) => {
+                if (res.data.success) {
+                    store.dispatch(setUserInfo(res.data.data))
+                } else {
+                    Alert.success(res.data.data)
+                }
+            })
         }
     }
 }

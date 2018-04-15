@@ -22,6 +22,24 @@ fetchJobsWithFilter = (req, res) => {
     })
 }
 
+fetchJobListByClient = (req, res) => {
+    console.log(req.url)
+    let clientID = req.query.clientID
+    Jobs.find({clientID}, (err, jobs) => {
+        if (err) {
+            res.json({
+                success: false,
+                data: "cannot find jobs associated with this account"
+            })
+        } else {
+            res.json({
+                success: true,
+                data: jobs
+            })
+        }
+    })
+}
+
 fetchJob = (req, res) => {
     const jobID = req.query.id
     Jobs.findOne({jobID}, (err, job) => {
@@ -39,5 +57,5 @@ fetchJob = (req, res) => {
     })
 }
 module.exports = {
-    fetchJobsWithFilter, fetchJob
+    fetchJobsWithFilter, fetchJob, fetchJobListByClient
 }

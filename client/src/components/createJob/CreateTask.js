@@ -76,7 +76,8 @@ class CreateTask extends Component {
 const mapStateToProps = state => {
     return {
         tasks: state.createTask.task,
-        job: state.createTask.job
+        job: state.createTask.job,
+        user: state.auth
     }
 }
 
@@ -98,13 +99,18 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
     return {
         tasks: stateProps.tasks,
         job: stateProps.job,
+        user: stateProps.user,
         createTaskInStore: dispatchProps.createTaskInStore,
         handleTaskDelete: dispatchProps.handleTaskDelete,
         submitJob: (e) => {
             const jobUrl = apiUrl + '/jobs/create';
             const taskUrl = apiUrl + '/tasks/create';
-            axios.post(jobUrl, stateProps.job).then((jobData) => {
+            axios.post(jobUrl, {
+                ...stateProps.job,
+                clientID: stateProps.user.clientID
+            }).then((jobData) => {
                 const taskResults = stateProps.tasks.map(async (task) => {
+                    console.log(stateProps.user)
                     const newTask = {
                         title: task.title,
                         description: task.description,
