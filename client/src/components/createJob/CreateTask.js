@@ -110,15 +110,13 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
                 clientID: stateProps.user.clientID
             }).then((jobData) => {
                 const taskResults = stateProps.tasks.map(async (task) => {
-                    console.log(stateProps.user)
-                    const newTask = {
-                        title: task.title,
-                        description: task.description,
-                        jobID: jobData.data.data.jobID,
-                        // video: task.video,
-                        // file: task.file,
-                        duration: task.duration
-                    }
+                    const newTask = new FormData()
+                    newTask.append('title', task.title)
+                    newTask.append('description', task.description)
+                    newTask.append('jobID', jobData.data.data.jobID)
+                    newTask.append('video', task.video)
+                    newTask.append('file', task.file)
+                    newTask.append('duration', task.duration)
                     return axios.post(taskUrl, newTask).then((taskData) => {
                         return taskData
                     })

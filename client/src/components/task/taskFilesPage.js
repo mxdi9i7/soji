@@ -5,15 +5,17 @@ import {SideNav} from '../partials/SideNav';
 import { connect } from 'react-redux';
 import { store } from '../../reducers/index';
 import axios from 'axios';
-import { apiUrl } from '../../serverConfig';
+import { apiUrl, fileUrl } from '../../serverConfig';
 import '../../assets/dash.css'
 import '../../assets/job.css'
+import { getFiles } from '../../actions/ManageFiles';
 import { months } from '../../helpers/twelveMonths'
 
 export class TaskFiles extends Component {
+    
     async componentDidMount() {
-        // let task = await axios.get(apiUrl + '/tasks/fetch/single?id=' + this.props.match.params.id)
-        // this.props.initializeTask(task.data.data)
+        let files = await axios.get(`${apiUrl}/files/fetch/month?taskID=${this.props.match.params.id}&month=${this.props.match.params.month}&year=2018`)
+        this.props.getFiles(files.data.data)
     }
     render() {
         return (
@@ -23,14 +25,48 @@ export class TaskFiles extends Component {
                     <div className="dashHeader">
                         <div className="dashTitle">
                             <h1>
-                                Job: {this.props.job.title}
-                                / <span>{this.props.task.taskTitle}</span>
-                                / <span>January 2018</span>
-                             </h1>
+                                <Link to={"/dash/job/"+this.props.job.jobID}>{this.props.job.title}</Link>
+                                <span>/</span>
+                                <Link to={"/dash/task/"+this.props.task.taskID}>{this.props.task.taskTitle}</Link>
+                                <span>/</span>
+                                <span>January 2018</span>
+                            </h1>
                         </div>
                     </div>
-                    <div className="filesTable">
-                        
+                    <div className="dashContainer">
+                        <div className="dashTab">
+                            <div className="list">
+                            {
+                                console.log(this.props.task)
+                            }
+                                {
+                                    typeof this.props.files !== "string" ? this.props.files.map(file => {
+                                        const date = new Date(file.createdAt)
+                                        const createDate = date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate()
+                                        return (
+                                            <div className="folder" key={file.fileID}>
+                                                <i className="fa fa-file"></i>
+                                                <span>File Name: {file.fileName}</span>
+                                                <span>Upload Date: {createDate}</span>  
+                                                <span>
+                                                    Rating: 
+                                                    {
+                                                        file.rating ? file.rating : 
+                                                        " Not yet rated"
+                                                    }
+                                                </span>
+                                                <a href={fileUrl + file.fileName} download>
+                                                    <i className="fa fa-download"></i>
+                                                    Download
+                                                </a>  
+                                                
+                                                
+                                            </div>
+                                        )
+                                    }) : (this.props.files)
+                                }
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -41,15 +77,16 @@ export class TaskFiles extends Component {
 const mapStateToProps = state => {
     return {
         task: state.tasks.task,
-        job: state.job
+        job: state.job,
+        files: state.manageFiles.files
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        // initializeTask: (task) => {
-        //     store.dispatch(initializeTask(task))
-        // }
+        getFiles: (files) => {
+            store.dispatch(getFiles(1, 1, files, 1))
+        }
     }
 }
 

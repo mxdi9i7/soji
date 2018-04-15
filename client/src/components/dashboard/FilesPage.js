@@ -89,7 +89,6 @@ export class Files extends Component {
 
 
 const mapStateToProps = state => {
-    console.log(state.tasks)
     return {
         files: state.manageFiles.files,
         page: state.manageFiles.page,

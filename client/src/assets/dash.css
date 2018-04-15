@@ -410,6 +410,10 @@
 	margin-left: 20px;
 	text-decoration: none;
 }
+.folder a svg {
+    font-size: 15px;
+    margin: 0 10px;
+}
 .folder a:hover {
 	color: #333;
 	text-decoration: underline;

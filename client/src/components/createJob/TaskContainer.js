@@ -33,11 +33,11 @@ export class Task extends Component {
                     <div className="taskRow">
                         <div className="taskInputContainer">
                             <label htmlFor="taskFile">Task File Upload</label>
-                            <input type="file" id="taskFile"  name="taskFile" onChange={handleTaskInput} />
+                            <input type="file" id="taskFile"  name="file" onChange={handleTaskInput} />
                         </div>
                         <div className="taskInputContainer">
                             <label htmlFor="taskVideo">Task Video Upload</label>
-                            <input type="file" id="taskVideo"  name="taskVideo" onChange={handleTaskInput} />
+                            <input type="file" id="taskVideo"  name="video" onChange={handleTaskInput} />
                         </div>
                     </div>
                 </div>
@@ -48,6 +48,7 @@ export class Task extends Component {
 
 const mapStateToProps = state => {
     return {
+        tasks: state.createTask.task
     }
 }
 
@@ -56,7 +57,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         handleTaskInput: (e) => {
             const currentIndex = ownProps.currentIndex;
             const name = e.target.name;
-            const value = e.target.value;
+            let value = e.target.value;
+            if (name === "file" || name === "video") {
+                value = e.target.files[0]
+            }
             dispatch(HandleTaskInput(value, name, currentIndex - 1))
         }
     }

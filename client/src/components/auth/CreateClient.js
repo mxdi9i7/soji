@@ -89,7 +89,7 @@ export class CreateClient extends Component {
         return (
             <div className="employees authWrapper">
             {
-                this.state.isAuthenticated ? <Redirect to="/dash/" /> : ""
+                this.state.isAuthenticated ? <Redirect to="/dash/c" /> : ""
             }
                 <div className="authIdentifier">
                     <p>SOJI Clients Portal</p>

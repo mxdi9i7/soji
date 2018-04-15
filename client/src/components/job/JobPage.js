@@ -4,6 +4,7 @@ import {SideNav} from '../partials/SideNav';
 import { connect } from 'react-redux';
 import { store } from '../../reducers/index';
 import { initializeJob} from '../../actions/Job';
+import { Link } from 'react-router-dom'
 import axios from 'axios';
 import { apiUrl } from '../../serverConfig';
 import '../../assets/dash.css'
@@ -37,7 +38,11 @@ export class Job extends Component {
                 <div className="dashContent">
                     <div className="dashHeader">
                         <div className="dashTitle">
-                            <h1>Job: {this.props.job.title}</h1>
+                            <h1>
+                                <Link to="/dash">Dashboard</Link>
+                                <span>/</span>
+                                <span>{this.props.job.title}</span>
+                            </h1>
                         </div>
                         <div className="dashActions">
                             <button>

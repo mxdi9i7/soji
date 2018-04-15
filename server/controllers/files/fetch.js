@@ -27,5 +27,41 @@ handleFilesFetch = (req, res, next) => {
     });
 }
 
+handleFilesByMonth = (req, res, next) => {
+    const { month, year, taskID } = req.query;
+    Files.aggregate([
+        {$project: {
+            month: {$month: "$createdAt"},
+            year: {$year: "$createdAt"},
+            taskID: "$taskID",
+            jobID: "$jobID",
+            managerID: "$managerID",
+            fileID: "$fileID",
+            fileName: "$fileName",
+            createdAt: "$createdAt"
+        }}, {
+            $match: {taskID, month: Number(month), year: Number(year)}
+        }
+    ], (err, files) => {
+        if (err) {
+            res.json({
+                success: false,
+                data: err
+            })
+        } else {
+            if (!files.length) {
+                res.json({
+                    success: true,
+                    data: "No files found for this time period."
+                })
+            } else {
+                res.json({
+                    success: true,
+                    data: files
+                })
+            }
+        }
+    })
+}
 
-module.exports = { handleFilesFetch }
+module.exports = { handleFilesFetch, handleFilesByMonth }

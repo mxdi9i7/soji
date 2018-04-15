@@ -8,13 +8,15 @@ let storage = multer.diskStorage({
     cb(null, './uploads/files')
   },
   filename: function (req, file, cb) {
-    cb(null, Date.now() + '.png')
+    cb(null, Date.now() + '.' + file.mimetype.split('/')[1])
   }
 })
 let upload = multer({storage: storage})
 
-router.post('/', upload.any(), function(req, res, next){
-    create.handleTaskCreate(req, res, next);
+router.post('/', upload.fields([
+  {name: 'file', maxCount: 1}, {name: 'video', maxCount: 1}
+]), function(req, res, next){
+  create.handleTaskCreate(req, res, next);
 });
 
 module.exports = router;
