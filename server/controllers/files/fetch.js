@@ -27,6 +27,30 @@ handleFilesFetch = (req, res, next) => {
     });
 }
 
+handleSingleFile = (req, res) => {
+    const { fileID } = req.query
+    Files.findOne({fileID}, (err, file) => {
+        if (err) {
+            res.json({
+                success: false,
+                data: err
+            });
+        } else {
+            if (!file) {
+                res.json({
+                    success: true,
+                    data: "Cannot find any file with this ID"
+                });
+            } else {
+                res.json({
+                    success: true,
+                    data: file
+                });
+            }
+        }
+    })
+}
+
 handleFilesByMonth = (req, res, next) => {
     const { month, year, taskID } = req.query;
     Files.aggregate([
@@ -64,4 +88,4 @@ handleFilesByMonth = (req, res, next) => {
     })
 }
 
-module.exports = { handleFilesFetch, handleFilesByMonth }
+module.exports = { handleFilesFetch, handleFilesByMonth, handleSingleFile }

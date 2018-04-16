@@ -25,9 +25,11 @@ export class TaskFiles extends Component {
                     <div className="dashHeader">
                         <div className="dashTitle">
                             <h1>
-                                <Link to={"/dash/job/"+this.props.job.jobID}>{this.props.job.title}</Link>
+                                <Link to="/dash">Dashboard</Link>
                                 <span>/</span>
-                                <Link to={"/dash/task/"+this.props.task.taskID}>{this.props.task.taskTitle}</Link>
+                                <Link to={this.props.job.jobID ? `/dash/job/${this.props.job.jobID}` : "/dash"}>{this.props.job.title || "Job"}</Link>
+                                <span>/</span>
+                                <Link to={this.props.task.taskID ? `/dash/task/${this.props.task.taskID}` : "/dash"}>{this.props.task.taskTitle || "Task"}</Link>
                                 <span>/</span>
                                 <span>January 2018</span>
                             </h1>
@@ -52,9 +54,13 @@ export class TaskFiles extends Component {
                                                     Rating: 
                                                     {
                                                         file.rating ? file.rating : 
-                                                        " Not yet rated"
+                                                        " Not yet rated" 
                                                     }
                                                 </span>
+                                                <a href={"/dash/file/" + file.fileID}>
+                                                    <i className="fa fa-eye"></i>
+                                                    View File
+                                                </a>  
                                                 <a href={fileUrl + file.fileName} download>
                                                     <i className="fa fa-download"></i>
                                                     Download

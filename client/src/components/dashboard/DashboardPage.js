@@ -20,17 +20,26 @@ class Dashboard extends Component {
     }
     async componentDidMount() {
         const client = await axios.post(apiUrl + '/users/auth/check', {token: sessionStorage.getItem('token')})
-        console.log(client)
         this.setState({client: client.data.data})
     }
     render() {
         let { setCreateJobToActive } = this.props
+        const redirectTo = () => {
+            switch(this.state.client.role) {
+                case "client":
+                    return <Redirect to="/dash/c" />
+                case "employee":
+                    return <Redirect to="/dash/e" />
+                case "admin":
+                    return <Redirect to="/dash/a" />
+                default: 
+                    return <Redirect to="/dash/c" />
+            }
+        }
         return(
             <div>
                 {
-                    this.state.client.role === "client" ? 
-                    <Redirect to="/dash/c" />
-                     : ""
+                    redirectTo()
                 }
             </div>
         )

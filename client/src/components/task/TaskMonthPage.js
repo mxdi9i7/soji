@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {Dashnav} from '../partials/Dashnav';
 import { Link } from 'react-router-dom'
-import {SideNav} from '../partials/SideNav';
 import { connect } from 'react-redux';
 import { store } from '../../reducers/index';
 import { initializeTask } from '../../actions/Tasks';
@@ -24,6 +23,8 @@ export class TaskMonth extends Component {
                     <div className="dashHeader">
                         <div className="dashTitle">
                             <h1>
+                                <Link to="/dash">Dashboard</Link>
+                                <span>/</span>
                                 <Link to={"/dash/job/"+this.props.job.jobID}>{this.props.job.title}</Link>
                                 <span>/</span>
                                 <span>{this.props.task.taskTitle}</span>

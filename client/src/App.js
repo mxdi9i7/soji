@@ -14,6 +14,7 @@ import { TaskFilesPage } from './components/task/taskFilesPage';
 import { CreateClient } from "./components/auth/CreateClient";
 import { ClientNewJobPage } from "./components/dashboard/ClientNewJobPage";
 import { ClientDashboard } from './components/dashboard/ClientDashboard';
+import FilePage from './components/file/FilePage';
 
 // import { ClientsPage } from './components/dashboard/ClientsPage';
 // import { BillingPage } from './components/dashboard/BillingPage';
@@ -37,6 +38,7 @@ class App extends Component {
 					<Route exact path="/dash/task/:id" component={TaskMonthPage} />
 					<Route exact path="/dash/task/:id/:month" component={TaskFilesPage} />
 					<Route exact path="/dash/employees" component={EmployeesPage} />
+					<Route exact path="/dash/file/:id" component={FilePage} />
 					<Route exact path="/dash/files" component={FilesPage} />
 					<Route exact path="/dash/tasks" component={TasksPage} />
 					{/* <Route exact path="/dash/clients" component={ClientsPage} /> */}

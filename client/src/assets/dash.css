@@ -425,6 +425,10 @@
     vertical-align: 5px;
     margin: 0 20px;
 }
+.dashTab .dashInfo span {
+    vertical-align: 0px;
+    font-size: 14px;
+}
 .taskMonth {
 	margin: 20px 10px;
 }

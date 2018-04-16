@@ -10,4 +10,8 @@ router.get('/', function(req, res, next){
 router.get('/month', (req, res, next) => {
     fetch.handleFilesByMonth(req, res, next)
 })
+
+router.get('/single', (req, res) => {
+    fetch.handleSingleFile(req, res)
+})
 module.exports = router;

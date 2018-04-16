@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import '../../assets/navs.css'
+import '../../assets/dash.css'
+import '../../assets/global.css'
 import axios from 'axios'
 import { apiUrl, employeeAvatarUrl, clientAvatarUrl } from '../../serverConfig'
 import Alert from 'react-s-alert';
