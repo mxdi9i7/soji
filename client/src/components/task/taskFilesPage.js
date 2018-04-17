@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {Dashnav} from '../partials/Dashnav';
-import { Link } from 'react-router-dom'
-import {SideNav} from '../partials/SideNav';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { store } from '../../reducers/index';
 import axios from 'axios';
@@ -38,9 +37,6 @@ export class TaskFiles extends Component {
                     <div className="dashContainer">
                         <div className="dashTab">
                             <div className="list">
-                            {
-                                console.log(this.props.task)
-                            }
                                 {
                                     typeof this.props.files !== "string" ? this.props.files.map(file => {
                                         const date = new Date(file.createdAt)
