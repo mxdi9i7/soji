@@ -1,10 +1,9 @@
 var express = require('express');
 var router = express.Router();
-var search = require('../../controllers/teams/search')
-
+var update = require('../../controllers/announcements/update');
 
 router.post('/', function(req, res, next){
-    search.handleTeamSearchByID(req, res, next);
+    update.handleAnnouncementUpdate(req, res, next);
 });
 
 

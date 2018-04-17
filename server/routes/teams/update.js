@@ -7,4 +7,12 @@ router.post('/', function(req, res, next){
     update.handleJobUpdate(req, res, next);
 });
 
+router.post('/add/', function(req, res, next){
+    update.handleAddOneMember(req, res, next);
+});
+
+router.post('/remove/', function(req, res, next){
+    update.handleRemoveOneMember(req, res, next);
+});
+
 module.exports = router;

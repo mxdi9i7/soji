@@ -2,7 +2,13 @@ const Teams = require('../../model/Teams')
 
 handleTeamSearchByID= (req, res, next) => {
     let teamID = req.body.teamID;
-    Teams.find({teamID:teamID}, (err, callback) =>
+    let query;
+    if(teamID != "") {
+        query = {teamID:teamID}
+    } else {
+        query = {};
+    }
+    Teams.find(query, (err, callback) =>
     {
         if (err) {
             res.json({

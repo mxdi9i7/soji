@@ -1,13 +1,9 @@
-const Jobs = require('../../model/Jobs')
+const Comments = require('../../model/Comments')
 
-handleJobSearchByTitle = (req, res, next) => {
-    let jobTitle = req.body.jobTitle;
-    let titleArray = jobTitle.split(' ');
-    let search = '\.*';
-    titleArray.forEach(title => {
-        search += title + '\.*';
-    });
-    Jobs.find({jobTitle:{$regex:search}}, (err, callback) =>
+handleCommentSearchByAuthor= (req, res, next) => {
+    let query = {authorID:req.body.authorID}
+
+    Comments.find(query, (err, callback) =>
     {
         if (err) {
             res.json({
@@ -23,10 +19,10 @@ handleJobSearchByTitle = (req, res, next) => {
     });
 }
 
-handleJobSearchByTeamID = (req, res, next) => {
-    let query = {teamID:req.body.teamID}
+handleCommentSearchByFileID= (req, res, next) => {
+    let query = {fileID:req.body.fileID}
 
-    Jobs.find(query, (err, callback) =>
+    Comments.find(query, (err, callback) =>
     {
         if (err) {
             res.json({
@@ -42,4 +38,4 @@ handleJobSearchByTeamID = (req, res, next) => {
     });
 }
 
-module.exports = { handleJobSearchByTitle, handleJobSearchByTeamID }
+module.exports = { handleCommentSearchByAuthor, handleCommentSearchByFileID }

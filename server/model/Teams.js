@@ -7,6 +7,7 @@ const TeamsSchema = new Schema
     teamID: String,
     teamName: String,
     managerID: String,
+    teamMember: Array,
     creationDate: Date
 });
 

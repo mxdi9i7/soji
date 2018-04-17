@@ -1,10 +1,9 @@
 var express = require('express');
 var router = express.Router();
-var search = require('../../controllers/teams/search')
-
+var deletes = require('../../controllers/announcements/delete');
 
 router.post('/', function(req, res, next){
-    search.handleTeamSearchByID(req, res, next);
+    deletes.handleAnnouncementDeleteByID(req, res, next);
 });
 
 

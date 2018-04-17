@@ -45,6 +45,17 @@ const searchTeam = require('./routes/teams/search');
 const deleteTeam = require('./routes/teams/delete');
 const updateTeam = require('./routes/teams/update');
 
+// comment route
+const createComment = require('./routes/comments/create');
+const searchComment = require('./routes/comments/search');
+const deleteComment = require('./routes/comments/delete');
+
+// announcements route
+const createAnnouncement = require('./routes/announcements/create');
+const searchAnnouncement = require('./routes/announcements/search');
+const deleteAnnouncement = require('./routes/announcements/delete');
+const updateAnnouncement = require('./routes/announcements/update');
+
 var app = express();
 
 
@@ -114,6 +125,17 @@ app.use('/api/v1/teams/create', createTeam);
 app.use('/api/v1/teams/search', searchTeam);
 app.use('/api/v1/teams/delete', deleteTeam);
 app.use('/api/v1/teams/update', updateTeam);
+
+// team path
+app.use('/api/v1/comments/create', createComment);
+app.use('/api/v1/comments/search', searchComment);
+app.use('/api/v1/comments/delete', deleteComment);
+
+// announcement path
+app.use('/api/v1/announcements/create', createAnnouncement);
+app.use('/api/v1/announcements/search', searchAnnouncement);
+app.use('/api/v1/announcements/delete', deleteAnnouncement);
+app.use('/api/v1/announcements/update', updateAnnouncement);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

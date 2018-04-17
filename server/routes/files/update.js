@@ -3,8 +3,8 @@ var router = express.Router();
 var create = require('../../controllers/files/update')
 
 
-router.post('/', function(req, res, next){
-    create.handleFileUpdate(req, res, next);
+router.post('/rating', function(req, res, next){
+    create.handleRatingUpdate(req, res, next);
 });
 
 module.exports = router;

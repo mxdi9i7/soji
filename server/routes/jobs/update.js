@@ -6,4 +6,9 @@ router.post('/', function(req, res, next){
     update.handleJobUpdate(req, res, next);
 });
 
+router.post('/approve/', function(req, res, next){
+    update.handleJobApprove(req, res, next);
+});
+
+
 module.exports = router;

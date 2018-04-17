@@ -23,6 +23,7 @@ handleTeamCreate = (req, res, next) => {
             teamID: teamID,
             teamName: req.body.teamName,
             managerID: req.body.managerID,
+            teamMember: req.body.teamMember,
             creationDate: new Date()
         });
         newTeam.save((err, callback) => {

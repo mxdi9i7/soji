@@ -14,4 +14,9 @@ router.get('/month', (req, res, next) => {
 router.get('/single', (req, res) => {
     fetch.handleSingleFile(req, res)
 })
+
+router.get('/recent', (req, res) => {
+    fetch.handleFilesByClientID(req, res)
+})
+
 module.exports = router;

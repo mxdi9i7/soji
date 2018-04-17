@@ -1,4 +1,5 @@
 const Jobs = require('../../model/Jobs')
+const Admin = require('../../model/Admin')
 
 handleJobUpdate = (req, res, next) => {
     let query = {jobID: req.body.jobID}
@@ -7,7 +8,6 @@ handleJobUpdate = (req, res, next) => {
         jobTitle: req.body.jobTitle,
         jobDescription: req.body.jobDescription,
         quote: req.body.quote,
-        approved: req.body.approved,
         approvedBy: req.body.approvedBy,
         assignedTo: req.body.assignedTo,
         repeatEvery: req.body.repeatEvery,
@@ -29,7 +29,46 @@ handleJobUpdate = (req, res, next) => {
             });
         } 
     });
+}
+
+handleJobApprove = (req, res, next) => {
+    let adminQuery = {adminID: req.body.adminID}
+    Admin.findOne(adminQuery, (err, callback) => {
+        if (err) {
+            res.json({
+                success: false,
+                data: err
+            });
+        } else if(callback == null) {
+            res.json({
+                success: false,
+                data: "admin ID incorrect"
+            });
+        } else {
+            let query = {jobID: req.body.jobID}
+            let update = { $set:
+                {
+                    approved: req.body.approved,
+                    approvedBy: req.body.adminID
+                }
+            }
+        
+            Jobs.findOneAndUpdate(query, update, (err, callback) => {
+                if (err) {
+                    res.json({
+                        success: false,
+                        data: err
+                    });
+                } else {
+                    res.json({
+                        success: true,
+                        data: "job updated"
+                    });
+                } 
+            });
+        }
+    });
 
 }
 
-module.exports = { handleJobUpdate }
+module.exports = { handleJobUpdate, handleJobApprove }
