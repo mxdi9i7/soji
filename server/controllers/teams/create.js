@@ -1,5 +1,5 @@
-const Teams = require('../../model/Teams')
-
+const Teams = require('../../model/Teams');
+const Employee = require('../../model/Employee');
 
 handleTeamCreate = (req, res, next) => {
     let teamsArray;
@@ -17,7 +17,7 @@ handleTeamCreate = (req, res, next) => {
             }
         }
         while (JSON.stringify(teamsArray).indexOf(teamID) != -1);
-
+        
         let newTeam = new Teams
         ({
             teamID: teamID,
@@ -33,10 +33,26 @@ handleTeamCreate = (req, res, next) => {
                     message: err
                 });
             } else {
-                res.json({
-                    success: true,
-                    message: "Team created"
-                });
+                if(req.body.managerID != '') {
+                   Employee.findOneAndUpdate({employeeID: req.body.managerID}, { $set: {isManager: true } }, (err, callback) => {
+                        if (err) {
+                            res.json({
+                                success: false,
+                                message: err
+                            });
+                        } else if(callback == null){
+                            res.json({
+                                success: true,
+                                message: "Assigned manager does not exist, team created without manager"
+                            });
+                        } else {
+                            res.json({
+                                success: true,
+                                message: "Team created"
+                            });
+                        }
+                   });
+                }
             } 
         });
     });

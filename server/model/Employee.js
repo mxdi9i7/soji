@@ -5,7 +5,6 @@ const Schema = mongoose.Schema;
 const EmployeeSchema = new Schema
 ({
     employeeID: String,
-    teamID: String,
     username: String,
     password: String,
     email: String,
@@ -13,6 +12,7 @@ const EmployeeSchema = new Schema
     active: Boolean,
     photo: String,
     key: String,
+    isManager: Boolean,
     totalRating: Number,
     ratingCount: Number,
     createdAt: Date,

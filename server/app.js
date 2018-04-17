@@ -42,8 +42,9 @@ const fetchFile = require('./routes/files/fetch');
 // team route
 const createTeam = require('./routes/teams/create');
 const searchTeam = require('./routes/teams/search');
-const deleteTeam = require('./routes/teams/delete');
 const updateTeam = require('./routes/teams/update');
+//const deleteTeam = require('./routes/teams/delete');
+//暂时不允许删除team，保留
 
 // comment route
 const createComment = require('./routes/comments/create');
@@ -123,8 +124,9 @@ app.use('/api/v1/files/fetch', fetchFile);
 // team path
 app.use('/api/v1/teams/create', createTeam);
 app.use('/api/v1/teams/search', searchTeam);
-app.use('/api/v1/teams/delete', deleteTeam);
 app.use('/api/v1/teams/update', updateTeam);
+//app.use('/api/v1/teams/delete', deleteTeam);
+//暂时不允许删除队伍，保留
 
 // team path
 app.use('/api/v1/comments/create', createComment);

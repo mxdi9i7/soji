@@ -9,7 +9,6 @@ handleCommentCreate = (req, res, next) => {
         authorRole: req.body.author,
         createdAt: new Date()
     });
-    console.log(newComment.createdAt)
     newComment.save((err, callback) => {
         if (err) {
             res.json({

@@ -77,7 +77,6 @@ handleEmployeeCreate = (req, res, next) => {
 
         let employee = new Employee({
             employeeID: employeeID,
-            teamID: '',
             username: req.body.username,
             password: req.body.password,
             email: req.body.email,
@@ -85,6 +84,7 @@ handleEmployeeCreate = (req, res, next) => {
             photo: req.file.filename,
             active: true,
             key: req.body.key,
+            isManager: false,
             totalRating: 0,
             ratingCount: 0,
             createdAt: new Date(),

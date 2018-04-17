@@ -2,7 +2,6 @@ const Employee = require('../../model/Employee');
 
 handleStaffUpdate = (req, res, next) => {
     let employee = {
-        teamID: req.body.teamID,
         password: req.body.password,
         email: req.body.email,
         name: req.body.name,
