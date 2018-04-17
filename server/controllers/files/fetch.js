@@ -5,9 +5,24 @@ const { itemsPerPage } = require('../../constant')
 const pagination = require('../pagination')
 
 handleFilesFetch = (req, res, next) => {
-    let page = req.query.page
+    let page = req.query.page;
+    let month = req.query.month;
+    let taskID = req.query.taskID;
     let query = {}
-    Files.find(query, (err, files) => {
+    Files.aggregate([
+        {$project: {
+            month: {$month: "$createdAt"},
+            year: {$year: "$createdAt"},
+            taskID: "$taskID",
+            jobID: "$jobID",
+            managerID: "$managerID",
+            fileID: "$fileID",
+            fileName: "$fileName",
+            createdAt: "$createdAt"
+        }}, {
+            $match: { taskID: taskID,month: Number(month)}
+        }
+    ], (err, files) => {
         let paginationData = pagination(files, itemsPerPage, page)
         const filesData = {
             pageCount: paginationData.pageCount,
