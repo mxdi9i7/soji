@@ -442,3 +442,71 @@
 .taskMonth svg {
 	font-size: 38px;
 }
+.ratingModal p {
+    text-align: center;
+    font-weight: 900;
+    font-size: 18px;
+    margin: 0;
+}
+.ratingModal input {
+    width: 100%;
+    border: 1px solid #eee;
+    padding: 15px;
+    box-sizing: border-box;
+    margin: 10px 0;
+}
+.ratingModal button {
+    width: 100%;
+    padding: 10px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+.ratingModal button:hover {
+    background-color: #448AFF;
+    cursor: pointer;
+}
+.rateBtn {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+}
+.rateBtn:hover {
+    background-color: #448AFF;
+    cursor: pointer;
+}
+.commentBtn {
+    padding: 10px 15px;
+    background-color: #7B1FA2;
+    color: #fff;
+    border: 1px solid transparent;
+}
+.commentBtn:hover {
+    background-color: #2B1FB1;
+    cursor: pointer;
+}
+.commentInputContainer input {
+    padding: 10px 15px;
+    box-shadow: none;
+    outline: none;
+    border: 1px solid #ddd;
+    width: 60%;
+    min-width: 300px;
+}
+.dashTab.filePage {
+    height: auto;
+}
+.filePage .commentBlock {
+    width: 60%;
+    min-width: 300px;
+    padding: 10px 15px;
+    border: 1px solid #dadada;
+    margin: 10px 0;
+    transition: .2s;
+}
+.filePage .commentBlock:hover {
+    background-color: #eee;
+    cursor: pointer;
+}

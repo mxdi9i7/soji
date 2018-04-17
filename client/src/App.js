@@ -14,7 +14,7 @@ import { TaskFilesPage } from './components/task/taskFilesPage';
 import { CreateClient } from "./components/auth/CreateClient";
 import { ClientNewJobPage } from "./components/dashboard/ClientNewJobPage";
 import { ClientDashboard } from './components/dashboard/ClientDashboard';
-import FilePage from './components/file/FilePage';
+import { FilePage } from './components/file/FilePage';
 
 // import { ClientsPage } from './components/dashboard/ClientsPage';
 // import { BillingPage } from './components/dashboard/BillingPage';

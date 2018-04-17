@@ -20,7 +20,7 @@ handleCommentSearchByAuthor= (req, res, next) => {
 }
 
 handleCommentSearchByFileID= (req, res, next) => {
-    let query = {fileID:req.body.fileID}
+    let query = {fileID:req.query.fileID}
 
     Comments.find(query, (err, callback) =>
     {

@@ -4,10 +4,9 @@ const Schema = mongoose.Schema;
 
 const CommentsSchema = new Schema
 ({
-    submissionID: String,
     content: String,
     fileID: String,
-    authorID: String,
+    authorRole: String,
     createAt: Date
 });
 
