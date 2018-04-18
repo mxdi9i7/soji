@@ -43,6 +43,7 @@ const fetchFile = require('./routes/files/fetch');
 const createTeam = require('./routes/teams/create');
 const searchTeam = require('./routes/teams/search');
 const updateTeam = require('./routes/teams/update');
+const fetchTeam = require('./routes/teams/fetch');
 //const deleteTeam = require('./routes/teams/delete');
 //暂时不允许删除team，保留
 
@@ -50,12 +51,19 @@ const updateTeam = require('./routes/teams/update');
 const createComment = require('./routes/comments/create');
 const searchComment = require('./routes/comments/search');
 const deleteComment = require('./routes/comments/delete');
+const fetchComment = require('./routes/comments/fetch');
 
 // announcements route
 const createAnnouncement = require('./routes/announcements/create');
 const searchAnnouncement = require('./routes/announcements/search');
 const deleteAnnouncement = require('./routes/announcements/delete');
 const updateAnnouncement = require('./routes/announcements/update');
+const fetchAnnouncement = require('./routes/announcements/fetch');
+
+// payments route
+const createPayment = require('./routes/payments/create');
+const deletePayment = require('./routes/payments/delete');
+const fetchPayment = require('./routes/payments/fetch');
 
 var app = express();
 
@@ -125,6 +133,7 @@ app.use('/api/v1/files/fetch', fetchFile);
 app.use('/api/v1/teams/create', createTeam);
 app.use('/api/v1/teams/search', searchTeam);
 app.use('/api/v1/teams/update', updateTeam);
+app.use('/api/v1/teams/fetch', fetchTeam);
 //app.use('/api/v1/teams/delete', deleteTeam);
 //暂时不允许删除队伍，保留
 
@@ -132,12 +141,19 @@ app.use('/api/v1/teams/update', updateTeam);
 app.use('/api/v1/comments/create', createComment);
 app.use('/api/v1/comments/search', searchComment);
 app.use('/api/v1/comments/delete', deleteComment);
+app.use('/api/v1/comments/fetch', fetchComment);
 
 // announcement path
 app.use('/api/v1/announcements/create', createAnnouncement);
 app.use('/api/v1/announcements/search', searchAnnouncement);
 app.use('/api/v1/announcements/delete', deleteAnnouncement);
 app.use('/api/v1/announcements/update', updateAnnouncement);
+app.use('/api/v1/announcements/fetch', fetchAnnouncement);
+
+// payment path
+app.use('/api/v1/payments/create', createPayment);
+app.use('/api/v1/payments/delete', deletePayment);
+app.use('/api/v1/payments/fetch', fetchPayment);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

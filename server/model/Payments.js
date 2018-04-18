@@ -4,10 +4,15 @@ const Schema = mongoose.Schema;
 
 const PaymentsSchema = new Schema
 ({
-    clientID: String,
+    paymentID: String,
+    name: String,
+    accountNumber: String,
+    company: String,
+    transferDate: Date,
     amount: Number,
+    description: String,
     jobID: String,
-    createAt: Date
+    createdAt: Date
 });
 
 const Payments = module.exports = mongoose.model('Payments', PaymentsSchema);
