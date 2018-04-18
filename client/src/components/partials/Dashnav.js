@@ -3,7 +3,7 @@ import '../../assets/navs.css'
 import '../../assets/dash.css'
 import '../../assets/global.css'
 import axios from 'axios'
-import { apiUrl, employeeAvatarUrl, clientAvatarUrl } from '../../serverConfig'
+import { apiUrl, employeeAvatarUrl, clientAvatarUrl, adminAvatarUrl } from '../../serverConfig'
 import Alert from 'react-s-alert';
 import 'react-s-alert/dist/s-alert-default.css'
 import 'react-s-alert/dist/s-alert-css-effects/scale.css'
@@ -14,8 +14,29 @@ import { connect } from 'react-redux'
 class Navigation extends Component {
     componentDidMount() {
         this.props.decodeToken()
+        this.isAuthenticated()
+    }
+    handleLogout() {
+        window.sessionStorage.setItem('token', "")
+        this.isAuthenticated()
+    }
+    isAuthenticated() {
+        const token = window.sessionStorage.getItem('token')
+        if (!token) {
+            window.location.href="/"
+        }
     }
     render() {
+        let url = "";
+        const identity = this.props.info.identity
+        if (identity === "employee") {
+            url = employeeAvatarUrl
+        } else if (identity === "client") {
+            url = clientAvatarUrl
+        } else if (identity === "admin") {
+            url = adminAvatarUrl
+        }
+        console.log(identity)
         return (
             <div className="dashnavContainer">
                 <div className="logoContainer">
@@ -27,11 +48,10 @@ class Navigation extends Component {
                         <p>{this.props.info.identity}</p>
                     </div>
                     <div className="avatarContainer">
-                        <img src={this.props.info.role === "employee" ?
-                         employeeAvatarUrl : clientAvatarUrl + this.props.info.photo} alt="avatar"
+                        <img src={url + this.props.info.photo} alt="avatar"
                          />
                         <i className="fa fa-angle-down"></i>
-                        <div className="avatarTab">
+                        <div onClick={this.handleLogout.bind(this)} className="avatarTab">
                             Logout
                         </div>
                     </div>

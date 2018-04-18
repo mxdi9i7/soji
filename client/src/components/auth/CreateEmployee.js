@@ -89,7 +89,7 @@ export class CreateEmployee extends Component {
         return (
             <div className="employees authWrapper">
             {
-                this.state.isAuthenticated ? <Redirect to="/dash/" /> : ""
+                this.state.isAuthenticated ? <Redirect to="/dash/e" /> : ""
             }
                 <div className="authIdentifier">
                     <p>SOJI Employees Portal</p>
@@ -151,7 +151,7 @@ export class CreateEmployee extends Component {
                             </div>
                             <div className="authFooter">
                                 <p>Don't have an account? <a onClick={this.toggleSignup.bind(this)}>Create an account</a></p>
-                                <p>Not an employee? <a href="/auth/client">Create Client Account</a></p>
+                                <p>Not an employee? <a href="/auth/client">Clients Portal</a></p>
                             </div>
                         </div>
                     }

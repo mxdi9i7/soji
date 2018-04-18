@@ -112,9 +112,9 @@ handleEmployeeLogin = (req, res, next) => {
 }
 
 handleAdminLogin = (req, res, next) => {
-    const username = req.body.username;
+    const email = req.body.email;
     const password = req.body.password;
-    let query = {username: username}
+    let query = {email}
     Admin.findOne(query, (err, user) => {
         if (err) {
             res.json({
@@ -149,4 +149,4 @@ handleAdminLogin = (req, res, next) => {
 
 
 
-module.exports = { token_status, handleClientLogin, handleEmployeeLogin, checkIdentity }
+module.exports = { token_status, handleClientLogin, handleAdminLogin, handleEmployeeLogin, checkIdentity }

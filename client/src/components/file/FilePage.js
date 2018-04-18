@@ -182,7 +182,12 @@ class FilePageComponent extends Component {
                                     {
                                         this.state.comments.map(comment => (
                                             <div key={comment._id} className="commentBlock">
-                                                {comment.authorRole}: {comment.content}
+                                                <span className="commentTitle">
+                                                    {comment.authorRole}:
+                                                </span>
+                                                <span className="commentContent">
+                                                    {comment.content}
+                                                </span>
                                             </div>
                                         ))
                                     }

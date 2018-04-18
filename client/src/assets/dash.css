@@ -309,7 +309,7 @@
 }
 .dashContainer {
     padding: 15px 0;
-    margin: 20px 0;
+    margin: 20px 0 0 0;
     display: flex;
 }
 .dashContainer .containerBox {
@@ -357,7 +357,7 @@
 }
 .announcementContainer.dashTab {
     border-top: 5px solid purple;
-    height: 100px;
+    height: auto;
 }
 .dashTab {
 	width: 100%;
@@ -509,4 +509,30 @@
 .filePage .commentBlock:hover {
     background-color: #eee;
     cursor: pointer;
+}
+.filePage .commentBlock .commentTitle {
+    font-weight: 900;
+    font-size: 16px;
+    display: block;
+    margin-left: 0;
+}
+.commentBlock .commentContent {
+    font-size: 14px;
+    font-weight: 300;
+    display: block;
+    margin: 10px 0 0 0;
+}
+.dashTab.tools {
+    width: 20%;
+    border-color: steelblue;
+}
+.company.dashTab {
+    width: 50%;
+    margin: 0 10px;
+}
+.dashContainer.employees {
+    margin-top: 0;
+}
+.employees .announcementContainer {
+    margin-bottom: 0;
 }

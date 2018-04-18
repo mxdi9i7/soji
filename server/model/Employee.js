@@ -6,6 +6,7 @@ const EmployeeSchema = new Schema
 ({
     employeeID: String,
     username: String,
+    teamID: String,
     password: String,
     email: String,
     name: String,

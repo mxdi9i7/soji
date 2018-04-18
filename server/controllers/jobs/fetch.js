@@ -22,8 +22,24 @@ fetchJobsWithFilter = (req, res) => {
     })
 }
 
+fetchJobsByTeamID = (req, res) => {
+    let teamID = req.query.teamID
+    Jobs.find({teamID}, (err, jobs) => {
+        if (err) {
+            res.json({
+                success: false,
+                data: "cannot find jobs associated with this team"
+            })
+        } else {
+            res.json({
+                success: true,
+                data: jobs
+            })
+        }
+    })
+}
+
 fetchJobListByClient = (req, res) => {
-    console.log(req.url)
     let clientID = req.query.clientID
     Jobs.find({clientID}, (err, jobs) => {
         if (err) {

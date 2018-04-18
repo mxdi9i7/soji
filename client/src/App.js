@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import logo from './logo.svg';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import { DashboardPage } from './components/dashboard/DashboardPage'
+import { AdminDashboardPage } from './components/dashboard/AdminDashboardPage'
 import { JobsPage } from './components/dashboard/JobsPage'
 import { EmployeesPage } from './components/dashboard/EmployeesPage'
 import { CreateEmployee } from './components/auth/CreateEmployee';
@@ -15,6 +15,8 @@ import { CreateClient } from "./components/auth/CreateClient";
 import { ClientNewJobPage } from "./components/dashboard/ClientNewJobPage";
 import { ClientDashboard } from './components/dashboard/ClientDashboard';
 import { FilePage } from './components/file/FilePage';
+import { EmployeeDashboard } from './components/dashboard/EmployeeDashboard';
+import { AdminSignin } from './components/auth/Admin';
 
 // import { ClientsPage } from './components/dashboard/ClientsPage';
 // import { BillingPage } from './components/dashboard/BillingPage';
@@ -30,9 +32,11 @@ class App extends Component {
 					<Route exact path="/" component={CreateEmployee} />
 					<Route exact path="/auth/client" component={CreateClient} />
 					<Route exact path="/auth/employee" component={CreateEmployee} />
+					<Route exact path="/auth/admin" component={AdminSignin} />
 					<Route exact path="/dash/c" component={ClientDashboard} />
+					<Route exact path="/dash/e" component={EmployeeDashboard} />
 					<Route exact path="/dash/c/new" component={ClientNewJobPage} />
-					<Route exact path="/dash/" component={DashboardPage} />
+					<Route exact path="/dash/a" component={AdminDashboardPage} />
 					<Route exact path="/dash/jobs" component={JobsPage} />
 					<Route exact path="/dash/job/:id" component={JobPage} />
 					<Route exact path="/dash/task/:id" component={TaskMonthPage} />

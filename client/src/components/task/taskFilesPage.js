@@ -9,6 +9,7 @@ import '../../assets/dash.css'
 import '../../assets/job.css'
 import { getFiles } from '../../actions/ManageFiles';
 import { months } from '../../helpers/twelveMonths'
+import { formatTimeToYYMMDD } from '../../helpers/formatTime'
 
 export class TaskFiles extends Component {
     
@@ -30,7 +31,7 @@ export class TaskFiles extends Component {
                                 <span>/</span>
                                 <Link to={this.props.task.taskID ? `/dash/task/${this.props.task.taskID}` : "/dash"}>{this.props.task.taskTitle || "Task"}</Link>
                                 <span>/</span>
-                                <span>January 2018</span>
+                                <span>{months[this.props.match.params.month - 1].month} 2018</span>
                             </h1>
                         </div>
                     </div>
@@ -39,8 +40,8 @@ export class TaskFiles extends Component {
                             <div className="list">
                                 {
                                     typeof this.props.files !== "string" ? this.props.files.map(file => {
-                                        const date = new Date(file.createdAt)
-                                        const createDate = date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate()
+                                        const date = formatTimeToYYMMDD(file.createdAt)
+                                        const createDate = date.year + '/' + date.month + '/' + date.date
                                         return (
                                             <div className="folder" key={file.fileID}>
                                                 <i className="fa fa-file"></i>

@@ -52,7 +52,6 @@ export class CreateClient extends Component {
             axios.post(apiUrl + '/users/auth/clientLogin', {email: this.state.email, password: this.state.password})
             .then((response) => {
                 if (response.data.success) {
-                    console.log(response.data.data)
                     saveTokenToBrowser(response.data.data)
                     Alert.success("Successfully signed in!")
                     this.setState({

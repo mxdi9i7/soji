@@ -8,7 +8,6 @@ const AdminSchema = new Schema
     username: String,
     password: String,
     email: String,
-    name: String,
     photo: String,
     role: String
 });
