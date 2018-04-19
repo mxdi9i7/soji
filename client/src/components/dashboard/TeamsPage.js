@@ -7,7 +7,8 @@ import axios from 'axios';
 import { apiUrl } from '../../serverConfig';
 import ReactPaginate from 'react-paginate';
 import { getEmployees } from '../../actions/ManageEmployees'; 
-import { EmployeesTableBlock } from '../tableComponents/EmployeesTableBlock';
+import { TeamsTableBlock } from '../tableComponents/TeamsTableBlock';
+import { getTeams } from '../../actions/ManageTeams';
 
 import '../../assets/dash.css'
 
@@ -28,33 +29,35 @@ export class Teams extends Component {
                         <div className="dashTitle">
                             <h1>
                                 <Link to="/dash/a">Dashboard</Link> /
-                                Employees
+                                Teams
                             </h1>
+                        </div>
+                        <div className="dashActions">
+                            <Link to="/dash/teams/new">
+                                <button>
+                                    <i className="fa fa-plus"></i>
+                                    <span>Create a New Team</span>
+                                </button>
+                            </Link>
                         </div>
                     </div>
                     <div className="dashTableContainer">
                         <div className="dashTableTitles">
                             <h1>All Employees</h1>
-                            <div className="dashItemFilters">
-                                <input type="text" placeholder="Search Employees"/>
-                            </div>
                         </div>
                         <table className="dashTable">
                             <thead className="dashTableHeader">
                                 <tr>
-                                    <th>Employee Name</th>
-                                    <th>Rating</th>
-                                    <th>Status</th>
-                                    <th>Current Team</th>
-                                    <th>Join Date</th>
-                                    <th>Setting</th>
+                                    <th>Employee ID</th>
+                                    <th>Manager</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {
-                                    this.props.employees.map((e, i) => {
+                                    this.props.teams.map((e, i) => {
                                         return (
-                                            <EmployeesTableBlock key={i} employee={e} />
+                                            <TeamsTableBlock key={i} team={e} />
                                         )
                                     })
                                 }
@@ -66,7 +69,7 @@ export class Teams extends Component {
                                 pageRangeDisplayed={3}
                                 marginPageDispayed={2}
                                 onPageChange={(e) => {
-                                    this.props.fetchEmployees(e.selected + 1)
+                                    this.props.fetchTeams(e.selected + 1)
                                 }}
                                 activeClassName={"active"}
                                 containerClassName={"react-paginate"}
@@ -84,24 +87,24 @@ export class Teams extends Component {
 
 const mapStateToProps = state => {
     return {
-        employees: state.manageEmployees.employees,
-        page: state.manageEmployees.page,
-        totalPage: state.manageEmployees.totalPage,
-        totalItems: state.manageEmployees.totalItems
+        teams: state.manageTeams.teams,
+        page: state.manageTeams.page,
+        totalPage: state.manageTeams.totalPage,
+        totalItems: state.manageTeams.totalItems
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchEmployees: (e) => {
-            axios.get(apiUrl + '/users/fetch/employee', {
+        fetchTeams: (e) => {
+            axios.get(apiUrl + '/teams/fetch', {
                 params: {
                     page: e
                 }
             })
             .then(response => {
-                const employeesData = response.data.data
-                store.dispatch(getEmployees(employeesData.page, employeesData.pageCount, employeesData.results, employeesData.totalCount))
+                const teamsData = response.data.data
+                store.dispatch(getTeams(teamsData.page, teamsData.pageCount, teamsData.results, teamsData.totalCount))
             })
         }
     }
@@ -109,11 +112,11 @@ const mapDispatchToProps = (dispatch) => {
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => {
     return {
-        fetchEmployees: dispatchProps.fetchEmployees,
+        fetchTeams: dispatchProps.fetchTeams,
         page: stateProps.page,
         totalItems: stateProps.totalItems,
         totalPage: stateProps.totalPage,
-        employees: stateProps.employees
+        teams: stateProps.teams
     }
 }
 

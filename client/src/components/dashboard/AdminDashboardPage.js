@@ -34,7 +34,7 @@ class Dashboard extends Component {
                             </h1>
                         </div>
                         <div className="dashActions">
-                            <Link to="/dash/c/new">
+                            <Link to="/dash/a/new">
                                 <button>
                                     <i className="fa fa-plus"></i>
                                     <span>Create a New Job</span>
@@ -46,10 +46,10 @@ class Dashboard extends Component {
                         <div className="dashTab tools">
                             <h1>Tools</h1>
                             <div className="toolList">
-                                <Link to="/">Jobs List</Link>
+                                <Link to="/dash/jobs">Jobs List</Link>
                                 <Link to="/dash/employees">Employees List</Link>
-                                <Link to="/">Teams List</Link>
-                                <Link to="/">Files List</Link>
+                                <Link to="/dash/teams">Teams List</Link>
+                                <Link to="/dash/files">Files List</Link>
                             </div>
                         </div>
                         <div className="company dashTab">

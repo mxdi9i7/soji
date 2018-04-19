@@ -1,6 +1,27 @@
 const Jobs = require('../../model/Jobs')
 const Admin = require('../../model/Admin')
 
+handleJobAssign = (req, res) => {
+    const { teamID, jobID } = req.body;
+    Jobs.findOneAndUpdate({
+        jobID
+    }, {
+        teamID
+    }, (err, job) => {
+        if (err) {
+            res.json({
+                success: false,
+                data: err
+            });
+        } else {
+            res.json({
+                success: true,
+                data: "Job assigned"
+            });
+        } 
+    }) 
+}
+
 handleJobUpdate = (req, res, next) => {
     let query = {jobID: req.body.jobID}
     let job = {
@@ -71,4 +92,4 @@ handleJobApprove = (req, res, next) => {
 
 }
 
-module.exports = { handleJobUpdate, handleJobApprove }
+module.exports = { handleJobUpdate, handleJobApprove, handleJobAssign }

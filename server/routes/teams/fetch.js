@@ -7,5 +7,8 @@ router.get('/', function(req, res, next){
     fetch.handleTeamsFetch(req, res, next);
 });
 
+router.get('/single', function(req, res, next){
+    fetch.fetchSingleTeam(req, res);
+});
 
 module.exports = router;

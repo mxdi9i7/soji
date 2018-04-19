@@ -15,4 +15,8 @@ router.get('/single', function(req, res, next) {
     fetch.fetchJob(req, res)
 })
 
+router.get('/team', (req, res) => {
+    fetch.fetchJobsByTeamID(req, res)
+})
+
 module.exports = router;

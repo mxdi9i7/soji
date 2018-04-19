@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Dashnav} from '../partials/Dashnav';
 import {SideNav} from '../partials/SideNav';
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { store } from '../../reducers/index'
 import axios from 'axios';
@@ -16,7 +17,8 @@ export class Files extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            title: months[this.props.match.params.month - 1].month
+            // title: this.props.match.params ?
+            // months[this.props.match.params.month - 1].month : ""
         }
     }
     componentWillMount() {
@@ -28,12 +30,19 @@ export class Files extends Component {
                 <div className="dashContent">
                     <div className="dashHeader">
                         <div className="dashTitle">
-                            <h1 className="active">File Submissions</h1>
+                            <h1>
+                                <Link to="/dash/a">Dashboard</Link>
+                                <span>/</span>
+                                <span>Files</span>
+                            </h1>
                         </div>
                     </div>
                     <div className="dashTableContainer">
                         <div className="dashTableTitles">
-                            <h1>{this.props.task}, {this.state.title} 2018 Files</h1>
+                            {
+                                this.state.title ? <h1>{this.props.task}, {this.state.title} 2018 Files</h1> :
+                                <h1>All Files</h1>
+                            }
                             <div className="dashItemFilters">
                                 <select name="" id="">
                                     <option value="day">Last Day</option>
@@ -58,7 +67,7 @@ export class Files extends Component {
                             </thead>
                             <tbody>
                                 {
-                                    this.props.files.map((e, i) => {
+                                    this.props.files && this.props.files.map((e, i) => {
                                         return (
                                             <FilesTableBlock key={i} file={e} />
                                         )

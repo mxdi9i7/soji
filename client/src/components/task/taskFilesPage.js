@@ -25,11 +25,11 @@ export class TaskFiles extends Component {
                     <div className="dashHeader">
                         <div className="dashTitle">
                             <h1>
-                                <Link to="/dash">Dashboard</Link>
+                                <Link to="/dash/e">Dashboard</Link>
                                 <span>/</span>
-                                <Link to={this.props.job.jobID ? `/dash/job/${this.props.job.jobID}` : "/dash"}>{this.props.job.title || "Job"}</Link>
+                                <Link to={this.props.job.jobID ? `/dash/job/${this.props.job.jobID}` : "/dash/e"}>{this.props.job.title || "Job"}</Link>
                                 <span>/</span>
-                                <Link to={this.props.task.taskID ? `/dash/task/${this.props.task.taskID}` : "/dash"}>{this.props.task.taskTitle || "Task"}</Link>
+                                <Link to={this.props.task.taskID ? `/dash/task/${this.props.task.taskID}` : "/dash/e"}>{this.props.task.taskTitle || "Task"}</Link>
                                 <span>/</span>
                                 <span>{months[this.props.match.params.month - 1].month} 2018</span>
                             </h1>

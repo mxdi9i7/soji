@@ -73,5 +73,5 @@ fetchJob = (req, res) => {
     })
 }
 module.exports = {
-    fetchJobsWithFilter, fetchJob, fetchJobListByClient
+    fetchJobsWithFilter, fetchJob, fetchJobListByClient, fetchJobsByTeamID
 }

@@ -55,7 +55,7 @@ export class EmployeeDash extends Component {
                             </div>
                         </div>
                         <div className="dashFilesList dashTab">
-                            <h1>My Files ({this.props.jobs.length})</h1>
+                            <h1>My Messages ({this.props.jobs.length})</h1>
                             <div className="list">
                                 
                             </div>
@@ -70,7 +70,7 @@ export class EmployeeDash extends Component {
 const mapStateToProps = state => {
     return {
         jobs: state.manageJobs.jobs,
-        clientID: state.auth.clientID
+        teamID: state.auth.teamID
     }
 }
 
@@ -83,11 +83,11 @@ const mapDispatchToProps = (dispatch) => {
 const mergeProps = (stateProps, dispatchProps, ownProps) => {
     return {
         jobs: stateProps.jobs,
-        clientID: stateProps.clientID,
+        teamID: stateProps.teamID,
         fetchJobs: async (e) => {
-            const client = await axios.post(apiUrl + '/users/auth/check', {token: sessionStorage.getItem('token')})
-            const clientID = client.data.data.clientID
-            axios.get(apiUrl + '/jobs/fetch/client?clientID=' + clientID)
+            const employee = await axios.post(apiUrl + '/users/auth/check', {token: sessionStorage.getItem('token')})
+            const teamID = employee.data.data.teamID
+            axios.get(apiUrl + '/jobs/fetch/team?teamID=' + teamID)
             .then(response => {
                 const jobsData = response.data.data
                 store.dispatch(getJobs(1, 1, jobsData, 1))

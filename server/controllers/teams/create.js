@@ -22,11 +22,11 @@ handleTeamCreate = (req, res, next) => {
         ({
             teamID: teamID,
             teamName: req.body.teamName,
-            managerID: req.body.managerID,
-            teamMember: req.body.teamMember,
+            managerID: "",
+            teamMember: [],
             creationDate: new Date()
         });
-        newTeam.save((err, callback) => {
+        newTeam.save((err, team) => {
             if (err) {
                 res.json({
                     success: false,
@@ -43,7 +43,8 @@ handleTeamCreate = (req, res, next) => {
                         } else if(callback == null){
                             res.json({
                                 success: true,
-                                message: "Assigned manager does not exist, team created without manager"
+                                message: "Assigned manager does not exist, team created without manager",
+                                data: team.teamID
                             });
                         } else {
                             res.json({

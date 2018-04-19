@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Dashnav} from '../partials/Dashnav';
-import {SideNav} from '../partials/SideNav';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { store } from '../../reducers/index'
 import { getJobs } from '../../actions/ManageJobs';
@@ -17,11 +17,16 @@ class Jobs extends Component {
         return(
             <div className="jobsDash">
                 <Dashnav />
-                <SideNav currentPage={"jobs"} />
                 <div className="dashContent">
                     <div className="dashHeader">
                         <div className="dashTitle">
-                            <h1 className="active"><a href="/dash/jobs">Jobs</a></h1><h1>/</h1><h1><a href="/dash/tasks">Tasks</a></h1>
+                            <h1>
+                                <Link to="/dash/a">Dashboard</Link>
+                                <span>/</span>
+                                <span>Jobs</span>
+                                <span>/</span>
+                                <Link to="/dash/tasks">Tasks</Link>
+                            </h1>
                         </div>
                     </div>
                     <div className="dashTableContainer">

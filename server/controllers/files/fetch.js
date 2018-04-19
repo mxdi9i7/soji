@@ -4,7 +4,24 @@ const Tasks = require('../../model/Tasks')
 const { itemsPerPage } = require('../../constant')
 const pagination = require('../pagination')
 
-handleFilesFetch = (req, res, next) => {
+fetchFiles = (req, res) => {
+    const { page } = req.query;
+    Files.find({}, (err, files) => {
+        let paginationData = pagination(files, itemsPerPage, page)
+        const filesData = {
+            pageCount: paginationData.pageCount,
+            results: paginationData.results,
+            totalCount: paginationData.totalCount,
+            page: Number(page)
+        }
+        res.json({
+            success: true,
+            data: filesData
+        })
+    })
+}
+
+aggregateFiles = (req, res) => {
     let page = req.query.page;
     let month = req.query.month;
     let taskID = req.query.taskID;
@@ -151,4 +168,4 @@ handleFilesByClientID = (req, res, next) => {
     
 }   
 
-module.exports = { handleFilesFetch, handleFilesByMonth, handleSingleFile, handleFilesByClientID }
+module.exports = { aggregateFiles, fetchFiles, handleFilesByMonth, handleSingleFile, handleFilesByClientID }

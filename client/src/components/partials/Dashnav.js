@@ -36,6 +36,7 @@ class Navigation extends Component {
         } else if (identity === "admin") {
             url = adminAvatarUrl
         }
+
         return (
             <div className="dashnavContainer">
                 <div className="logoContainer">
@@ -44,7 +45,7 @@ class Navigation extends Component {
                 <div className="actionContainer">
                     <div className="nameContainer">
                         <h3>{this.props.info.username}</h3>
-                        <p>{this.props.info.identity}</p>
+                        <p>{this.props.info.identity} {this.props.info.isManager && "Manager"}</p>
                     </div>
                     <div className="avatarContainer">
                         <img src={url + this.props.info.photo} alt="avatar"

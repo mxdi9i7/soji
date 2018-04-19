@@ -543,3 +543,65 @@
     color: #666;
     font-size: 18px;
 }
+.dashActions button {
+    margin-right: 15px;
+}
+.dashForm {
+    margin: 10px 15px;
+    border: 1px solid #eee;
+    padding: 15px;
+}
+.dashForm input {
+    padding: 5px 10px;
+}
+.dashForm .infoContainer.half button {
+    padding: 5px 10px;
+    background-color: #0056b3;
+    color: #fff;
+    border: 1px solid #0056b3;
+    box-sizing: border-box;
+    margin: 0 20px;
+}
+.dashForm button:hover {
+    cursor: pointer;
+}
+.teamsContainer {
+    margin: 20px 0;
+}
+.teamMemberBlock {
+    border-bottom: 1px solid #ddd;
+    margin: 10px 0;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+}
+.teamsContainer img {
+    height: 40px;
+    width: 40px;
+    border: 1px solid #eee;
+    border-radius: 50%;
+}
+.teamsContainer span {
+    font-size: 16px;
+    vertical-align: 15px;
+    margin: 0 20px;
+    font-weight: 500;
+}
+.teamsContainer button {
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    padding: 5px 15px;
+    margin: 0 10px;
+    vertical-align: 15px;
+    border: 1px solid transparent;
+}
+.teamsContainer button.promote {
+    background-color: #2B1FB1;
+}
+.teamsContainer button.remove {
+    background-color: #7B1FA2;
+}
+.jobsContainer .jobFolderContainer {
+    margin: 20px 0;
+}

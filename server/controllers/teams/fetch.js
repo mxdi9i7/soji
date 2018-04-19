@@ -21,4 +21,29 @@ handleTeamsFetch = (req, res, next) => {
     })
 }
 
-module.exports = { handleTeamsFetch }
+fetchSingleTeam = (req, res) => {
+    let teamID = req.query.teamID
+    Teams.findOne({teamID}, (err, team) => {
+        if (err) {
+            res.json({
+                success: false,
+                data: err
+            })
+        } else {
+            if (!team) {
+                res.json({
+                    success: false,
+                    data: "Cannot find this team"
+                })
+            } else {
+                res.json({
+                    success: true,
+                    data: team
+                })
+            }
+        }
+    })
+}
+
+
+module.exports = { handleTeamsFetch, fetchSingleTeam }

@@ -7,7 +7,7 @@ handleEmployeeFetch = (req, res, next) => {
     let query = {}
     Employee.find(query, (err, employee) => {
         let paginationData = pagination(employee, itemsPerPage, page)
-        const staffData = {
+        const employeeData = {
             pageCount: paginationData.pageCount,
             results: paginationData.results,
             totalCount: paginationData.totalCount,
@@ -21,10 +21,34 @@ handleEmployeeFetch = (req, res, next) => {
         } else {
             res.json({
                 success: true,
-                data: staffData
+                data: employeeData
             });
         }
     });
 }
 
-module.exports = { handleEmployeeFetch }
+fetchSingleEmployee = (req, res) => {
+    let employeeID = req.query.employeeID
+    Employee.findOne({employeeID}, (err, employee) => {
+        if (err) {
+            res.json({
+                success: false,
+                data: err
+            });
+        } else {
+            if (!employee) {
+                res.json({
+                    success: false,
+                    data: "Employee not found"
+                });
+            } else {
+                res.json({
+                    success: true,
+                    data: employee
+                });
+            }
+           
+        }
+    })
+}
+module.exports = { handleEmployeeFetch, fetchSingleEmployee }

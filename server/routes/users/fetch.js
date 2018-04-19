@@ -6,4 +6,8 @@ router.get('/employee', function(req, res, next){
     fetch.handleEmployeeFetch(req, res, next);
 });
 
+router.get('/employee/single', (req, res) => {
+    fetch.fetchSingleEmployee(req, res)
+})
+
 module.exports = router;

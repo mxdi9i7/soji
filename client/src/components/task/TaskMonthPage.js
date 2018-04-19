@@ -23,7 +23,7 @@ export class TaskMonth extends Component {
                     <div className="dashHeader">
                         <div className="dashTitle">
                             <h1>
-                                <Link to="/dash">Dashboard</Link>
+                                <Link to="/dash/e">Dashboard</Link>
                                 <span>/</span>
                                 <Link to={"/dash/job/"+this.props.job.jobID}>{this.props.job.title}</Link>
                                 <span>/</span>
