@@ -2,7 +2,7 @@ const Employee = require('../../model/Employee');
 const { itemsPerPage } = require('../../constant')
 const pagination = require('../pagination')
 
-handleStaffFetch = (req, res, next) => {
+handleEmployeeFetch = (req, res, next) => {
     let page = req.query.page
     let query = {}
     Employee.find(query, (err, employee) => {
@@ -27,4 +27,4 @@ handleStaffFetch = (req, res, next) => {
     });
 }
 
-module.exports = { handleStaffFetch }
+module.exports = { handleEmployeeFetch }

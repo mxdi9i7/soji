@@ -36,7 +36,6 @@ class Navigation extends Component {
         } else if (identity === "admin") {
             url = adminAvatarUrl
         }
-        console.log(identity)
         return (
             <div className="dashnavContainer">
                 <div className="logoContainer">

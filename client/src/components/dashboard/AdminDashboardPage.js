@@ -43,18 +43,27 @@ class Dashboard extends Component {
                         </div>
                     </div>
                     <div className="dashContainer">
-                        <div className="dashJobListContainer dashTab">
-                            <h1>My Jobs ()</h1>
+                        <div className="dashTab tools">
+                            <h1>Tools</h1>
+                            <div className="toolList">
+                                <Link to="/">Jobs List</Link>
+                                <Link to="/dash/employees">Employees List</Link>
+                                <Link to="/">Teams List</Link>
+                                <Link to="/">Files List</Link>
+                            </div>
+                        </div>
+                        <div className="company dashTab">
+                            <h1>My Companies ()</h1>
                             <div className="list">
                                 
                             </div>
                         </div>
-                        <div className="dashFilesList dashTab">
+                        {/* <div className="dashFilesList dashTab">
                             <h1>My Files ()</h1>
                             <div className="list">
                                 
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>

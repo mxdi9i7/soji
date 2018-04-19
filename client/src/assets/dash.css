@@ -536,3 +536,10 @@
 .employees .announcementContainer {
     margin-bottom: 0;
 }
+.toolList a {
+    display: block;
+    margin: 10px 0;
+    font-weight: 500;
+    color: #666;
+    font-size: 18px;
+}

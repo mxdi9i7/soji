@@ -11,7 +11,7 @@ import { EmployeesTableBlock } from '../tableComponents/EmployeesTableBlock';
 
 import '../../assets/dash.css'
 
-export class Employees extends Component {
+export class Teams extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -118,8 +118,8 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
 }
 
 
-export const EmployeesPage = connect(
+export const TeamsPage = connect(
     mapStateToProps,
     mapDispatchToProps,
     mergeProps
-)(Employees)
+)(Teams)

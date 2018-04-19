@@ -8,6 +8,7 @@ import { EmployeesPage } from './components/dashboard/EmployeesPage'
 import { CreateEmployee } from './components/auth/CreateEmployee';
 import { FilesPage } from './components/dashboard/FilesPage';
 import { TasksPage } from './components/dashboard/TasksPage';
+import { TeamsPage } from './components/dashboard/TeamsPage';
 import { JobPage } from './components/job/JobPage'
 import { TaskMonthPage } from './components/task/TaskMonthPage';
 import { TaskFilesPage } from './components/task/taskFilesPage';
@@ -32,6 +33,7 @@ class App extends Component {
 					<Route exact path="/" component={CreateEmployee} />
 					<Route exact path="/auth/client" component={CreateClient} />
 					<Route exact path="/auth/employee" component={CreateEmployee} />
+					<Route exact path="/auth/teams" component={CreateEmployee} />
 					<Route exact path="/auth/admin" component={AdminSignin} />
 					<Route exact path="/dash/c" component={ClientDashboard} />
 					<Route exact path="/dash/e" component={EmployeeDashboard} />
