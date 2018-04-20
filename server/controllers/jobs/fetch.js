@@ -57,7 +57,7 @@ fetchJobListByClient = (req, res) => {
 }
 
 fetchJob = (req, res) => {
-    const jobID = req.query.id
+    const jobID = req.query.jobID
     Jobs.findOne({jobID}, (err, job) => {
         if (err) {
             res.json({

@@ -1,4 +1,5 @@
 const Employee = require('../../model/Employee');
+const Client = require('../../model/Clients');
 const { itemsPerPage } = require('../../constant')
 const pagination = require('../pagination')
 
@@ -51,4 +52,33 @@ fetchSingleEmployee = (req, res) => {
         }
     })
 }
-module.exports = { handleEmployeeFetch, fetchSingleEmployee }
+
+fetchSingleClient = (req, res) => {
+    const { clientID } = req.query
+    Client.findOne({clientID}, (err, client) => {
+        if (err) {
+            res.json({
+                success: false,
+                data: err
+            });
+        } else {
+            if (!client) {
+                res.json({
+                    success: false,
+                    data: "Client not found"
+                });
+            } else {
+                res.json({
+                    success: true,
+                    data: client
+                });
+            }
+           
+        }
+    })
+}
+module.exports = { 
+    fetchSingleClient,
+    handleEmployeeFetch, 
+    fetchSingleEmployee 
+}

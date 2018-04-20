@@ -28,7 +28,7 @@ export class Teams extends Component {
                     <div className="dashHeader">
                         <div className="dashTitle">
                             <h1>
-                                <Link to="/dash/a">Dashboard</Link> /
+                                <Link to="/dash">Dashboard</Link> /
                                 Teams
                             </h1>
                         </div>

@@ -67,7 +67,6 @@ class FilePageComponent extends Component {
     }
     async clearCommentInput(comment) {
         let comments = this.state.comments;
-        console.log(comment)
         comments.push({content: comment, authorRole: this.props.user.identity, createdAt: new Date()})
         await this.setState({comments})
         this.setState({comment: ""})
@@ -121,7 +120,7 @@ class FilePageComponent extends Component {
                             <div className="dashInfo">
                                 <div className="infoContainer half">
                                     <label>File Name</label>
-                                    <span>{this.state.file.fileName}</span>
+                                    <span>{this.state.file.fileTitle}</span>
                                 </div>
                                 <div className="infoContainer half">
                                     <label>File ID</label>
@@ -149,7 +148,7 @@ class FilePageComponent extends Component {
                                 </div>
                                 <div className="infoContainer half">
                                     <label><i className="fa fa-download"></i> Download File </label>
-                                    <a href={fileUrl + this.state.file.fileName} download>Download</a>
+                                    <a target="_blank" href={fileUrl + (this.state.file.file && this.state.file.file.filename)} download>Download</a>
                                 </div>
                                 <div className="infoContainer half">
                                     {
@@ -174,10 +173,14 @@ class FilePageComponent extends Component {
                             </div>
                             <div className="commentContainer">
                                 <h1>Comments</h1>
-                                <div className="commentInputContainer">
-                                    <input onChange={this.handleCommentInput.bind(this)} value={this.state.comment} type="text"/>
-                                    <button onClick={this.submitComment.bind(this)} className="commentBtn">Leave a comment</button>
-                                </div>
+                                {
+                                    !this.props.user.isManager && this.props.user.identity === 'employee' ?
+                                    "" :
+                                    <div className="commentInputContainer">
+                                        <input onChange={this.handleCommentInput.bind(this)} value={this.state.comment} type="text"/>
+                                        <button onClick={this.submitComment.bind(this)} className="commentBtn">Leave a comment</button>
+                                    </div>
+                                }
                                 <div className="commentContent">
                                     {
                                         this.state.comments.map(comment => (

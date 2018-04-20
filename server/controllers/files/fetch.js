@@ -95,8 +95,9 @@ handleFilesByMonth = (req, res, next) => {
             jobID: "$jobID",
             managerID: "$managerID",
             fileID: "$fileID",
-            fileName: "$fileName",
-            createdAt: "$createdAt"
+            createdAt: "$createdAt",
+            file: "$file",
+            fileTitle: "$fileTitle"
         }}, {
             $match: {taskID, month: Number(month), year: Number(year)}
         }

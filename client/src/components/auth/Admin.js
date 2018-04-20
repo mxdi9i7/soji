@@ -62,7 +62,7 @@ export class AdminSignin extends Component {
         return (
             <div className="authWrapper">
             {
-                this.state.isAuthenticated ? <Redirect to="/dash/a" /> : ""
+                this.state.isAuthenticated ? <Redirect to="/dash" /> : ""
             }
                 <div className="authIdentifier">
                     <p>SOJI Admin Portal</p>

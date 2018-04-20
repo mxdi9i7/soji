@@ -17,13 +17,14 @@ import { initializeTasks } from '../../actions/Tasks'
 export class Job extends Component {
     state = {}
     async componentDidMount() {
-        let job = await axios.get(apiUrl + '/jobs/fetch/single?id=' + this.props.match.params.id)
+        let job = await axios.get(apiUrl + '/jobs/fetch/single?jobID=' + this.props.match.params.id)
         await this.props.initializeJob(job.data.data)
         let taskList = await axios.get(apiUrl + '/tasks/fetch/list?jobID=' + job.data.data.jobID)
         await this.props.initializeTasks(taskList.data.data)
         let team = await axios.get(apiUrl + '/teams/fetch/single?teamID=' + job.data.data.teamID)
         let manager = await axios.get(apiUrl + '/users/fetch/employee/single?employeeID=' + team.data.data.managerID)
-        this.setState({manager: manager.data.data})
+        let client = await axios.get(apiUrl + '/users/fetch/client/single?clientID=' + job.data.data.clientID)
+        this.setState({manager: manager.data.data, client: client.data.data})
     }
     render() {
         let totalDuration = 0;
@@ -42,29 +43,37 @@ export class Job extends Component {
                     <div className="dashHeader">
                         <div className="dashTitle">
                             <h1>
-                                <Link to="/dash/e">Dashboard</Link>
+                                <Link to="/dash">Dashboard</Link>
                                 <span>/</span>
                                 <span>{this.props.job.title}</span>
                             </h1>
                         </div>
                         <div className="dashActions">
-                            <button>
+                            {/* <button>
                                 <i className="fa fa-skype"></i>
                                 <span>Call us on Skype</span>
-                            </button>
+                            </button> */}
                         </div>
                     </div>
                     <div className="dashInfo">
                         <div className="infoContainer half">
-                        {
-                            console.log(this.props.client)
-                        }
                             <label>Client ID</label>
-                            <span>{this.props.client.username} ({this.props.client.clientID})</span>
+                            <span>{
+                                    this.state.client &&
+                                    this.state.client.username
+                                } ({
+                                    this.state.client &&
+                                    this.state.client.clientID
+                                    })</span>
                         </div>
                         <div className="infoContainer half">
                             <label>Client Contact Info</label>
-                            <span>{this.props.client.email}</span>
+                            <span>
+                                {
+                                    this.state.client &&
+                                    this.state.client.email
+                                }
+                            </span>
                         </div>
                         <div className="infoContainer half">
                             <label>Job Title</label>

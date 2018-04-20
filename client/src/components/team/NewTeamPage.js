@@ -33,7 +33,7 @@ export class NewTeamPage extends Component {
                     <div className="dashHeader">
                         <div className="dashTitle">
                             <h1>
-                                <Link to="/dash/a">Dashboard</Link>
+                                <Link to="/dash">Dashboard</Link>
                                 <span>/</span>
                                 <Link to="/dash/teams">Teams</Link>
                                 <span>/</span>
@@ -49,20 +49,6 @@ export class NewTeamPage extends Component {
                             <input onChange={this.handleInputChange.bind(this)} type="text"/>
                             <button onClick={this.handleCreateTeam.bind(this)}>Create Team</button>
                         </div>
-                        {/* <div className="infoContainer half">
-                            <label>Add Team Member</label>
-                            <input type="text" placeholder="Enter employee ID"/>
-                            <button>Add</button>
-                        </div>
-                        <div className="teamsContainer">
-                            <div className="teamMemberBlock">
-                                <img src={employeeAvatarUrl + '/default.jpg'} alt=""/>
-                                <span>Name</span>
-                                <span>Employee 12124</span>
-                                <button className="promote">Promote</button>
-                                <button className="remove">Remove from team</button>
-                            </div>
-                        </div> */}
                     </div>
                 </div>
             </div>

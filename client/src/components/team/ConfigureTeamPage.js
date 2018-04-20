@@ -116,7 +116,7 @@ export class ConfigureTeam extends Component {
                     <div className="dashHeader">
                         <div className="dashTitle">
                             <h1>
-                                <Link to="/dash/a">Dashboard</Link>
+                                <Link to="/dash">Dashboard</Link>
                                 <span>/</span>
                                 <Link to="/dash/teams">Teams</Link>
                                 <span>/</span>

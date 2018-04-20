@@ -21,8 +21,7 @@ handleAnnouncementCreate = (req, res, next) => {
         let newAnnouncement = new Announcements
         ({
             announcementID: announcementID,
-            title: req.body.title,
-            description: req.body.description,
+            content: req.body.content,
             createdAt: new Date()
         });
         newAnnouncement.save((err, callback) => {

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {Dashnav} from '../partials/Dashnav';
 import { Link } from 'react-router-dom';
 import { CreateJobContainer } from '../createJob/CreateJobContainer';
 import { SetCreateJobToActive } from '../../actions/CreateTask'
@@ -25,7 +24,6 @@ class Dashboard extends Component {
         
         return(
             <div>
-                 <Dashnav />
                 <div className="dashContent">
                     <div className="dashHeader">
                         <div className="dashTitle">
@@ -34,7 +32,7 @@ class Dashboard extends Component {
                             </h1>
                         </div>
                         <div className="dashActions">
-                            <Link to="/dash/a/new">
+                            <Link to="/dash/new">
                                 <button>
                                     <i className="fa fa-plus"></i>
                                     <span>Create a New Job</span>
@@ -50,14 +48,15 @@ class Dashboard extends Component {
                                 <Link to="/dash/employees">Employees List</Link>
                                 <Link to="/dash/teams">Teams List</Link>
                                 <Link to="/dash/files">Files List</Link>
+                                <Link to="/dash/announcements">Announcements</Link>
                             </div>
                         </div>
-                        <div className="company dashTab">
+                        {/* <div className="company dashTab">
                             <h1>My Companies ()</h1>
                             <div className="list">
                                 
                             </div>
-                        </div>
+                        </div> */}
                         {/* <div className="dashFilesList dashTab">
                             <h1>My Files ()</h1>
                             <div className="list">

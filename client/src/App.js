@@ -20,6 +20,8 @@ import { FilePage } from './components/file/FilePage';
 import { EmployeeDashboard } from './components/dashboard/EmployeeDashboard';
 import { AdminSignin } from './components/auth/Admin';
 import { ConfigureTeam } from './components/team/ConfigureTeamPage';
+import { DashboardPage } from './components/dashboard/Dashboard';
+import { AnnouncementsPage } from './components/dashboard/AnnoucementPage';
 
 // import { ClientsPage } from './components/dashboard/ClientsPage';
 // import { BillingPage } from './components/dashboard/BillingPage';
@@ -33,16 +35,13 @@ class App extends Component {
 			<Router>
 				<div>
 					<Route exact path="/" component={CreateEmployee} />
+					<Route exact path="/dash" component={DashboardPage} />
 					<Route exact path="/auth/client" component={CreateClient} />
 					<Route exact path="/auth/employee" component={CreateEmployee} />
 					<Route exact path="/dash/teams" component={TeamsPage} />
 					<Route exact path="/dash/teams/new" component={NewTeamPage} />
 					<Route exact path="/auth/admin" component={AdminSignin} />
-					<Route exact path="/dash/c" component={ClientDashboard} />
-					<Route exact path="/dash/e" component={EmployeeDashboard} />
-					<Route exact path="/dash/c/new" component={ClientNewJobPage} />
-					<Route exact path="/dash/a/new" component={ClientNewJobPage} />
-					<Route exact path="/dash/a" component={AdminDashboardPage} />
+					<Route exact path="/dash/new" component={ClientNewJobPage} />
 					<Route exact path="/dash/jobs" component={JobsPage} />
 					<Route exact path="/dash/job/:id" component={JobPage} />
 					<Route exact path="/dash/task/:id" component={TaskMonthPage} />
@@ -52,6 +51,7 @@ class App extends Component {
 					<Route exact path="/dash/files" component={FilesPage} />
 					<Route exact path="/dash/tasks" component={TasksPage} />
 					<Route exact path="/dash/teams/configure/:id" component={ConfigureTeam} />
+					<Route exact path="/dash/announcements" component={AnnouncementsPage} />
 					{/* <Route exact path="/dash/clients" component={ClientsPage} /> */}
 					{/* <Route exact path="/dash/billing" component={BillingPage} /> */}
 				</div>

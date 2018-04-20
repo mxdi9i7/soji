@@ -24,21 +24,21 @@ handleFileCreate = (req, res, next) => {
             taskID: req.body.taskID,
             managerID: req.body.managerID,
             fileID: fileID,
-            fileName: req.body.fileName,
-            //fieldName: wait for multer setup and file upload structure
-            //rating: wait for multer setup and file upload structure
+            fileTitle: req.body.fileTitle,
+            file: req.file,
+            rating: 0,
             createdAt: new Date()
         });
         newFile.save((err, callback) => {
             if (err) {
                 res.json({
                     success: false,
-                    message: err
+                    data: err
                 });
             } else {
                 res.json({
                     success: true,
-                    message: "File uploaded"
+                    data: "File uploaded"
                 });
             } 
         });

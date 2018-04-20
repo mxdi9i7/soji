@@ -31,7 +31,7 @@ export class Files extends Component {
                     <div className="dashHeader">
                         <div className="dashTitle">
                             <h1>
-                                <Link to="/dash/a">Dashboard</Link>
+                                <Link to="/dash">Dashboard</Link>
                                 <span>/</span>
                                 <span>Files</span>
                             </h1>

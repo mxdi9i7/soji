@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import {Dashnav} from '../partials/Dashnav';
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { store } from '../../reducers/index'
@@ -15,7 +14,6 @@ export class EmployeeDash extends Component {
     render() {
         return (
             <div>
-                <Dashnav />
                 <div className="dashContent">
                     <div className="dashHeader">
                         <div className="dashTitle">
@@ -31,7 +29,7 @@ export class EmployeeDash extends Component {
                         <div className="dashTab tools">
                             <h1>Tools</h1>
                             <div className="toolList">
-                            
+                                <Link to="/dash/announcements">Announcements</Link>
                             </div>
                         </div>
                         <div className="company dashTab">

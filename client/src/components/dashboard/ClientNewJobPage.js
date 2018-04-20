@@ -23,7 +23,7 @@ class ClientNewJob extends Component {
                     <div className="dashHeader">
                         <div className="dashTitle">
                             <h1>
-                                <Link to="/dash/c">Dashboard</Link>
+                                <Link to="/dash">Dashboard</Link>
                                 <span>/</span>
                                 New Job
                             </h1>

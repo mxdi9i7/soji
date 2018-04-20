@@ -45,7 +45,7 @@ getTasksByJobID = (req, res, next) => {
 }
 
 getTaskByTaskID = (req, res, next) => {
-    let taskID = req.query.id
+    let taskID = req.query.taskID
     Tasks.findOne({taskID}, (err, task) => {
         if (err) {
             res.json({

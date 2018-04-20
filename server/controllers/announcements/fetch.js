@@ -7,16 +7,16 @@ handleAnnouncementsFetch = (req, res, next) => {
     let query = {}
 
     Announcements.find({}, (err, announcements) => {
-        let paginationData = pagination(announcements, itemsPerPage, page)
-        const data = {
-            pageCount: paginationData.pageCount,
-            results: paginationData.results,
-            totalCount: paginationData.totalCount,
-            page: Number(page)
-        }
+        // let paginationData = pagination(announcements, itemsPerPage, page)
+        // const data = {
+        //     pageCount: paginationData.pageCount,
+        //     results: paginationData.results,
+        //     totalCount: paginationData.totalCount,
+        //     page: Number(page)
+        // }
         res.json({
             success: true,
-            data: data
+            data: announcements
         })
     })
 }

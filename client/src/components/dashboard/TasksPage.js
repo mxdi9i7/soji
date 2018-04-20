@@ -29,7 +29,7 @@ class Tasks extends Component {
                     <div className="dashHeader">
                         <div className="dashTitle">
                             <h1>
-                                <Link to="/dash/a">Dashboard</Link>
+                                <Link to="/dash">Dashboard</Link>
                                 <span>/</span>
                                 <Link to="/dash/jobs">Jobs</Link>
                                 <span>/</span>

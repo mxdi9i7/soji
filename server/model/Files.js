@@ -8,8 +8,8 @@ const FilesSchema = new Schema
     taskID: String,
     managerID: String,
     fileID: String,
-    fileName: String,
-    fieldName: String,
+    fileTitle: String,
+    file: Object,
     createdAt: Date,
     rating: Number
 });

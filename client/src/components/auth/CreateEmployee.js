@@ -89,7 +89,7 @@ export class CreateEmployee extends Component {
         return (
             <div className="employees authWrapper">
             {
-                this.state.isAuthenticated ? <Redirect to="/dash/e" /> : ""
+                this.state.isAuthenticated ? <Redirect to="/dash" /> : ""
             }
                 <div className="authIdentifier">
                     <p>SOJI Employees Portal</p>

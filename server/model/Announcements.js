@@ -5,8 +5,7 @@ const Schema = mongoose.Schema;
 const AnnouncementsSchema = new Schema
 ({
     announcementID: String,
-    title: String,
-    description: String,
+    content: String,
     createdAt: Date
 });
 
