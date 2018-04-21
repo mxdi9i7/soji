@@ -5,6 +5,12 @@ import { SetCreateJobToActive, HandleJobInput } from '../../actions/CreateTask'
 import { connect } from 'react-redux';
 
 class CreateJob extends Component {
+    state = {
+        showNumberOfRepeact: true
+    }
+    handleNeverExpire() {
+        this.setState({showNumberOfRepeact: !this.state.showNumberOfRepeact})
+    }
     render() {
         let { setCreateJobToActive, isCreateJobActive, handleJobInput } = this.props;
         return (
@@ -22,18 +28,30 @@ class CreateJob extends Component {
                             <div className="createJobCol jobRecurringInfo">
                                 <h2>Job Settings</h2>
                                 <h1>Repeat Every</h1>
-                                <input type="number" placeholder="#" />
-                                <select name="" id="">
-                                    <option value="day">Days</option>
-                                    <option value="week">Weeks</option>
-                                    <option value="month">Months</option>
-                                </select>
+                                <input type="number" placeholder="#" name="repeatEvery" onChange={handleJobInput} />
+                                Day
                                 <div className="divider"/>
-                                <h1>Number of Repeats</h1>
-                                <input type="number" placeholder="#"/>
-                                <div  className="divider"/>
                                 <h1>Never Expires</h1>
-                                <input type="radio"/>
+                                <input type="radio" name="neverExpire" value={true} onChange={async (e)=> {
+                                    await handleJobInput(e)
+                                    await this.handleNeverExpire()
+                                    
+                                }} />
+                                <label>Yes</label>
+                                <input type="radio" name="neverExpire" value={false} defaultChecked onChange={async (e)=> {
+                                    await handleJobInput(e)
+                                    await this.handleNeverExpire()
+                                }} />
+                                <label>No</label>
+                                <div className="divider"/>
+                                {
+                                    this.state.showNumberOfRepeact && 
+                                    <div>
+                                        <h1>Number of Repeats</h1>
+                                        <input type="number" placeholder="#" name="numberOfRepeat" onChange={handleJobInput} />
+                                        <div  className="divider"/>
+                                    </div>
+                                }
                             </div>
                         </div>
                         <CreateTaskContainer />

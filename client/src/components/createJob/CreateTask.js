@@ -105,6 +105,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
         submitJob: (e) => {
             const jobUrl = apiUrl + '/jobs/create';
             const taskUrl = apiUrl + '/tasks/create';
+            console.log(stateProps.job)
             axios.post(jobUrl, {
                 ...stateProps.job,
                 clientID: stateProps.user.clientID

@@ -15,12 +15,13 @@ export class Announcements extends Component {
     render() {
         return (
             <div className="announcementContainer dashTab">
+                <h1>Announcements</h1>
                 {
                     this.state.announcements && 
                     this.state.announcements.map(announcement => {
                         const date = formatTimeToYYMMDD(announcement.createdAt)
                         return (
-                            <div className="announcements">
+                            <div className="announcements" key={announcement._id}>
                                 <div className="announcementTab">
                                     <span className="content">{announcement.content}</span>
                                     <span className="date">{date.year}/{date.month}/{date.date}</span>

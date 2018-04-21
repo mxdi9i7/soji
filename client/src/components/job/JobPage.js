@@ -15,7 +15,9 @@ import { TaskTab } from './TaskTab';
 import { initializeTasks } from '../../actions/Tasks'
 
 export class Job extends Component {
-    state = {}
+    state = {
+        job: {}
+    }
     async componentDidMount() {
         let job = await axios.get(apiUrl + '/jobs/fetch/single?jobID=' + this.props.match.params.id)
         await this.props.initializeJob(job.data.data)
@@ -24,7 +26,7 @@ export class Job extends Component {
         let team = await axios.get(apiUrl + '/teams/fetch/single?teamID=' + job.data.data.teamID)
         let manager = await axios.get(apiUrl + '/users/fetch/employee/single?employeeID=' + team.data.data.managerID)
         let client = await axios.get(apiUrl + '/users/fetch/client/single?clientID=' + job.data.data.clientID)
-        this.setState({manager: manager.data.data, client: client.data.data})
+        this.setState({manager: manager.data.data, client: client.data.data, job: job.data.data, team:team.data.data})
     }
     render() {
         let totalDuration = 0;
@@ -45,7 +47,7 @@ export class Job extends Component {
                             <h1>
                                 <Link to="/dash">Dashboard</Link>
                                 <span>/</span>
-                                <span>{this.props.job.title}</span>
+                                <span>{this.state.job.jobTitle}</span>
                             </h1>
                         </div>
                         <div className="dashActions">
@@ -77,11 +79,11 @@ export class Job extends Component {
                         </div>
                         <div className="infoContainer half">
                             <label>Job Title</label>
-                            <span>{this.props.job.title}</span>
+                            <span>{this.state.job.jobTitle}</span>
                         </div>
                         <div className="infoContainer half">
                             <label>Job ID</label>
-                            <span>{this.props.job.jobID}</span>
+                            <span>{this.state.job.jobID}</span>
                         </div>
                         <div className="infoContainer half">
                             <label>Number of tasks</label>
@@ -93,24 +95,31 @@ export class Job extends Component {
                         </div>
                         <div className="infoContainer fluid">
                             <label>Description</label>
-                            <span>{this.props.job.description}</span>
+                            <span>{this.state.job.jobDescription}</span>
                         </div>
                         <div className="infoContainer third">
                             <label>Repeat Every</label>
-                            <span>5 days</span>
+                            <span>{this.state.job.repeatEvery} Days</span>
                         </div>
                         <div className="infoContainer third">
                             <label># of Repeats</label>
-                            <span>N/A</span>
+                            <span>{this.state.job.numberOfRepeat} Cycles</span>
                         </div>
                         <div className="infoContainer third">
                             <label>Never Expires</label>
-                            <span><i className="fa fa-check"></i></span>
+                            <span>
+                                {
+                                    this.state.job.neverExpire ?
+                                    <i className="fa fa-check"></i>:
+                                    <i className="fa fa-times"></i>
+                                }
+                            </span>
                         </div>
                         <div className="infoContainer fluid">
                             <label>Job Manager</label>
                             <span>
-                                {this.state.manager && this.state.manager.username}, {this.state.manager && this.state.manager.email}
+                                {this.state.team && (this.state.team.managerID ? this.state.manager.username : "Not assigned")} 
+                                {this.state.manager && this.state.manager.email}
                             </span>
                         </div>
                     </div>
