@@ -252,26 +252,43 @@
 .dashTableTitles .dashItemFilters * {
     display: inline;
 }
+
+.dashTableHeader tr th {
+    padding: 10px 15px;
+}
 .dashTable {
     width: 100%;
     border-collapse: collapse
 }
 .dashTable tbody {
-    border: 1px solid #999;
+    border: 1px solid #eee;
 }
 .dashTable thead {
-    border-bottom: 3px solid red;
+    border-bottom: 5px solid red;
     text-align: left;
 }
 .dashTable thead tr {
     padding: 5px 15px;
 }
+.dashTable tbody tr:hover {
+    background-color: #eee;
+    cursor: pointer;
+}
 .dashTable tbody tr td {
     border-bottom: 1px solid #999;
     border-top: 1px solid #999;
+    border-right: 1px solid #eee;
+    padding: 10px 15px;
+    font-size: 14px;
 }
 .dashTable tbody tr td p {
     margin: 0;
+    font-weight: 800;
+    font-size: 12px;
+}
+.dashTable tbody tr td span {
+    font-size: 14px;
+    font-weight: 400;
 }
 .paginationContainer {
     margin: 30px auto 0 auto;
@@ -505,6 +522,7 @@
     border: 1px solid #dadada;
     margin: 10px 0;
     transition: .2s;
+    position: relative;
 }
 .filePage .commentBlock:hover {
     background-color: #eee;
@@ -627,4 +645,10 @@
     border: 1px solid #eee;
     display: flex;
     justify-content: space-between;
+}
+
+.commentBlock .date {
+    position: absolute;
+    top: 15px;
+    right: 0px;
 }

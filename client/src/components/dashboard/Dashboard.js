@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import {Dashnav} from '../partials/Dashnav';
 import { connect } from 'react-redux';
-import { store } from '../../reducers/index'
 import { ClientDashboard } from './ClientDashboard';
 import { AdminDashboardPage } from './AdminDashboardPage'
 import { EmployeeDashboard } from './EmployeeDashboard'

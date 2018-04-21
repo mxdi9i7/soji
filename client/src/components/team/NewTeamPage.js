@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {Dashnav} from '../partials/Dashnav';
 import { Link } from 'react-router-dom'
 import axios from 'axios';
-import { apiUrl, employeeAvatarUrl } from '../../serverConfig';
+import { apiUrl } from '../../serverConfig';
 
 export class NewTeamPage extends Component {
     constructor() {

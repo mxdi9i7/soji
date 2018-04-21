@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {Dashnav} from '../partials/Dashnav';
-import {SideNav} from '../partials/SideNav';
 import { connect } from 'react-redux';
 import { store } from '../../reducers/index';
 import { initializeJob} from '../../actions/Job';
@@ -10,7 +9,6 @@ import { apiUrl } from '../../serverConfig';
 import '../../assets/dash.css'
 import '../../assets/job.css'
 import { Announcements } from '../partials/Announcements'
-import { Todo } from './Todo';
 import { TaskTab } from './TaskTab';
 import { initializeTasks } from '../../actions/Tasks'
 
@@ -124,8 +122,7 @@ export class Job extends Component {
                         </div>
                     </div>
                     <div className="dashRow">
-                        <div className="dashColumn half">
-                            
+                        <div className="dashColumn half">  
                             <TaskTab tasks={this.props.tasks}/>
                         </div>
                         <div className="dashColumn half">
@@ -158,15 +155,7 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-const mergeProps = (stateProps, dispatchProps, ownProps) => {
-    return {
-        jobs: stateProps.jobs,
-        tasks: stateProps.tasks,
-        client: stateProps.client,
-        initializeJob: dispatchProps.initializeJob,
-        initializeTasks: dispatchProps.initializeTasks
-    }
-}
+
 
 export const JobPage = connect(
     mapStateToProps, mapDispatchToProps

@@ -81,9 +81,9 @@ export class TaskFiles extends Component {
                             <h1>
                                 <Link to="/dash">Dashboard</Link>
                                 <span>/</span>
-                                <Link to={this.state.job && `/dash/job/${this.state.job.jobID}` || ""}>{this.state.job && this.state.job.jobTitle}</Link>
+                                <Link to={this.state.job ? `/dash/job/${this.state.job.jobID}` : ""}>{this.state.job && this.state.job.jobTitle}</Link>
                                 <span>/</span>
-                                <Link to={this.state.task && `/dash/task/${this.state.task.taskID}` || ""}>{this.state.task && this.state.task.taskTitle}</Link>
+                                <Link to={this.state.task ? `/dash/task/${this.state.task.taskID}` : ""}>{this.state.task && this.state.task.taskTitle}</Link>
                                 <span>/</span>
                                 <span>{months[this.props.match.params.month - 1].month} 2018</span>
                             </h1>

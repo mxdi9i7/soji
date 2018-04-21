@@ -8,7 +8,6 @@ import Modal from 'react-modal';
 import { formatTimeToYYMMDD } from '../../helpers/formatTime'
 import Alert from 'react-s-alert';
 import { connect } from 'react-redux';
-import { store } from '../../reducers/index'
 import 'react-s-alert/dist/s-alert-default.css'
 import 'react-s-alert/dist/s-alert-css-effects/scale.css'
 
@@ -183,16 +182,20 @@ class FilePageComponent extends Component {
                                 }
                                 <div className="commentContent">
                                     {
-                                        this.state.comments.map(comment => (
-                                            <div key={comment._id} className="commentBlock">
-                                                <span className="commentTitle">
-                                                    {comment.authorRole}:
-                                                </span>
-                                                <span className="commentContent">
-                                                    {comment.content}
-                                                </span>
-                                            </div>
-                                        ))
+                                        this.state.comments.map(comment => {
+                                            const date = formatTimeToYYMMDD(comment.createdAt)
+                                            return (
+                                                <div key={comment._id} className="commentBlock">
+                                                    <span className="commentTitle">
+                                                        {comment.authorRole}:
+                                                    </span>
+                                                    <span className="commentContent">
+                                                        {comment.content}
+                                                    </span>
+                                                    <span className="date">{date.year}/{date.month}/{date.date} | {date.hour}:{date.minute}</span>
+                                                </div>
+                                            )
+                                        })
                                     }
                                 </div>
                             </div>

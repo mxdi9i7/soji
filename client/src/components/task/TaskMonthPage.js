@@ -28,11 +28,11 @@ export class TaskMonth extends Component {
                             <h1>
                                 <Link to="/dash">Dashboard</Link>
                                 <span>/</span>
-                                <Link to={this.state.job && "/dash/job/"+this.state.job.jobID || ""}>
+                                <Link to={this.state.job ? "/dash/job/"+this.state.job.jobID : ""}>
                                     {this.state.job && this.state.job.jobTitle}
                                 </Link>
                                 <span>/</span>
-                                <span>{this.state.task && this.state.task.taskTitle || ""}</span>
+                                <span>{this.state.task ? this.state.task.taskTitle : ""}</span>
                             </h1>
                         </div>
                     </div>

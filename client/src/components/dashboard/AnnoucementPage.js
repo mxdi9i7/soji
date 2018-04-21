@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import {Dashnav} from '../partials/Dashnav';
 import { connect } from 'react-redux';
-import { store } from '../../reducers/index'
 import { Link } from 'react-router-dom'
 import { apiUrl } from '../../serverConfig'
 import axios from 'axios'

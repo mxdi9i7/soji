@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import { store } from '../../reducers/index'
+import {Link} from 'react-router-dom'
 import { formatTimeToYYMMDD } from '../../helpers/formatTime'
 import '../../assets/dash.css'
 
@@ -25,32 +25,29 @@ class block extends Component {
                 </td>
                 <td>
                     <p>
+                        Task ID: 
                         {
                             task.taskID
+                        }
+                        <Link to={`/dash/task/${task.taskID}`}> Visit task</Link>
+                    </p>
+                    <p>
+                        {
+                            task.taskTitle
                         }
                     </p>
                 </td>
                 <td>
                     <p>
+                        Job ID: 
                         {
                             task.jobID
                         }
                     </p>
                 </td>
                 <td>
-                    <p>Download</p>
-                </td>
-                <td>
                     <p>team name</p>
-                    <span>Team ID: </span>
-                </td>
-                <td>
-                    <p>manager name</p>
-                    <span>ACC ID:</span>
-                </td>
-                <td>
-                    <p>P.B. Shelley</p>
-                    <span>ACC ID: 1281287</span>
+                    <p>Team ID: </p>
                 </td>
             </tr>
         )

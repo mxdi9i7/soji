@@ -5,10 +5,14 @@ import { store } from '../../reducers/index'
 import axios from 'axios';
 import { apiUrl } from '../../serverConfig';
 import { getJobs } from '../../actions/ManageJobs';
+import { formatTimeToYYMMDD } from '../../helpers/formatTime';
 
 export class ClientDash extends Component {
-    componentDidMount() {
-        this.props.fetchJobs()
+    state = {}
+    async componentDidMount() {
+        await this.props.fetchJobs()
+        const files = await axios.get(apiUrl + '/files/fetch/recent', {query: {clientID: this.props.clientID}})
+        await this.setState({files: files.data.data})
     }
     render() {
         return (
@@ -53,7 +57,20 @@ export class ClientDash extends Component {
                         <div className="dashFilesList dashTab">
                             <h1>My Files ({this.props.jobs.length})</h1>
                             <div className="list">
-                                
+                                {
+                                    this.state.files && this.state.files.map(file => {
+                                        const date = formatTimeToYYMMDD(file.createdAt)
+                                        return (
+                                            <div  className="taskFolder folder" key={file.fileID}>
+                                                <i className="fa fa-folder"></i>
+                                                <Link to={`/dash/file/${file.fileID}`}>{file.fileTitle}</Link>
+                                                <span>Job ID: {file.jobID}</span>
+                                                <span>Task ID: {file.taskID}</span>
+                                                <span>Date: {date.year}/{date.month}/{date.date}</span>
+                                            </div>
+                                        )
+                                    })
+                                }
                             </div>
                         </div>
                     </div>

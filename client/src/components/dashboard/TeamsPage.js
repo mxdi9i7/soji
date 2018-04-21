@@ -6,7 +6,6 @@ import { store } from '../../reducers/index'
 import axios from 'axios';
 import { apiUrl } from '../../serverConfig';
 import ReactPaginate from 'react-paginate';
-import { getEmployees } from '../../actions/ManageEmployees'; 
 import { TeamsTableBlock } from '../tableComponents/TeamsTableBlock';
 import { getTeams } from '../../actions/ManageTeams';
 

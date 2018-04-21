@@ -30,14 +30,14 @@ class Jobs extends Component {
                         </div>
                     </div>
                     <div className="dashTableContainer">
-                        <div className="dashTableFilterHeader">
+                        {/* <div className="dashTableFilterHeader">
                             <h2 className="active">All</h2>
                             <h2>Unassigned</h2>
                             <h2>Assigned</h2>
-                        </div>
+                        </div> */}
                         <div className="dashTableTitles">
                             <h1>All Jobs</h1>
-                            <div className="dashItemFilters">
+                            {/* <div className="dashItemFilters">
                                 <select name="" id="">
                                     <option value="day">Last Day</option>
                                     <option value="day">Last Week</option>
@@ -45,7 +45,7 @@ class Jobs extends Component {
                                     <option value="day">Last Year</option>
                                 </select>
                                 <input type="text" placeholder="Search Jobs"/>
-                            </div>
+                            </div> */}
                         </div>
                         <table className="dashTable">
                             <thead className="dashTableHeader">
@@ -53,7 +53,6 @@ class Jobs extends Component {
                                     <th>Created</th>
                                     <th>Job</th>
                                     <th>Assigned to</th>
-                                    <th>Manager</th>
                                     <th>Client</th>
                                 </tr>
                             </thead>

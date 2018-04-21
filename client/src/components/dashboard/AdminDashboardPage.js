@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { CreateJobContainer } from '../createJob/CreateJobContainer';
-import { SetCreateJobToActive } from '../../actions/CreateTask'
 import { connect } from 'react-redux';
 import axios from 'axios'
 import { apiUrl } from '../../serverConfig'

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {Dashnav} from '../partials/Dashnav';
 import { Link } from 'react-router-dom'
 import axios from 'axios';
-import { apiUrl, employeeAvatarUrl } from '../../serverConfig';
+import { apiUrl } from '../../serverConfig';
 import Alert from 'react-s-alert';
 import 'react-s-alert/dist/s-alert-default.css'
 import 'react-s-alert/dist/s-alert-css-effects/scale.css'

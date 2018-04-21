@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {Dashnav} from '../partials/Dashnav';
-import {SideNav} from '../partials/SideNav';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { store } from '../../reducers/index'
@@ -9,7 +8,6 @@ import { apiUrl } from '../../serverConfig';
 import ReactPaginate from 'react-paginate';
 import { getFiles } from '../../actions/ManageFiles';
 import { FilesTableBlock } from '../tableComponents/FilesTableBlock';
-import { months } from '../../helpers/twelveMonths';
 
 import '../../assets/dash.css'
 
@@ -20,8 +18,6 @@ export class Files extends Component {
             // title: this.props.match.params ?
             // months[this.props.match.params.month - 1].month : ""
         }
-    }
-    componentWillMount() {
     }
     render() {
         return(

@@ -56,10 +56,7 @@ class Tasks extends Component {
                                     <th>Created</th>
                                     <th>Task</th>
                                     <th>Job</th>
-                                    <th>Download</th>
                                     <th>Team</th>
-                                    <th>Manager</th>
-                                    <th>Client</th>
                                 </tr>
                             </thead>
                             <tbody>

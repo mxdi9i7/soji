@@ -2,22 +2,19 @@ import React, { Component } from 'react';
 // import logo from './logo.svg';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import { AdminDashboardPage } from './components/dashboard/AdminDashboardPage'
 import { JobsPage } from './components/dashboard/JobsPage'
 import { EmployeesPage } from './components/dashboard/EmployeesPage'
 import { CreateEmployee } from './components/auth/CreateEmployee';
 import { FilesPage } from './components/dashboard/FilesPage';
 import { TasksPage } from './components/dashboard/TasksPage';
-import { TeamsPage, Teams } from './components/dashboard/TeamsPage';
+import { TeamsPage } from './components/dashboard/TeamsPage';
 import { NewTeamPage } from './components/team/NewTeamPage';
 import { JobPage } from './components/job/JobPage'
 import { TaskMonthPage } from './components/task/TaskMonthPage';
 import { TaskFilesPage } from './components/task/taskFilesPage';
 import { CreateClient } from "./components/auth/CreateClient";
 import { ClientNewJobPage } from "./components/dashboard/ClientNewJobPage";
-import { ClientDashboard } from './components/dashboard/ClientDashboard';
 import { FilePage } from './components/file/FilePage';
-import { EmployeeDashboard } from './components/dashboard/EmployeeDashboard';
 import { AdminSignin } from './components/auth/Admin';
 import { ConfigureTeam } from './components/team/ConfigureTeamPage';
 import { DashboardPage } from './components/dashboard/Dashboard';
