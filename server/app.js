@@ -70,7 +70,7 @@ var app = express();
 
 // login test
 app.use('/', express.static(__dirname)); // ← adjust
-app.listen(3555, function() { console.log('listening'); });
+app.listen(3000, function() { console.log('listening'); });
 
 
 // Map global promise - get rid of warning

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import { formatTimeToYYMMDD } from '../../helpers/formatTime'
+import { formatTimeToYYMMDD } from '../../helpers/formatTime'
 import '../../assets/dash.css'
-
+import { Link } from 'react-router-dom'
 class block extends Component {
     constructor(props) {
         super(props)
@@ -11,7 +11,7 @@ class block extends Component {
         }
     }
     render() {
-        // const YYMMDD = formatTimeToYYMMDD(this.state.employee.createdAt)
+        const YYMMDD = formatTimeToYYMMDD(this.state.employee.createdAt)
         let ratings = 0;
         let active = this.state.employee.active ? "Active" : "Inactive"
         if (this.state.employee.ratingCount === 0) {
@@ -34,16 +34,14 @@ class block extends Component {
                 </td>
                 <td>
                     <p>Team Name</p>
-                    <span>Team ID: {this.state.employee.teamID}</span>
+                    <p>Team ID: {this.state.employee.teamID} <Link to={`/dash/teams/configure/${this.state.employee.teamID}`}>Visit Team</Link></p>
                 </td>
                 <td>
-                    <p>P.B. Shelley</p>
-                    <span>ACC ID: 1281287</span>
+                    {YYMMDD.year}/{YYMMDD.month}/{YYMMDD.date}
                 </td>
                 <td>
-                    {/* {YYMMDD.year}/{YYMMDD.month}/{YYMMDD.date} */}
+                    <button>Remove</button>
                 </td>
-                <td>actions</td>
             </tr>
         )
     }
