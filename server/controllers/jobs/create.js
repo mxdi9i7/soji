@@ -34,7 +34,6 @@ handleJobCreate = (req, res, next) => {
             createdAt: new Date(),
             updatedAt: new Date()
         });
-        console.log(newJob)
         newJob.save((err, callback) => {
             if (err) {
                 res.json({
