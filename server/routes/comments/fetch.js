@@ -7,11 +7,11 @@ router.get('/', function(req, res, next){
     fetch.handleCommentsFetch(req, res, next);
 });
 
-router.get('/jobid', function(req, res, next){
+router.get('/job', function(req, res, next){
     fetch.handleCommentsFetchByJobID(req, res, next);
 });
 
-router.get('/teamid', function(req, res, next){
+router.get('/team', function(req, res, next){
     fetch.handleCommentsFetchByTeamID(req, res, next);
 });
 

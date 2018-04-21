@@ -4,6 +4,7 @@ const auth = (state = {
     }, action) => {
     switch (action.type) {
         case 'SET_INFO':
+            console.log(action.info)
             return {
                 ...state,
                 employeeID: action.info.staffID,

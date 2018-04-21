@@ -652,3 +652,15 @@
     top: 15px;
     right: 0px;
 }
+.adminTools .toolList {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+.adminTools .toolList svg {
+    font-size: 120px;
+    color: #0056b3;
+    text-align: center;
+    display: block;
+    margin:  0 auto;
+}

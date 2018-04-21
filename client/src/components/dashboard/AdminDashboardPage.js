@@ -39,28 +39,31 @@ class Dashboard extends Component {
                         </div>
                     </div>
                     <div className="dashContainer">
-                        <div className="dashTab tools">
+                        <div className="dashTab adminTools">
                             <h1>Tools</h1>
                             <div className="toolList">
-                                <Link to="/dash/jobs">Jobs List</Link>
-                                <Link to="/dash/employees">Employees List</Link>
-                                <Link to="/dash/teams">Teams List</Link>
-                                <Link to="/dash/files">Files List</Link>
-                                <Link to="/dash/announcements">Announcements</Link>
+                                <Link to="/dash/jobs">
+                                    <i className="fa fa-briefcase"></i>
+                                    <p>Jobs</p>
+                                </Link>
+                                <Link to="/dash/employees">
+                                    <i className="fa fa-users"></i>
+                                    <p>Employees</p>
+                                </Link>
+                                <Link to="/dash/teams">
+                                    <i className="fa fa-sitemap"></i>
+                                    <p>Teams</p>
+                                </Link>
+                                <Link to="/dash/files">
+                                    <i className="fa fa-file"></i>
+                                    <p>Files</p>
+                                </Link>
+                                <Link to="/dash/announcements">
+                                    <i className="fa fa-bullhorn"></i>
+                                    <p>Announcements</p>
+                                </Link>
                             </div>
                         </div>
-                        {/* <div className="company dashTab">
-                            <h1>My Companies ()</h1>
-                            <div className="list">
-                                
-                            </div>
-                        </div> */}
-                        {/* <div className="dashFilesList dashTab">
-                            <h1>My Files ()</h1>
-                            <div className="list">
-                                
-                            </div>
-                        </div> */}
                     </div>
                 </div>
             </div>
