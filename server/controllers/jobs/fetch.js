@@ -72,6 +72,31 @@ fetchJob = (req, res) => {
         }
     })
 }
+
+fetchJobListByTitle = (req, res, next) => {
+    let jobTitle = req.query.jobTitle;
+    let titleArray = jobTitle.split('_');
+    let search = '\.*';
+    titleArray.forEach(title => {
+        search += title + '\.*';
+    });
+    let regex = new RegExp(search,'i');
+    Jobs.find({jobTitle:{$regex:regex}}, (err, callback) =>
+    {
+        if (err) {
+            res.json({
+                success: false,
+                data: err
+            });
+        } else {
+            res.json({
+                success: true,
+                data: callback
+            });
+        } 
+    });
+}
+
 module.exports = {
-    fetchJobsWithFilter, fetchJob, fetchJobListByClient, fetchJobsByTeamID
+    fetchJobsWithFilter, fetchJob, fetchJobListByClient, fetchJobsByTeamID, fetchJobListByTitle
 }
