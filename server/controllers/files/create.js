@@ -29,6 +29,7 @@ handleFileCreate = (req, res, next) => {
             fileID: fileID,
             fileTitle: req.body.fileTitle,
             file: req.file,
+            uploadedBy: req.body.uploadedBy,
             rating: 0,
             createdAt: new Date()
         });
