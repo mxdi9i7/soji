@@ -24,22 +24,22 @@ handlePaymentCreate = (req, res, next) => {
             name: req.body.name,
             accountNumber: req.body.accountNumber,
             company: req.body.company,
-            transferDate: new Date(req.body.transferDate),
+            bank: req.body.bank,
+            transferNumber: req.body.transferNumber,
             amount: req.body.amount,
-            description: req.body.description,
-            jobID: req.body.jobID,
+            clientID: req.body.clientID,
             createdAt: new Date()
         });
         newPayment.save((err, callback) => {
             if (err) {
                 res.json({
                     success: false,
-                    message: err
+                    data: err
                 });
             } else {
                 res.json({
                     success: true,
-                    message: "Payment uploaded"
+                    data: "Payment uploaded"
                 });
             } 
         });

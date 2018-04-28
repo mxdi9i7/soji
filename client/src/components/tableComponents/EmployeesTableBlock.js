@@ -33,7 +33,9 @@ class block extends Component {
                     <p>{active}</p>
                 </td>
                 <td>
-                    <p>Team Name</p>
+                    {
+                        
+                    }
                     <p>Team ID: {this.state.employee.teamID} <Link to={`/dash/teams/configure/${this.state.employee.teamID}`}>Visit Team</Link></p>
                 </td>
                 <td>

@@ -102,41 +102,6 @@ handleCommentsFetchByTeamID = (req, res, next) => {
             })
         }
     })
-    // Jobs.find(query, {jobID: 1, _id: 0}, (err, callback) => {
-    //     if (err) {
-    //         res.json({
-    //             success: false,
-    //             data: err
-    //         });
-    //     } else {
-    //         Files.find({$or: callback}, {fileID: 1, _id: 0},(err, callback2) => {
-    //             if (err) {
-    //                 res.json({
-    //                     success: false,
-    //                     data: err
-    //                 });
-    //             } else {
-    //                 if(callback2[0] != null) {
-    //                     Comments.aggregate([
-    //                         { $match:{ $or: callback2 } },
-    //                         { $sort:{createdAt:-1} }
-    //                     ], (err, comments) => {
-                            
-    //                         res.json({
-    //                             success: true,
-    //                             data: comments
-    //                         })
-    //                     })
-    //                 } else {
-    //                     res.json({
-    //                         success: true,
-    //                         data: "no comment associate with the teamID found"
-    //                     })
-    //                 }
-    //             } 
-    //         })
-    //     }
-    // })
     
 }
 

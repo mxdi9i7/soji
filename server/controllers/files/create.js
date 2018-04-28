@@ -56,11 +56,10 @@ handleFileCreate = (req, res, next) => {
                         
                             // setup email data with unicode symbols
                             let mailOptions = {
-                                from: '"Fred Foo 👻" <foo@example.com>', // sender address
+                                from: '"Soji Mails" <info@mysoji.com>', // sender address
                                 to: client[0].email, // list of receivers
                                 subject: 'A new file has been uploaded', // Subject line
                                 text: 'A new file has been uploaded', // plain text body
-                                html: '<b>Hello world?</b>' // html body
                             };
                         
                             // send mail with defined transport object

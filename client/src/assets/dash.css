@@ -416,6 +416,15 @@
 	border-bottom: 1px solid #eee;
 	padding: 15px 5px;
 }
+.folder.client svg {
+    color: #448AFF; 
+}
+.folder.employee svg {
+    color: #2B1FB1;
+}
+.folder.manager svg {
+    color: #2B1FB1;
+}
 .folder svg {
 	font-size: 30px;
 	color: #999;
@@ -564,6 +573,9 @@
 .dashActions button {
     margin-right: 15px;
 }
+.dashActions a {
+    text-decoration: none;
+}
 .dashForm {
     margin: 10px 15px;
     border: 1px solid #eee;
@@ -663,4 +675,34 @@
     text-align: center;
     display: block;
     margin:  0 auto;
+}
+.dashTab.paymentHistory {
+    width: 50%;
+    margin-right: 10px;
+    border-top-color: #555
+}
+.dashTab.paymentForm {
+    width: 50%;
+    margin-left: 10px;
+    border-top-color: #2B1FB1;
+}
+.dashInfo .inputContainer {
+    margin: 10px 0;
+}
+.paymentHistory .paymentItem {
+    border-bottom: 1px solid #eee;
+    padding: 15px 0;
+}
+.dashInfo .inputContainer label {
+    display: block;
+    color: #7B1FA2;
+    font-weight: 600;
+    font-size: 14px;
+    margin: 5px 0;
+}
+.dashInfo button {
+    padding: 6px 12px;
+    border: none;
+    background-color: #7B1FA2;
+    color: #fff;
 }

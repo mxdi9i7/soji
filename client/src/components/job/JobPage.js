@@ -97,11 +97,11 @@ export class Job extends Component {
                         </div>
                         <div className="infoContainer third">
                             <label>Repeat Every</label>
-                            <span>{this.state.job.repeatEvery} Days</span>
+                            <span>{this.state.job.repeatEvery ? this.state.job.repeatEvery + " Days" : "N/A"}</span>
                         </div>
                         <div className="infoContainer third">
                             <label># of Repeats</label>
-                            <span>{this.state.job.numberOfRepeat} Cycles</span>
+                            <span>{this.state.job.numberOfRepeat ? this.state.job.numberOfRepeat + " Cycles" : "N/A"}</span>
                         </div>
                         <div className="infoContainer third">
                             <label>Never Expires</label>
@@ -116,7 +116,7 @@ export class Job extends Component {
                         <div className="infoContainer fluid">
                             <label>Job Manager</label>
                             <span>
-                                {this.state.team && (this.state.team.managerID ? this.state.manager.username : "Not assigned")} 
+                                {this.state.team && (this.state.team.managerID ? this.state.manager.username + " " : "Not assigned ")} 
                                 {this.state.manager && this.state.manager.email}
                             </span>
                         </div>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../../assets/navs.css'
 import '../../assets/dash.css'
 import '../../assets/global.css'
+import { Link } from "react-router-dom";
 import axios from 'axios'
 import { apiUrl, employeeAvatarUrl, clientAvatarUrl, adminAvatarUrl } from '../../serverConfig'
 import Alert from 'react-s-alert';
@@ -39,9 +40,9 @@ class Navigation extends Component {
 
         return (
             <div className="dashnavContainer">
-                <div className="logoContainer">
+                <Link to="/dash" className="logoContainer">
                     <img src="http://lisatech.vn/upload/images/Soji-logo.jpg" alt="logo"/>
-                </div>
+                </Link>
                 <div className="actionContainer">
                     <div className="nameContainer">
                         <h3>{this.props.info.username}</h3>

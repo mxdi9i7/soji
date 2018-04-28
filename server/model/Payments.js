@@ -8,11 +8,11 @@ const PaymentsSchema = new Schema
     name: String,
     accountNumber: String,
     company: String,
-    transferDate: Date,
+    bank: String,
     amount: Number,
-    description: String,
-    jobID: String,
-    createdAt: Date
+    transferNumber: String,
+    createdAt: Date,
+    clientID: String
 });
 
 const Payments = module.exports = mongoose.model('Payments', PaymentsSchema);

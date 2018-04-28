@@ -1,11 +1,11 @@
 
 process.env.NODE_ENV === "development" ?
 module.exports = {
-    apiUrl: 'http://localhost:3000/api/v1',
-    employeeAvatarUrl: 'http://localhost:3000/uploads/employees/',
-    clientAvatarUrl: 'http://localhost:3000/uploads/clients/',
-    adminAvatarUrl: 'http://localhost:3000/uploads/admins/',
-    fileUrl: 'http://localhost:3000/uploads/files/'
+    apiUrl: 'http://localhost:3555/api/v1',
+    employeeAvatarUrl: 'http://localhost:3555/uploads/employees/',
+    clientAvatarUrl: 'http://localhost:3555/uploads/clients/',
+    adminAvatarUrl: 'http://localhost:3555/uploads/admins/',
+    fileUrl: 'http://localhost:3555/uploads/files/'
 } :
 module.exports = {
     apiUrl: 'http://api.mysoji.com/api/v1',

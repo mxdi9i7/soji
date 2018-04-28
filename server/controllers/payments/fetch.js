@@ -21,6 +21,15 @@ fetchPaymentsWithFilter = (req, res) => {
     })
 }
 
+fetchPaymentsByClient = (req, res) => {
+    const { clientID } = req.query
+    Payments.find({clientID}, (err, payments) => {
+        res.json({
+            success: true,
+            data: payments
+        })
+    })
+}
 module.exports = {
-    fetchPaymentsWithFilter
+    fetchPaymentsWithFilter, fetchPaymentsByClient
 }
