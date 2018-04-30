@@ -19,6 +19,7 @@ import { AdminSignin } from './components/auth/Admin';
 import { ConfigureTeam } from './components/team/ConfigureTeamPage';
 import { DashboardPage } from './components/dashboard/Dashboard';
 import { AnnouncementsPage } from './components/dashboard/AnnoucementPage';
+import PaymentPage from './components/dashboard/PaymentPage';
 
 // import { ClientsPage } from './components/dashboard/ClientsPage';
 // import { BillingPage } from './components/dashboard/BillingPage';
@@ -49,6 +50,7 @@ class App extends Component {
 					<Route exact path="/dash/tasks" component={TasksPage} />
 					<Route exact path="/dash/teams/configure/:id" component={ConfigureTeam} />
 					<Route exact path="/dash/announcements" component={AnnouncementsPage} />
+					<Route exact path="/dash/payment" component={PaymentPage} />
 					{/* <Route exact path="/dash/clients" component={ClientsPage} /> */}
 					{/* <Route exact path="/dash/billing" component={BillingPage} /> */}
 				</div>

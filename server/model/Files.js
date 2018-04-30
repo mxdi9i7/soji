@@ -10,6 +10,7 @@ const FilesSchema = new Schema
     fileID: String,
     fileTitle: String,
     file: Object,
+    uploadedBy: String,
     createdAt: Date,
     rating: Number
 });

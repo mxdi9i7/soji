@@ -8,7 +8,7 @@ let storage = multer.diskStorage({
     cb(null, './uploads/files')
   },
   filename: function (req, file, cb) {
-    cb(null, Date.now() + '.png')
+    cb(null, Date.now() + '.' + file.mimetype.split('/')[1])
   }
 })
 let upload = multer({storage: storage})

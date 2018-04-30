@@ -97,7 +97,8 @@ handleFilesByMonth = (req, res, next) => {
             fileID: "$fileID",
             createdAt: "$createdAt",
             file: "$file",
-            fileTitle: "$fileTitle"
+            fileTitle: "$fileTitle",
+            uploadedBy: "$uploadedBy"
         }}, {
             $match: {taskID, month: Number(month), year: Number(year)}
         }
@@ -124,8 +125,8 @@ handleFilesByMonth = (req, res, next) => {
 }
 
 handleFilesByClientID = (req, res, next) => {
-    const { clientID } = req.query
-    Files.find({clientID}, (err, files) => {
+    const jobIDs = req.body.jobIDs
+    Files.find({jobID: {$in: jobIDs}}, (err, files) => {
         if (err) {
             res.json({
                 success: false,
@@ -135,7 +136,7 @@ handleFilesByClientID = (req, res, next) => {
             if (!files.length) {
                 res.json({
                     success: true,
-                    data: "No files found for this time period."
+                    data: "No files found for this client."
                 })
             } else {
                 res.json({

@@ -6,10 +6,14 @@ import axios from 'axios';
 import { apiUrl } from '../../serverConfig';
 import { getJobs } from '../../actions/ManageJobs';
 import { Announcements } from '../partials/Announcements'
+import { formatTimeToYYMMDD } from '../../helpers/formatTime'
 
 export class EmployeeDash extends Component {
-    componentDidMount() {
-        this.props.fetchJobs()
+    state = {comments: []}
+    async componentDidMount() {
+        await this.props.fetchJobs()
+        const comments = await axios.get(apiUrl + '/comments/fetch/team?teamID=' + this.props.teamID)
+        this.setState({comments: comments.data.data})
     }
     render() {
         return (
@@ -53,9 +57,21 @@ export class EmployeeDash extends Component {
                             </div>
                         </div>
                         <div className="dashFilesList dashTab">
-                            <h1>My Messages ({this.props.jobs.length})</h1>
+                            <h1>My Messages ({this.state.comments.length || 0})</h1>
                             <div className="list">
-                                
+                                {
+                                    this.state.comments && 
+                                    this.state.comments.map(comment => {
+                                        const date = formatTimeToYYMMDD(comment.createdAt)
+                                        return (
+                                            <div className="folder" key={comment._id}>
+                                                <span>{comment.content}</span>
+                                                <span>{date.year}/{date.month}/{date.date}</span>
+                                                <Link to={`/dash/file/${comment.fileID}`}>View</Link>
+                                            </div>
+                                        )
+                                    })
+                                }
                             </div>
                         </div>
                     </div>
@@ -68,7 +84,8 @@ export class EmployeeDash extends Component {
 const mapStateToProps = state => {
     return {
         jobs: state.manageJobs.jobs,
-        teamID: state.auth.teamID
+        teamID: state.auth.teamID,
+        user: state.auth
     }
 }
 
@@ -82,6 +99,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
     return {
         jobs: stateProps.jobs,
         teamID: stateProps.teamID,
+        user: stateProps.user,
         fetchJobs: async (e) => {
             const employee = await axios.post(apiUrl + '/users/auth/check', {token: sessionStorage.getItem('token')})
             const teamID = employee.data.data.teamID

@@ -58,6 +58,7 @@ export class TaskFiles extends Component {
         newFile.append('taskID', this.props.match.params.id)
         newFile.append('managerID', this.state.team.managerID)
         newFile.append('fileTitle', this.state.title)
+        newFile.append('uploadedBy', this.props.user.identity)
         newFile.append('file', this.state.file)
         axios.post(apiUrl + '/files/create', newFile).then(response => {
             if (response.data.success) {
@@ -90,7 +91,6 @@ export class TaskFiles extends Component {
                         </div>
                         <div className="dashActions">
                             {
-                                this.props.user.isManager &&
                                 <button onClick={this.toggleFileUpload.bind(this)}>
                                     <i className="fa fa-upload"></i>
                                     <span>Upload File</span>
@@ -121,7 +121,7 @@ export class TaskFiles extends Component {
                                         const date = formatTimeToYYMMDD(file.createdAt)
                                         const createDate = date.year + '/' + date.month + '/' + date.date
                                         return (
-                                            <div className="folder" key={file.fileID}>
+                                            <div className={"folder " + file.uploadedBy} key={file.fileID}>
                                                 <i className="fa fa-file"></i>
                                                 <span>File Name: {file.fileTitle}</span>
                                                 <span>Upload Date: {createDate}</span>  

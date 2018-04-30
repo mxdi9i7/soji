@@ -19,7 +19,7 @@ router.get('/single', (req, res) => {
     fetch.handleSingleFile(req, res)
 })
 
-router.get('/recent', (req, res) => {
+router.post('/client', (req, res) => {
     fetch.handleFilesByClientID(req, res)
 })
 

@@ -14,4 +14,8 @@ router.get('/client/single', (req, res) => {
     fetch.fetchSingleClient(req, res)
 })
 
+router.get('/employee/username', (req, res) => {
+    fetch.fetchEmployeeByUsername(req, res)
+})
+
 module.exports = router;

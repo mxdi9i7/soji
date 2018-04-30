@@ -77,8 +77,36 @@ fetchSingleClient = (req, res) => {
         }
     })
 }
+
+fetchEmployeeByUsername = (req, res) => {
+    const { username } = req.query
+
+    Employee.findOne({username}, (err, employees) => {
+        if (err) {
+            res.json({
+                success: false,
+                data: err
+            });
+        } else {
+            if (!employees) {
+                res.json({
+                    success: false,
+                    data: "Employee not found"
+                });
+            } else {
+                res.json({
+                    success: true,
+                    data: employees
+                });
+            }
+           
+        }
+    })
+}
+
 module.exports = { 
     fetchSingleClient,
     handleEmployeeFetch, 
-    fetchSingleEmployee 
+    fetchSingleEmployee,
+    fetchEmployeeByUsername
 }

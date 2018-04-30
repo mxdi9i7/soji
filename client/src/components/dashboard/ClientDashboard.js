@@ -11,7 +11,12 @@ export class ClientDash extends Component {
     state = {}
     async componentDidMount() {
         await this.props.fetchJobs()
-        const files = await axios.get(apiUrl + '/files/fetch/recent', {query: {clientID: this.props.clientID}})
+        const client = await axios.post(apiUrl + '/users/auth/check', {token: sessionStorage.getItem('token')})
+        await this.setState({client: client.data.data})
+        const jobs = await axios.get(apiUrl + '/jobs/fetch/client?clientID=' + client.data.data.clientID)
+        await this.setState({jobs: jobs.data.data})
+        const jobIDs = this.state.jobs.map(job => job.jobID)
+        const files = await axios.post(apiUrl + '/files/fetch/client', {jobIDs})
         await this.setState({files: files.data.data})
     }
     render() {
@@ -25,6 +30,12 @@ export class ClientDash extends Component {
                             </h1>
                         </div>
                         <div className="dashActions">
+                            <Link to="/dash/payment">
+                                <button>
+                                    <i className="fa fa-credit-card"></i>
+                                    <span>Make a Payment</span>
+                                </button>
+                            </Link>
                             <Link to="/dash/new">
                                 <button>
                                     <i className="fa fa-plus"></i>
@@ -58,18 +69,18 @@ export class ClientDash extends Component {
                             <h1>My Files ({this.props.jobs.length})</h1>
                             <div className="list">
                                 {
-                                    this.state.files && this.state.files.map(file => {
+                                    (this.state.files && typeof this.state.files !== "string") ? this.state.files.map(file => {
                                         const date = formatTimeToYYMMDD(file.createdAt)
                                         return (
                                             <div  className="taskFolder folder" key={file.fileID}>
                                                 <i className="fa fa-folder"></i>
                                                 <Link to={`/dash/file/${file.fileID}`}>{file.fileTitle}</Link>
-                                                <span>Job ID: {file.jobID}</span>
-                                                <span>Task ID: {file.taskID}</span>
+                                                {/* <span>Job ID: {file.jobID}</span>
+                                                <span>Task ID: {file.taskID}</span> */}
                                                 <span>Date: {date.year}/{date.month}/{date.date}</span>
                                             </div>
                                         )
-                                    })
+                                    }) : this.state.files
                                 }
                             </div>
                         </div>
