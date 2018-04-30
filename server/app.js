@@ -84,15 +84,7 @@ mongoose.connect('mongodb://cheng:123456@ds163656.mlab.com:63656/cheng', functio
     }
 })
 
-// CORS Middleware
-app.use(cors());
-app.use(function(req, res, next) { 
-    res.header("Access-Control-Allow-Origin", 
-    req.get('origin')); 
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept"); 
-    res.header("Access-Control-Allow-Methods","GET,POST,OPTIONS,PATCH,DELETE,PUT");
-    next();
-});
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hjs');
@@ -104,6 +96,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser(secret.secret));
 app.use(express.static(path.join(__dirname, 'public')));
+
+// CORS Middleware
+app.use(function(req, res, next) { 
+    res.header("Access-Control-Allow-Origin", 
+    req.get('origin')); 
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept"); 
+    res.header("Access-Control-Allow-Methods","GET,POST,OPTIONS,PATCH,DELETE,PUT");
+    next();
+});
 
 //user path
 app.use('/api/v1/users/auth', auth);
