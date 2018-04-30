@@ -86,7 +86,7 @@ mongoose.connect('mongodb://cheng:123456@ds163656.mlab.com:63656/cheng', functio
 
 // CORS Middleware
 app.use(cors());
-app.options('*', cors())
+app.all('*', cors())
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hjs');
